@@ -32,40 +32,80 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Contact form handling
-const contactForm = document.querySelector('.contact-form');
+// ==========================================
+// CONTACT FORM - TEMPORAIREMENT DÉSACTIVÉ
+// ==========================================
+// Formulaire de contact avec EmailJS
+// À réactiver quand l'email professionnel sera prêt
+// 
+// Pour réactiver :
+// 1. Décommenter le code ci-dessous
+// 2. Configurer EmailJS avec les vraies clés
+// 3. Remplacer le message temporaire par le vrai formulaire
+// ==========================================
+
+/*
+// Initialize EmailJS
+(function() {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Remplacez par votre clé publique EmailJS
+})();
+
+// Contact form handling with EmailJS
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const formStatus = document.getElementById('form-status');
+
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form data
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours...';
+        showFormStatus('loading', 'Envoi de votre message...');
         
-        // Simple validation
-        if (!name || !email || !message) {
-            alert('Veuillez remplir tous les champs');
-            return;
-        }
-        
-        // Here you would typically send the form data to a server
-        // For now, we'll just show a success message
-        alert('Merci pour votre message ! Nous vous recontacterons bientôt.');
-        this.reset();
+        // Send email using EmailJS
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                showFormStatus('success', 'Merci ! Votre message a été envoyé avec succès. Nous vous recontacterons bientôt.');
+                contactForm.reset();
+            })
+            .catch(function(error) {
+                console.log('FAILED...', error);
+                showFormStatus('error', 'Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter directement par email.');
+            })
+            .finally(function() {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer';
+            });
     });
 }
+
+function showFormStatus(type, message) {
+    formStatus.className = `form-status ${type}`;
+    formStatus.textContent = message;
+    formStatus.style.display = 'block';
+    
+    // Hide status after 5 seconds for success/error
+    if (type !== 'loading') {
+        setTimeout(() => {
+            formStatus.style.display = 'none';
+        }, 5000);
+    }
+}
+*/
 
 // Add scroll effect to navbar
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.backdropFilter = 'blur(10px)';
+        navbar.style.background = 'linear-gradient(135deg, rgba(44, 62, 80, 0.98) 0%, rgba(52, 152, 219, 0.98) 100%)';
+        navbar.style.backdropFilter = 'blur(15px)';
     } else {
-        navbar.style.background = '#fff';
-        navbar.style.backdropFilter = 'none';
+        navbar.style.background = 'linear-gradient(135deg, rgba(44, 62, 80, 0.95) 0%, rgba(52, 152, 219, 0.95) 100%)';
+        navbar.style.backdropFilter = 'blur(10px)';
     }
 });
 
@@ -86,21 +126,29 @@ const observer = new IntersectionObserver((entries) => {
 
 // Section navigation observer for active nav links
 const sectionObserver = new IntersectionObserver((entries) => {
+    let mostVisibleEntry = null;
+    let maxIntersectionRatio = 0;
+    
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Update active navigation link
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            const activeLink = document.querySelector(`.nav-menu a[href="#${entry.target.id}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+        if (entry.isIntersecting && entry.intersectionRatio > maxIntersectionRatio) {
+            maxIntersectionRatio = entry.intersectionRatio;
+            mostVisibleEntry = entry;
         }
     });
+    
+    if (mostVisibleEntry) {
+        // Update active navigation link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => link.classList.remove('active'));
+        
+        const activeLink = document.querySelector(`.nav-menu a[href="#${mostVisibleEntry.target.id}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
 }, {
-    threshold: 0.5,
-    rootMargin: '-80px 0px -50% 0px'
+    threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    rootMargin: '-80px 0px -20% 0px'
 });
 
 // Observe service cards and other elements
