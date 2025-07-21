@@ -97,6 +97,20 @@ function showFormStatus(type, message) {
 }
 */
 
+// Save scroll position before leaving page
+window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+});
+
+// Restore scroll position when returning to page
+window.addEventListener('load', () => {
+    const savedPosition = sessionStorage.getItem('scrollPosition');
+    if (savedPosition) {
+        window.scrollTo(0, parseInt(savedPosition));
+        sessionStorage.removeItem('scrollPosition');
+    }
+});
+
 // Add scroll effect to navbar
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
