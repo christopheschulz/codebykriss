@@ -817,6 +817,25 @@ footer {
     padding: 2rem 0;
 }
 
+.footer-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #3498db;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
