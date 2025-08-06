@@ -211,70 +211,163 @@
 
         <section id="contact" class="contact">
             <div class="container">
-                <h2>Démarrons votre projet</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-header">
-                            <h3>Prêt à transformer votre idée ?</h3>
-                            <p>Discutons de votre projet et créons ensemble une solution sur mesure qui répondra parfaitement à vos besoins.</p>
-                        </div>
-                        <div class="contact-benefits">
-                            <div class="benefit-item">
-                                <div class="benefit-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                        <polyline points="22,4 12,14.01 9,11.01"/>
-                                    </svg>
-                                </div>
-                                <div class="benefit-text">
-                                    <h4>Réponse rapide</h4>
-                                    <p>Réponse sous 24h maximum</p>
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M9 11H1v12h22V11h-8l-2-2H9z"/>
-                                        <path d="M13 2H9L7 4H3c-1.1 0-2 .9-2 2v2"/>
-                                    </svg>
-                                </div>
-                                <div class="benefit-text">
-                                    <h4>Devis gratuit</h4>
-                                    <p>Évaluation complète sans engagement</p>
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="9" cy="7" r="4"/>
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                    </svg>
-                                </div>
-                                <div class="benefit-text">
-                                    <h4>Accompagnement</h4>
-                                    <p>Suivi personnalisé tout au long du projet</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contact-details">
-                            <p><strong>Email:</strong> <span class="email-status">en cours de configuration</span></p>
-                        </div>
-                    </div>
-                    <div class="contact-temp">
-                        <div class="contact-coming-soon">
-                            <h4>Formulaire de contact en cours de configuration</h4>
-                            <p>Le formulaire de contact et l'email seront bientôt disponibles.</p>
-                            <div class="contact-direct">
-                                <div class="email-button disabled">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <div class="contact-hero">
+                    <h2>Démarrons votre projet</h2>
+                    <p class="contact-subtitle">Transformons vos idées en applications performantes</p>
+                </div>
+                
+                <div class="contact-layout">
+                    <div class="contact-form-container">
+                        <div class="contact-form-wrapper">
+                            <div class="form-header">
+                                <div class="form-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                         <polyline points="22,6 12,13 2,6"/>
                                     </svg>
-                                    Email en cours de configuration
                                 </div>
+                                <h3>Envoyez-nous un message</h3>
+                                <p>Décrivez votre projet et nous vous répondrons dans les plus brefs délais</p>
                             </div>
+                            
+                            <form id="contact-form" class="professional-form">
+                                <div class="form-group">
+                                    <label for="name">Nom complet <span class="required">*</span></label>
+                                    <input type="text" id="name" name="name" required>
+                                    <div class="input-border"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Adresse email <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" required>
+                                    <div class="input-border"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="company">Entreprise</label>
+                                    <input type="text" id="company" name="company">
+                                    <div class="input-border"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Téléphone</label>
+                                    <input type="tel" id="phone" name="phone">
+                                    <div class="input-border"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Sujet <span class="required">*</span></label>
+                                    <select id="subject" name="subject" required>
+                                        <option value="">Choisissez le type de projet</option>
+                                        <option value="application-mobile">Application mobile</option>
+                                        <option value="application-web">Application web</option>
+                                        <option value="conseil">Conseil & accompagnement</option>
+                                        <option value="maintenance">Maintenance/évolution</option>
+                                        <option value="autre">Autre demande</option>
+                                    </select>
+                                    <div class="input-border"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="budget">Budget estimé</label>
+                                    <select id="budget" name="budget">
+                                        <option value="">Sélectionnez votre budget</option>
+                                        <option value="0-5k">Moins de 5 000€</option>
+                                        <option value="5k-15k">5 000€ - 15 000€</option>
+                                        <option value="15k-30k">15 000€ - 30 000€</option>
+                                        <option value="30k+">Plus de 30 000€</option>
+                                        <option value="to-discuss">À discuter</option>
+                                    </select>
+                                    <div class="input-border"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Décrivez votre projet <span class="required">*</span></label>
+                                    <textarea id="message" name="message" rows="4" placeholder="Parlez-nous de votre projet, vos objectifs, fonctionnalités souhaitées, délais... (minimum 50 caractères)" required></textarea>
+                                    <div class="input-border"></div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="submit-btn">
+                                        <span class="btn-content">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="m22 2-7 20-4-9-9-4Z"/>
+                                                <path d="M22 2 11 13"/>
+                                            </svg>
+                                            Envoyer ma demande
+                                        </span>
+                                    </button>
+                                    <div class="form-note">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                                            <path d="m9 12 2 2 4-4"/>
+                                        </svg>
+                                        Vos données sont sécurisées et ne seront jamais partagées
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <div class="card-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                            </div>
+                            <h4>Réponse rapide</h4>
+                            <p>Sous 24h maximum</p>
+                            <span class="contact-badge">Garantie</span>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="card-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 11H1v12h22V11h-8l-2-2H9z"/>
+                                </svg>
+                            </div>
+                            <h4>Devis gratuit</h4>
+                            <p>Évaluation complète</p>
+                            <span class="contact-badge success">Offert</span>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="card-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <h4>IA intégrée</h4>
+                            <p>Développement optimisé</p>
+                            <span class="contact-badge premium">Pro</span>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="card-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <h4>Accompagnement</h4>
+                            <p>Suivi personnalisé</p>
+                            <span class="contact-badge info">Inclus</span>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="card-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                                    <path d="m9 12 2 2 4-4"/>
+                                </svg>
+                            </div>
+                            <h4>Code de qualité</h4>
+                            <p>Standards professionnels</p>
+                            <span class="contact-badge quality">Premium</span>
                         </div>
                     </div>
                 </div>
@@ -284,7 +377,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Code By Kriss. Tous droits réservés.</p>
+            <p>&copy; 2025 Code By Kriss. Tous droits réservés.</p>
             <div class="footer-links">
                 <a href="mentions-legales.html">Mentions légales</a>
                 <a href="politique-confidentialite.html">Politique de confidentialité</a>
@@ -292,7 +385,7 @@
         </div>
     </footer>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
