@@ -45,6 +45,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {
+    // Get form elements
+    const nameField = document.getElementById('name');
+    const emailField = document.getElementById('email');
+    const messageField = document.getElementById('message');
+    const messageCounter = document.getElementById('message-count');
+    
+    // Error elements
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+    const messageError = document.getElementById('message-error');
+    
+    // Character counter for message field
+    function updateCharacterCounter() {
+        if (messageField && messageCounter) {
+            const currentLength = messageField.value.length;
+            const minLength = 50;
+            
+            messageCounter.textContent = currentLength;
+            
+            const counterSpan = messageCounter.parentElement;
+            if (currentLength >= minLength) {
+                counterSpan.classList.add('valid');
+                counterSpan.classList.remove('invalid');
+            } else {
+                counterSpan.classList.add('invalid');
+                counterSpan.classList.remove('valid');
+            }
+        }
+    }
+    
+    // Add character counter event listener
+    if (messageField) {
+        messageField.addEventListener('input', updateCharacterCounter);
+        // Initialize counter
+        updateCharacterCounter();
+    }
+    
     // Form validation functions
     function validateEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -70,10 +107,12 @@ if (contactForm) {
             existingError.remove();
         }
         
-        // Required field validation
+        // Required field validation  
         if (field.required && !value) {
             isValid = false;
-            errorMessage = `Le champ "${field.labels[0].textContent.replace(' *', '')}" est obligatoire`;
+            const label = formGroup.querySelector('label');
+            const labelText = label ? label.textContent.replace(' *', '').replace('*', '').trim() : 'Ce champ';
+            errorMessage = `Le champ "${labelText}" est obligatoire`;
         }
         // Email validation
         else if (field.type === 'email' && value && !validateEmail(value)) {
@@ -88,7 +127,9 @@ if (contactForm) {
         // Select validation
         else if (field.tagName === 'SELECT' && field.required && !value) {
             isValid = false;
-            errorMessage = `Veuillez sélectionner ${field.labels[0].textContent.replace(' *', '').toLowerCase()}`;
+            const label = formGroup.querySelector('label');
+            const labelText = label ? label.textContent.replace(' *', '').replace('*', '').trim() : 'une option';
+            errorMessage = `Veuillez sélectionner ${labelText.toLowerCase()}`;
         }
         // Textarea minimum length validation
         else if (field.tagName === 'TEXTAREA' && field.name === 'message' && value && value.length < 50) {
@@ -102,7 +143,7 @@ if (contactForm) {
             
             if (!isValid && errorMessage) {
                 const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
+                errorDiv.className = 'error-message show';
                 errorDiv.textContent = errorMessage;
                 formGroup.appendChild(errorDiv);
             }

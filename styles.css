@@ -970,6 +970,59 @@ body {
     background: var(--warning);
 }
 
+/* Form feedback and validation */
+.form-feedback {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: var(--space-2);
+    min-height: 20px;
+}
+
+.char-counter {
+    font-size: 0.8rem;
+    color: var(--neutral-500);
+    transition: color var(--transition-fast);
+}
+
+.char-counter.valid {
+    color: var(--success);
+}
+
+.char-counter.invalid {
+    color: var(--error);
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: var(--space-1);
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all var(--transition-fast);
+    min-height: 20px;
+}
+
+.error-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-group.success input,
+.form-group.success select,
+.form-group.success textarea {
+    border-color: var(--success);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
 /* Footer */
 footer {
     background: var(--neutral-900);
@@ -1245,6 +1298,25 @@ footer {
         padding: var(--space-4) var(--space-5);
     }
     
+    /* Form validation mobile adjustments */
+    .form-feedback {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-1);
+    }
+    
+    .char-counter {
+        font-size: 0.85rem;
+        text-align: left;
+        order: 1;
+    }
+    
+    .error-message {
+        font-size: 0.85rem;
+        margin-top: var(--space-2);
+        order: 2;
+    }
+    
     /* Spacing adjustments */
     .container {
         padding: 0 var(--space-4);
@@ -1468,6 +1540,22 @@ footer {
     .form-note {
         font-size: 0.8rem;
         padding: var(--space-2);
+    }
+    
+    /* Form validation extra small mobile adjustments */
+    .form-feedback {
+        margin-top: var(--space-2);
+        min-height: 18px;
+    }
+    
+    .char-counter {
+        font-size: 0.8rem;
+    }
+    
+    .error-message {
+        font-size: 0.8rem;
+        margin-top: var(--space-1);
+        min-height: 18px;
     }
     
     .card-icon {
