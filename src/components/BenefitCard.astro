@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const { title, description, icon } = Astro.props;
+---
+
+<div class="benefit-card flex items-start gap-4 p-5 bg-neutral-50 rounded-2xl border border-neutral-200 transition-all duration-300 hover:bg-primary-50 hover:border-primary-200 hover:-translate-y-0.5">
+  <div class="benefit-icon flex items-center justify-center w-12 h-12 bg-primary-600 text-white rounded-xl flex-shrink-0">
+    <Fragment set:html={icon} />
+  </div>
+  <div>
+    <h4 class="text-base font-semibold text-neutral-900 mb-2">{title}</h4>
+    <p class="text-neutral-600 text-sm leading-relaxed m-0">{description}</p>
+  </div>
+</div>

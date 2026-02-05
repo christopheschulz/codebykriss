@@ -1,0 +1,383 @@
+---
+import ContactCard from './ContactCard.astro';
+
+const contactCards = [
+  {
+    title: 'Réponse rapide',
+    description: 'Sous 24h maximum',
+    badge: 'Garantie',
+    badgeType: 'default' as const,
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="12,6 12,12 16,14"/>
+    </svg>`
+  },
+  {
+    title: 'Devis gratuit',
+    description: 'Évaluation complète',
+    badge: 'Offert',
+    badgeType: 'success' as const,
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 11H1v12h22V11h-8l-2-2H9z"/>
+    </svg>`
+  },
+  {
+    title: 'IA intégrée',
+    description: 'Développement optimisé',
+    badge: 'Pro',
+    badgeType: 'premium' as const,
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>`
+  },
+  {
+    title: 'Accompagnement',
+    description: 'Suivi personnalisé',
+    badge: 'Inclus',
+    badgeType: 'info' as const,
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>`
+  },
+  {
+    title: 'Code de qualité',
+    description: 'Standards professionnels',
+    badge: 'Premium',
+    badgeType: 'quality' as const,
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+      <path d="m9 12 2 2 4-4"/>
+    </svg>`
+  }
+];
+
+const subjectOptions = [
+  { value: '', label: 'Choisissez le type de projet' },
+  { value: 'application-mobile', label: 'Application mobile' },
+  { value: 'application-web', label: 'Application web' },
+  { value: 'conseil', label: 'Conseil & accompagnement' },
+  { value: 'maintenance', label: 'Maintenance/évolution' },
+  { value: 'autre', label: 'Autre demande' },
+];
+
+const budgetOptions = [
+  { value: '', label: 'Sélectionnez votre budget' },
+  { value: '0-5k', label: 'Moins de 5 000€' },
+  { value: '5k-15k', label: '5 000€ - 15 000€' },
+  { value: '15k-30k', label: '15 000€ - 30 000€' },
+  { value: '30k+', label: 'Plus de 30 000€' },
+  { value: 'to-discuss', label: 'À discuter' },
+];
+---
+
+<section id="contact" class="contact py-24 bg-gradient-to-br from-primary-600 to-primary-800 text-white relative">
+  <div class="contact-bg absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3')] bg-center bg-cover opacity-10 z-0"></div>
+
+  <div class="container relative z-10">
+    <div class="contact-hero text-center mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">Démarrons votre projet</h2>
+      <p class="contact-subtitle text-lg md:text-xl opacity-90 max-w-[500px] mx-auto">
+        Transformons vos idées en applications performantes
+      </p>
+    </div>
+
+    <div class="contact-layout grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start">
+      <div class="contact-form-container">
+        <div class="contact-form-wrapper bg-white/[0.98] rounded-3xl p-6 md:p-8 backdrop-blur-2xl shadow-2xl border border-white/20">
+          <div class="form-header text-center mb-8">
+            <div class="form-icon inline-flex items-center justify-center w-16 h-16 bg-primary-600 text-white rounded-2xl mb-4">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-bold text-neutral-900 mb-2">Envoyez-nous un message</h3>
+            <p class="text-neutral-600 leading-relaxed">
+              Décrivez votre projet et nous vous répondrons dans les plus brefs délais
+            </p>
+          </div>
+
+          <form id="contact-form" class="professional-form flex flex-col gap-5">
+            <div class="form-group">
+              <label for="name">Nom complet <span class="text-error">*</span></label>
+              <input type="text" id="name" name="name" required minlength="2" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Adresse email <span class="text-error">*</span></label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="company">Entreprise</label>
+              <input type="text" id="company" name="company" />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Sujet <span class="text-error">*</span></label>
+              <select id="subject" name="subject" required>
+                {subjectOptions.map(option => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="budget">Budget estimé</label>
+              <select id="budget" name="budget">
+                {budgetOptions.map(option => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Décrivez votre projet <span class="text-error">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Parlez-nous de votre projet, vos objectifs, fonctionnalités souhaitées, délais... (minimum 50 caractères)"
+                required
+                minlength="50"
+              ></textarea>
+              <div class="form-feedback flex justify-between items-start mt-2 min-h-[20px]">
+                <span class="char-counter text-xs text-neutral-500 transition-colors duration-150">
+                  <span id="message-count">0</span>/50 caractères minimum
+                </span>
+              </div>
+            </div>
+
+            <div class="form-actions mt-6">
+              <button type="submit" class="submit-btn w-full py-4 px-6 bg-primary-600 text-white border-none rounded-xl text-lg font-semibold cursor-pointer transition-all duration-300 shadow-lg hover:bg-primary-700 hover:-translate-y-0.5 hover:shadow-xl">
+                <span class="btn-content flex items-center justify-center gap-2">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m22 2-7 20-4-9-9-4Z"/>
+                    <path d="M22 2 11 13"/>
+                  </svg>
+                  Envoyer ma demande
+                </span>
+              </button>
+              <div class="form-note flex items-center justify-center gap-2 mt-4 p-3 bg-success/10 rounded-xl text-success text-sm text-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+                Vos données sont sécurisées et ne seront jamais partagées
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="contact-info grid gap-4 order-first lg:order-last">
+        {contactCards.map(card => (
+          <ContactCard
+            title={card.title}
+            description={card.description}
+            icon={card.icon}
+            badge={card.badge}
+            badgeType={card.badgeType}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Initialize EmailJS
+  declare const emailjs: any;
+
+  (function() {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init("D9Lbpf5Qshz4fGR9F");
+    }
+  })();
+
+  const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
+
+  if (contactForm) {
+    const messageField = document.getElementById('message') as HTMLTextAreaElement | null;
+    const messageCounter = document.getElementById('message-count');
+
+    // Character counter
+    function updateCharacterCounter() {
+      if (messageField && messageCounter) {
+        const currentLength = messageField.value.length;
+        const minLength = 50;
+        messageCounter.textContent = String(currentLength);
+
+        const counterSpan = messageCounter.parentElement;
+        if (counterSpan) {
+          if (currentLength >= minLength) {
+            counterSpan.classList.add('text-success');
+            counterSpan.classList.remove('text-error');
+          } else {
+            counterSpan.classList.add('text-error');
+            counterSpan.classList.remove('text-success');
+          }
+        }
+      }
+    }
+
+    if (messageField) {
+      messageField.addEventListener('input', updateCharacterCounter);
+      updateCharacterCounter();
+    }
+
+    // Validation functions
+    function validateEmail(email: string): boolean {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function validatePhone(phone: string): boolean {
+      if (!phone) return true;
+      const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+      return phoneRegex.test(phone.replace(/\s/g, ''));
+    }
+
+    function validateField(field: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): { isValid: boolean; errorMessage: string } {
+      const formGroup = field.closest('.form-group');
+      const value = field.value.trim();
+      let isValid = true;
+      let errorMessage = '';
+
+      if (formGroup) {
+        formGroup.classList.remove('error', 'success');
+        const existingError = formGroup.querySelector('.error-message');
+        if (existingError) existingError.remove();
+      }
+
+      if (field.required && !value) {
+        isValid = false;
+        const label = formGroup?.querySelector('label');
+        const labelText = label ? label.textContent?.replace(' *', '').replace('*', '').trim() : 'Ce champ';
+        errorMessage = `Le champ "${labelText}" est obligatoire`;
+      } else if (field.type === 'email' && value && !validateEmail(value)) {
+        isValid = false;
+        errorMessage = 'Veuillez saisir une adresse email valide (ex: nom@domaine.fr)';
+      } else if (field.type === 'tel' && value && !validatePhone(value)) {
+        isValid = false;
+        errorMessage = 'Veuillez saisir un numéro de téléphone français valide';
+      } else if (field.tagName === 'SELECT' && field.required && !value) {
+        isValid = false;
+        const label = formGroup?.querySelector('label');
+        const labelText = label ? label.textContent?.replace(' *', '').replace('*', '').trim() : 'une option';
+        errorMessage = `Veuillez sélectionner ${labelText?.toLowerCase()}`;
+      } else if (field.tagName === 'TEXTAREA' && field.name === 'message' && value && value.length < 50) {
+        isValid = false;
+        errorMessage = `Veuillez décrire votre projet avec au moins 50 caractères (${value.length}/50)`;
+      }
+
+      if (formGroup && (value || field.required)) {
+        formGroup.classList.add(isValid ? 'success' : 'error');
+        if (!isValid && errorMessage) {
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'error-message show';
+          errorDiv.textContent = errorMessage;
+          formGroup.appendChild(errorDiv);
+        }
+      }
+
+      return { isValid, errorMessage };
+    }
+
+    // Real-time validation
+    const formFields = contactForm.querySelectorAll('input, select, textarea');
+    formFields.forEach(field => {
+      field.addEventListener('input', () => validateField(field as HTMLInputElement));
+      field.addEventListener('change', () => validateField(field as HTMLInputElement));
+      field.addEventListener('blur', () => validateField(field as HTMLInputElement));
+    });
+
+    // Form submission
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      let isFormValid = true;
+      const errorMessages: string[] = [];
+
+      formFields.forEach(field => {
+        const validation = validateField(field as HTMLInputElement);
+        if (!validation.isValid) {
+          isFormValid = false;
+          if (validation.errorMessage) {
+            errorMessages.push(`• ${validation.errorMessage}`);
+          }
+        }
+      });
+
+      if (!isFormValid) {
+        const firstError = contactForm.querySelector('.form-group.error');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const input = firstError.querySelector('input, select, textarea') as HTMLElement;
+          if (input) input.focus();
+        }
+        return;
+      }
+
+      const submitBtn = this.querySelector('.submit-btn') as HTMLButtonElement;
+      const btnContent = submitBtn.querySelector('.btn-content');
+      const originalContent = btnContent?.innerHTML || '';
+
+      submitBtn.disabled = true;
+      if (btnContent) {
+        btnContent.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="animate-spin">
+            <path d="M21 12a9 9 0 11-6.219-8.56"/>
+          </svg>
+          Envoi en cours...
+        `;
+      }
+
+      if (typeof emailjs !== 'undefined') {
+        emailjs.sendForm('service_i5fh0wc', 'template_rlp6fxk', this)
+          .then(function() {
+            showFormMessage('success', 'Merci ! Votre message a été envoyé avec succès. Nous vous recontacterons dans les plus brefs délais.');
+            contactForm.reset();
+            formFields.forEach(field => {
+              field.closest('.form-group')?.classList.remove('error', 'success');
+            });
+            updateCharacterCounter();
+          })
+          .catch(function() {
+            showFormMessage('error', "Erreur lors de l'envoi. Veuillez réessayer ou nous contacter directement par email.");
+          })
+          .finally(function() {
+            submitBtn.disabled = false;
+            if (btnContent) btnContent.innerHTML = originalContent;
+          });
+      }
+    });
+
+    function showFormMessage(type: 'success' | 'error', message: string) {
+      let messageElement = document.querySelector('.form-message') as HTMLElement | null;
+      if (!messageElement) {
+        messageElement = document.createElement('div');
+        messageElement.className = 'form-message';
+        const formActions = contactForm?.querySelector('.form-actions');
+        formActions?.appendChild(messageElement);
+      }
+
+      messageElement.className = `form-message mt-4 p-4 rounded-xl text-sm ${type === 'success' ? 'bg-success/10 text-success' : 'bg-error/10 text-error'}`;
+      messageElement.textContent = message;
+      messageElement.style.display = 'block';
+      messageElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      setTimeout(() => {
+        if (messageElement) messageElement.style.display = 'none';
+      }, 8000);
+    }
+  }
+</script>

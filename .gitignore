@@ -1,5 +1,12 @@
+# Astro build output
+dist/
+.astro/
+
 # Documentation interne
 CLAUDE.md
+
+# Dependencies
+node_modules/
 
 # Fichiers système
 .DS_Store
@@ -30,7 +37,5 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# Dépendances (si jamais utilisées)
-node_modules/
-package-lock.json
-yarn.lock
+# Backup folder (temporary)
+_backup/

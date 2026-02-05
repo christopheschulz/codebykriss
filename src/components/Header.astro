@@ -1,0 +1,169 @@
+---
+const navLinks = [
+  { href: '#accueil', label: 'Accueil' },
+  { href: '#services', label: 'Services' },
+  { href: '#a-propos', label: 'À Propos' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header>
+  <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-primary-600 transition-all duration-300">
+    <div class="nav-container flex items-center justify-between py-4 px-6 max-w-[1200px] mx-auto">
+      <div class="logo">
+        <h1 class="text-[1.75rem] font-bold text-white tracking-tight">Code By Kriss</h1>
+      </div>
+      <ul class="nav-menu hidden md:flex items-center gap-6 list-none">
+        {navLinks.map((link, index) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "text-white no-underline font-medium text-base py-2 px-3 rounded-lg transition-all duration-150",
+                "hover:bg-white/10",
+                index === 0 && "active font-semibold bg-white/15"
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <button class="hamburger md:hidden flex flex-col cursor-pointer p-2 bg-transparent border-none rounded-lg transition-colors duration-150 hover:bg-white/10" aria-label="Menu">
+        <span class="bar w-5 h-0.5 bg-white my-[2px] transition-all duration-300 rounded-full"></span>
+        <span class="bar w-5 h-0.5 bg-white my-[2px] transition-all duration-300 rounded-full"></span>
+        <span class="bar w-5 h-0.5 bg-white my-[2px] transition-all duration-300 rounded-full"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Mobile menu styles */
+  @media (max-width: 768px) {
+    .nav-menu {
+      position: fixed;
+      left: -100%;
+      top: 77px;
+      flex-direction: column;
+      background: theme('colors.primary.600');
+      width: 100%;
+      text-align: center;
+      transition: left 0.3s ease;
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      padding: 2rem 1rem;
+      gap: 1rem;
+      z-index: 1000;
+      display: flex;
+    }
+
+    .nav-menu.active {
+      left: 0;
+    }
+
+    .nav-menu a {
+      font-size: 1.1rem;
+      padding: 1rem 1.5rem;
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu?.classList.toggle('active');
+  });
+
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
+    hamburger?.classList.remove('active');
+    navMenu?.classList.remove('active');
+  }));
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          hamburger?.classList.remove('active');
+          navMenu?.classList.remove('active');
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  });
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar') as HTMLElement;
+    if (navbar) {
+      if (window.scrollY > 50) {
+        navbar.style.background = 'linear-gradient(135deg, rgba(44, 62, 80, 0.98) 0%, rgba(52, 152, 219, 0.98) 100%)';
+        navbar.style.backdropFilter = 'blur(15px)';
+      } else {
+        navbar.style.background = '';
+        navbar.style.backdropFilter = '';
+      }
+    }
+  });
+
+  // Section navigation observer for active nav links
+  const sectionObserver = new IntersectionObserver((entries) => {
+    let mostVisibleEntry: IntersectionObserverEntry | null = null;
+    let maxIntersectionRatio = 0;
+
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > maxIntersectionRatio) {
+        maxIntersectionRatio = entry.intersectionRatio;
+        mostVisibleEntry = entry;
+      }
+    });
+
+    if (mostVisibleEntry) {
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      navLinks.forEach(link => link.classList.remove('active', 'font-semibold', 'bg-white/15'));
+
+      const activeLink = document.querySelector(`.nav-menu a[href="#${(mostVisibleEntry as IntersectionObserverEntry).target.id}"]`);
+      if (activeLink) {
+        activeLink.classList.add('active', 'font-semibold', 'bg-white/15');
+      }
+    }
+  }, {
+    threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    rootMargin: '-80px 0px -20% 0px'
+  });
+
+  // Observe sections for navigation
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('main section');
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+  });
+</script>

@@ -1,0 +1,111 @@
+---
+import ServiceCard from './ServiceCard.astro';
+
+const services = [
+  {
+    title: 'Applications Mobiles React Native',
+    description: "Développement d'applications mobiles cross-platform avec React Native. Une base de code unique pour iOS et Android, avec des performances natives.",
+    features: [
+      'Applications iOS & Android',
+      'Interface native et fluide',
+      'Intégration API et services',
+      'Tests automatisés et déploiement'
+    ],
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+      <line x1="12" y1="18" x2="12.01" y2="18"/>
+    </svg>`,
+    featured: true,
+    badge: 'Spécialité'
+  },
+  {
+    title: 'Applications Web Django',
+    description: "Développement d'applications web robustes avec Django. Solutions backend performantes et interfaces utilisateur modernes.",
+    features: [
+      'Django, Python, PostgreSQL',
+      'API REST et GraphQL',
+      'Administration et CMS',
+      'Authentification et sécurité'
+    ],
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+      <line x1="8" y1="21" x2="16" y2="21"/>
+      <line x1="12" y1="17" x2="12" y2="21"/>
+    </svg>`
+  },
+  {
+    title: 'Développement Sur-Mesure',
+    description: "Création complète d'applications personnalisées selon vos besoins spécifiques, de l'idée à la mise en production.",
+    features: [
+      'Analyse de vos besoins',
+      'Développement complet',
+      'Tests et débogage',
+      'Mise en production'
+    ],
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14,2 14,8 20,8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/>
+      <line x1="16" y1="17" x2="8" y2="17"/>
+      <polyline points="10,9 9,9 8,9"/>
+    </svg>`
+  }
+];
+---
+
+<section id="services" class="services py-24 bg-neutral-50">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <span>Services</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-neutral-900 mb-4 leading-tight">
+        Ce que je peux faire pour vous
+      </h2>
+      <p class="section-description">
+        Développement d'applications modernes avec React Native, optimisé par l'intelligence artificielle
+        pour des résultats professionnels et des délais respectés.
+      </p>
+    </div>
+
+    <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12">
+      {services.map(service => (
+        <ServiceCard
+          title={service.title}
+          description={service.description}
+          features={service.features}
+          icon={service.icon}
+          featured={service.featured}
+          badge={service.badge}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Animate service cards on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).style.opacity = '1';
+        (entry.target as HTMLElement).style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach(card => {
+      (card as HTMLElement).style.opacity = '0';
+      (card as HTMLElement).style.transform = 'translateY(20px)';
+      (card as HTMLElement).style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  });
+</script>

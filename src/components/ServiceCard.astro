@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  features: string[];
+  icon: string;
+  featured?: boolean;
+  badge?: string;
+}
+
+const { title, description, features, icon, featured = false, badge } = Astro.props;
+---
+
+<div class:list={[
+  "service-card bg-white rounded-3xl overflow-hidden shadow-md transition-all duration-300 border border-neutral-200 flex flex-col h-full",
+  "hover:-translate-y-2 hover:shadow-2xl hover:border-primary-200",
+  featured && "border-2 border-primary-200 bg-gradient-to-br from-white to-primary-50"
+]}>
+  <div class="service-header flex items-center justify-between p-6 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
+    <div class="service-icon flex items-center justify-center w-12 h-12 bg-white/20 rounded-xl backdrop-blur-lg">
+      <Fragment set:html={icon} />
+    </div>
+    {badge && (
+      <span class="service-badge py-2 px-3 bg-white/20 text-white text-xs font-semibold rounded-full uppercase tracking-wider backdrop-blur-lg">
+        {badge}
+      </span>
+    )}
+  </div>
+
+  <div class="service-content p-6 flex-1 flex flex-col">
+    <h3 class="text-2xl font-bold text-neutral-900 mb-3">{title}</h3>
+    <p class="text-neutral-600 leading-relaxed mb-5">{description}</p>
+
+    <ul class="service-features list-none mb-0 flex-1 flex flex-col justify-start">
+      {features.map(feature => (
+        <li class="flex items-center gap-3 py-2 text-neutral-700 text-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-success flex-shrink-0">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          {feature}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="service-footer flex items-center justify-between p-6 border-t border-neutral-200 bg-neutral-50">
+    <span class="service-price font-bold text-neutral-900 text-lg">Sur devis</span>
+    <a href="#contact" class="service-cta py-3 px-5 bg-primary-600 text-white no-underline rounded-xl font-semibold text-sm transition-all duration-150 hover:bg-primary-700 hover:-translate-y-0.5">
+      En savoir plus
+    </a>
+  </div>
+</div>

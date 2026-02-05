@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const currentDate = new Date().toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+});
+---
+
+<Layout title="Politique de confidentialité - Code By Kriss">
+  <Header />
+  <main class="pt-24 pb-16 px-4">
+    <div class="max-w-3xl mx-auto">
+      <a href="/" class="inline-flex items-center gap-2 mb-6 py-2 px-4 bg-primary-600 text-white no-underline rounded-lg transition-colors duration-300 hover:bg-primary-700 text-sm font-medium">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+        Retour au site
+      </a>
+
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">
+        <span class="bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent">
+          Politique de confidentialité
+        </span>
+      </h1>
+
+      <p class="text-sm text-neutral-500 italic mb-8">
+        Dernière mise à jour : {currentDate}
+      </p>
+
+      <div class="space-y-6">
+        <!-- Introduction -->
+        <section class="p-6 rounded-2xl bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200">
+          <p class="text-neutral-700">
+            Cette politique de confidentialité décrit comment <strong>Code By Kriss</strong> collecte, utilise et protège vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD).
+          </p>
+        </section>
+
+        <!-- Responsable du traitement -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">1. Responsable du traitement</h2>
+          <div class="text-neutral-600 space-y-2">
+            <p><strong>Code By Kriss</strong> est le responsable du traitement de vos données personnelles.</p>
+            <p><strong>Adresse :</strong> 60 rue François 1er, 75008 Paris, France</p>
+            <p><strong>Email :</strong> <a href="mailto:contact@codebykriss.fr" class="text-primary-600 hover:underline">contact@codebykriss.fr</a></p>
+          </div>
+        </section>
+
+        <!-- Données collectées -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">2. Données collectées</h2>
+
+          <div class="space-y-4 text-neutral-600">
+            <div>
+              <h3 class="font-medium text-neutral-800 mb-2">2.1 Données de navigation</h3>
+              <p class="mb-2">Lors de votre visite sur notre site, les données suivantes peuvent être collectées automatiquement :</p>
+              <ul class="list-disc list-inside space-y-1 ml-2">
+                <li>Adresse IP</li>
+                <li>Type de navigateur et version</li>
+                <li>Système d'exploitation</li>
+                <li>Pages visitées et durée de visite</li>
+                <li>Date et heure de connexion</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-medium text-neutral-800 mb-2">2.2 Données de contact</h3>
+              <p class="mb-2">Lorsque vous utilisez le formulaire de contact, nous collectons :</p>
+              <ul class="list-disc list-inside space-y-1 ml-2">
+                <li>Nom et prénom</li>
+                <li>Adresse email</li>
+                <li>Entreprise (optionnel)</li>
+                <li>Numéro de téléphone (optionnel)</li>
+                <li>Message et informations fournies volontairement</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-medium text-neutral-800 mb-2">2.3 Données que nous ne collectons PAS</h3>
+              <p class="mb-2">Nous ne collectons <strong>jamais</strong> :</p>
+              <ul class="list-disc list-inside space-y-1 ml-2">
+                <li>Informations bancaires ou de paiement</li>
+                <li>Localisation géographique précise</li>
+                <li>Données sensibles (opinions politiques, religieuses, etc.)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Finalités du traitement -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">3. Finalités du traitement</h2>
+          <p class="text-neutral-600 mb-3">Vos données sont traitées pour les finalités suivantes :</p>
+          <ul class="list-disc list-inside space-y-2 text-neutral-600 ml-2">
+            <li><strong>Fonctionnement du site :</strong> Assurer le bon fonctionnement et la sécurité du site</li>
+            <li><strong>Communication :</strong> Répondre à vos demandes de contact et établir des devis</li>
+            <li><strong>Amélioration :</strong> Analyser l'utilisation du site pour l'améliorer</li>
+          </ul>
+        </section>
+
+        <!-- Base légale -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">4. Base légale</h2>
+          <p class="text-neutral-600 mb-3">Le traitement de vos données repose sur :</p>
+          <ul class="list-disc list-inside space-y-2 text-neutral-600 ml-2">
+            <li><strong>Consentement :</strong> Pour l'envoi du formulaire de contact</li>
+            <li><strong>Intérêt légitime :</strong> Pour le fonctionnement du site et l'analyse d'audience</li>
+            <li><strong>Exécution d'un contrat :</strong> Pour la fourniture de nos services de développement</li>
+          </ul>
+        </section>
+
+        <!-- Durée de conservation -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">5. Durée de conservation</h2>
+          <ul class="list-disc list-inside space-y-2 text-neutral-600 ml-2">
+            <li><strong>Données de navigation :</strong> 13 mois maximum</li>
+            <li><strong>Données de contact :</strong> 3 ans après le dernier contact</li>
+            <li><strong>Données contractuelles :</strong> Durée légale de conservation applicable</li>
+          </ul>
+        </section>
+
+        <!-- Destinataires des données -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">6. Destinataires des données</h2>
+          <p class="text-neutral-600 mb-3">Vos données peuvent être partagées avec :</p>
+          <ul class="list-disc list-inside space-y-2 text-neutral-600 ml-2">
+            <li><strong>GitHub Pages :</strong> Notre hébergeur (pour le fonctionnement du site)</li>
+            <li><strong>EmailJS :</strong> Service d'envoi d'emails (pour le formulaire de contact)</li>
+          </ul>
+          <p class="text-neutral-600 mt-3">
+            <strong>Aucune donnée n'est vendue ou cédée à des tiers à des fins commerciales.</strong>
+          </p>
+        </section>
+
+        <!-- Sécurité des données -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">7. Sécurité des données</h2>
+          <p class="text-neutral-600 mb-3">Nous mettons en place des mesures techniques et organisationnelles appropriées pour protéger vos données :</p>
+          <ul class="list-disc list-inside space-y-1 text-neutral-600 ml-2">
+            <li>Chiffrement des communications (HTTPS)</li>
+            <li>Accès limité aux données</li>
+            <li>Mise à jour régulière des systèmes</li>
+          </ul>
+        </section>
+
+        <!-- Vos droits -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">8. Vos droits (RGPD)</h2>
+          <p class="text-neutral-600 mb-3">Conformément au RGPD, vous disposez des droits suivants :</p>
+
+          <div class="space-y-3 text-neutral-600">
+            <div>
+              <h3 class="font-medium text-neutral-800">8.1 Droit d'accès</h3>
+              <p>Vous pouvez demander l'accès aux données personnelles que nous détenons sur vous.</p>
+            </div>
+            <div>
+              <h3 class="font-medium text-neutral-800">8.2 Droit de rectification</h3>
+              <p>Vous pouvez demander la correction de données inexactes ou incomplètes.</p>
+            </div>
+            <div>
+              <h3 class="font-medium text-neutral-800">8.3 Droit à l'effacement</h3>
+              <p>Vous pouvez demander la suppression de vos données dans certains cas.</p>
+            </div>
+            <div>
+              <h3 class="font-medium text-neutral-800">8.4 Droit à la limitation</h3>
+              <p>Vous pouvez demander la limitation du traitement de vos données.</p>
+            </div>
+            <div>
+              <h3 class="font-medium text-neutral-800">8.5 Droit à la portabilité</h3>
+              <p>Vous pouvez demander la récupération de vos données dans un format structuré.</p>
+            </div>
+            <div>
+              <h3 class="font-medium text-neutral-800">8.6 Droit d'opposition</h3>
+              <p>Vous pouvez vous opposer au traitement de vos données pour des raisons légitimes.</p>
+            </div>
+          </div>
+
+          <p class="text-neutral-600 mt-4">
+            Pour exercer ces droits, contactez-nous à <a href="mailto:contact@codebykriss.fr" class="text-primary-600 hover:underline">contact@codebykriss.fr</a> en précisant votre demande.
+          </p>
+        </section>
+
+        <!-- Cookies -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">9. Cookies</h2>
+          <p class="text-neutral-600 mb-3">
+            Notre site n'utilise aucun cookie de tracking ou de marketing. Seuls les cookies techniques nécessaires au fonctionnement peuvent être utilisés.
+          </p>
+          <p class="text-neutral-600">
+            Si nous devions utiliser des cookies à l'avenir, nous vous en informerons et recueillerons votre consentement si nécessaire.
+          </p>
+        </section>
+
+        <!-- Modifications -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">10. Modifications</h2>
+          <p class="text-neutral-600">
+            Cette politique de confidentialité peut être modifiée pour refléter les évolutions de nos pratiques ou de la réglementation. Les modifications importantes vous seront notifiées sur le site. La date de dernière mise à jour est indiquée en haut de ce document.
+          </p>
+        </section>
+
+        <!-- Réclamations -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">11. Réclamations</h2>
+          <p class="text-neutral-600 mb-3">
+            Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) :
+          </p>
+          <ul class="list-none space-y-1 text-neutral-600">
+            <li><strong>Site web :</strong> <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">www.cnil.fr</a></li>
+            <li><strong>Adresse :</strong> 3 Place de Fontenoy - TSA 80715 - 75334 PARIS CEDEX 07</li>
+            <li><strong>Téléphone :</strong> 01 53 73 22 22</li>
+          </ul>
+        </section>
+
+        <!-- Contact -->
+        <section class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <h2 class="text-xl font-semibold mb-4 text-neutral-900">12. Contact</h2>
+          <p class="text-neutral-600">
+            Pour toute question concernant cette politique de confidentialité ou vos données personnelles, contactez-nous à <a href="mailto:contact@codebykriss.fr" class="text-primary-600 hover:underline">contact@codebykriss.fr</a>.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
