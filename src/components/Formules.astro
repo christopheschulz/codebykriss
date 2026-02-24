@@ -1,0 +1,116 @@
+---
+import ServiceCard from './ServiceCard.astro';
+
+const formules = [
+  {
+    title: 'Diagnostic',
+    description: "Vous me racontez votre journée, je vous montre ce que l'on peut optimiser. Sans engagement, sans jargon.",
+    features: [
+      'Analyse de votre quotidien',
+      'Identification des tâches automatisables',
+      'Recommandations concrètes',
+      'Échange de 30 minutes'
+    ],
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>`,
+    badge: 'Gratuit',
+    priceLabel: 'Gratuit',
+    ctaLabel: 'Prendre rendez-vous'
+  },
+  {
+    title: 'Intervention',
+    description: "Vous avez un besoin précis. Je construis et livre la solution clé en main. Une automatisation, un outil, une intégration.",
+    features: [
+      'Solution sur mesure',
+      'Livraison clé en main',
+      'Formation rapide incluse',
+      'Support après livraison'
+    ],
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+    </svg>`,
+    featured: true,
+    badge: 'Recommandé',
+    priceLabel: 'Sur devis',
+    ctaLabel: 'Demander un devis'
+  },
+  {
+    title: 'Abonnement',
+    description: "Vous voulez un bras droit numérique disponible chaque mois pour vos nouveaux besoins. Je deviens votre service informatique externalisé.",
+    features: [
+      'Accompagnement mensuel',
+      'Nouveaux besoins pris en charge',
+      'Support prioritaire',
+      'Évolution continue de vos outils'
+    ],
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21.5 2v6h-6"/>
+      <path d="M2.5 22v-6h6"/>
+      <path d="M22 11.5A10 10 0 0 0 3.2 7.2"/>
+      <path d="M2 12.5a10 10 0 0 0 18.8 4.3"/>
+    </svg>`,
+    badge: 'Mensuel',
+    priceLabel: 'Sur devis',
+    ctaLabel: 'En savoir plus'
+  }
+];
+---
+
+<section id="formules" class="formules py-24 bg-neutral-50">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <span>Formules</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-neutral-900 mb-4 leading-tight">
+        Une solution pour chaque besoin
+      </h2>
+      <p class="section-description">
+        Que vous vouliez simplement comprendre ce qui est possible ou avoir un bras droit numérique au quotidien, il y a une formule pour vous.
+      </p>
+    </div>
+
+    <div class="formules-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12">
+      {formules.map(formule => (
+        <ServiceCard
+          title={formule.title}
+          description={formule.description}
+          features={formule.features}
+          icon={formule.icon}
+          featured={formule.featured}
+          badge={formule.badge}
+          priceLabel={formule.priceLabel}
+          ctaLabel={formule.ctaLabel}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).style.opacity = '1';
+        (entry.target as HTMLElement).style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.formules .service-card');
+    cards.forEach(card => {
+      (card as HTMLElement).style.opacity = '0';
+      (card as HTMLElement).style.transform = 'translateY(20px)';
+      (card as HTMLElement).style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  });
+</script>

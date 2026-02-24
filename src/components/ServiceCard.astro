@@ -6,9 +6,12 @@ interface Props {
   icon: string;
   featured?: boolean;
   badge?: string;
+  showFooter?: boolean;
+  priceLabel?: string;
+  ctaLabel?: string;
 }
 
-const { title, description, features, icon, featured = false, badge } = Astro.props;
+const { title, description, features, icon, featured = false, badge, showFooter = true, priceLabel = 'Sur devis', ctaLabel = 'En savoir plus' } = Astro.props;
 ---
 
 <div class:list={[
@@ -43,10 +46,12 @@ const { title, description, features, icon, featured = false, badge } = Astro.pr
     </ul>
   </div>
 
-  <div class="service-footer flex items-center justify-between p-6 border-t border-neutral-200 bg-neutral-50">
-    <span class="service-price font-bold text-neutral-900 text-lg">Sur devis</span>
-    <a href="#contact" class="service-cta py-3 px-5 bg-primary-600 text-white no-underline rounded-xl font-semibold text-sm transition-all duration-150 hover:bg-primary-700 hover:-translate-y-0.5">
-      En savoir plus
-    </a>
-  </div>
+  {showFooter && (
+    <div class="service-footer flex items-center justify-between p-6 border-t border-neutral-200 bg-neutral-50">
+      <span class="service-price font-bold text-neutral-900 text-lg">{priceLabel}</span>
+      <a href="#contact" class="service-cta py-3 px-5 bg-primary-600 text-white no-underline rounded-xl font-semibold text-sm transition-all duration-150 hover:bg-primary-700 hover:-translate-y-0.5">
+        {ctaLabel}
+      </a>
+    </div>
+  )}
 </div>
