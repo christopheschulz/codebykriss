@@ -154,14 +154,9 @@ const contactCards = [
 </section>
 
 <script>
-  // Initialize EmailJS
-  declare const emailjs: any;
+  import emailjs from '@emailjs/browser';
 
-  (function() {
-    if (typeof emailjs !== 'undefined') {
-      emailjs.init("D9Lbpf5Qshz4fGR9F");
-    }
-  })();
+  emailjs.init("D9Lbpf5Qshz4fGR9F");
 
   const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
 
@@ -256,7 +251,7 @@ const contactCards = [
     });
 
     // Form submission
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
 
       let isFormValid = true;
@@ -282,7 +277,7 @@ const contactCards = [
         return;
       }
 
-      const submitBtn = this.querySelector('.submit-btn') as HTMLButtonElement;
+      const submitBtn = contactForm.querySelector('.submit-btn') as HTMLButtonElement;
       const btnContent = submitBtn.querySelector('.btn-content');
       const originalContent = btnContent?.innerHTML || '';
 
@@ -296,23 +291,20 @@ const contactCards = [
         `;
       }
 
-      if (typeof emailjs !== 'undefined') {
-        emailjs.sendForm('service_i5fh0wc', 'template_rlp6fxk', this)
-          .then(function() {
-            showFormMessage('success', 'Merci ! Je vous recontacte sous 24h.');
-            contactForm.reset();
-            formFields.forEach(field => {
-              field.closest('.form-group')?.classList.remove('error', 'success');
-            });
-            updateCharacterCounter();
-          })
-          .catch(function() {
-            showFormMessage('error', "Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement par email.");
-          })
-          .finally(function() {
-            submitBtn.disabled = false;
-            if (btnContent) btnContent.innerHTML = originalContent;
-          });
+      try {
+        await emailjs.sendForm('service_i5fh0wc', 'template_rlp6fxk', contactForm);
+        showFormMessage('success', 'Merci ! Je vous recontacte sous 24h.');
+        contactForm.reset();
+        formFields.forEach(field => {
+          field.closest('.form-group')?.classList.remove('error', 'success');
+        });
+        updateCharacterCounter();
+      } catch (error) {
+        console.error('EmailJS error:', error);
+        showFormMessage('error', "Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement par email.");
+      } finally {
+        submitBtn.disabled = false;
+        if (btnContent) btnContent.innerHTML = originalContent;
       }
     });
 
