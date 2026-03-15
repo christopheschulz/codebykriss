@@ -4,6 +4,7 @@
   "apps": "Apps",
   "contact": "Contact",
   "subServices": {
+    "hero": "Overview",
     "problem": "The problem",
     "method": "My method",
     "plans": "Plans",
@@ -11,6 +12,7 @@
     "contact": "Contact"
   },
   "subApps": {
+    "hero": "Overview",
     "problem": "The opportunity",
     "method": "My method",
     "services": "Services",

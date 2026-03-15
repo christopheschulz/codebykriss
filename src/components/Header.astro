@@ -15,6 +15,7 @@ const servicesPath = `${prefix}/services/`;
 const appsPath = `${prefix}/apps/`;
 
 const subServices = [
+  { href: `${servicesPath}#accueil`, label: t(locale, 'nav.subServices.hero') },
   { href: `${servicesPath}#probleme`, label: t(locale, 'nav.subServices.problem') },
   { href: `${servicesPath}#methode`, label: t(locale, 'nav.subServices.method') },
   { href: `${servicesPath}#formules`, label: t(locale, 'nav.subServices.plans') },
@@ -23,6 +24,7 @@ const subServices = [
 ];
 
 const subApps = [
+  { href: `${appsPath}#accueil`, label: t(locale, 'nav.subApps.hero') },
   { href: `${appsPath}#probleme`, label: t(locale, 'nav.subApps.problem') },
   { href: `${appsPath}#methode`, label: t(locale, 'nav.subApps.method') },
   { href: `${appsPath}#services-apps`, label: t(locale, 'nav.subApps.services') },
@@ -37,6 +39,10 @@ function isActive(href: string): boolean {
   if (clean === '/' || clean === '/en/') return currentPath === clean;
   return currentPath.startsWith(clean);
 }
+
+const isServicesActive = isActive(servicesPath);
+const isAppsActive = isActive(appsPath);
+const hasSubbar = isServicesActive || isAppsActive;
 
 const switchLabel = locale === 'fr' ? 'EN' : 'FR';
 
@@ -63,81 +69,65 @@ const switchUrl = getSwitchUrl();
 const isDark = theme === 'dark';
 const textColor = isDark ? 'text-white' : 'text-neutral-800';
 const hoverBg = isDark ? 'hover:bg-white/10' : 'hover:bg-neutral-100';
-const activeBg = isDark ? 'bg-white/15' : 'bg-neutral-100';
 const switchBorder = isDark ? 'border-white/30' : 'border-neutral-300';
 const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
 ---
 
 <header>
   <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300" data-theme={theme}>
-    <div class="nav-container flex items-center justify-between py-4 px-6 max-w-[1200px] mx-auto">
+    <!-- Main nav bar -->
+    <div class="nav-container grid grid-cols-[auto_1fr_auto] items-center py-4 px-6 max-w-[1200px] mx-auto">
+      <!-- Logo — left -->
       <div class="logo">
         <a href={locale === 'fr' ? '/' : '/en/'} class:list={["text-[1.75rem] font-bold tracking-tight no-underline", textColor]}>Code By Kriss</a>
       </div>
 
-      <!-- Desktop nav -->
-      <ul class="nav-menu hidden md:flex items-center gap-1 list-none">
-        <!-- Accueil -->
+      <!-- Desktop nav — centered -->
+      <ul class="nav-menu hidden md:flex items-center justify-center gap-1 list-none">
         <li>
-          <a href={`${prefix}/` || '/'} class:list={["no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, isActive(`${prefix}/` || '/') && `font-semibold ${activeBg}`]}>
+          <a href={`${prefix}/` || '/'} class:list={["nav-link no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, isActive(`${prefix}/` || '/') ? "opacity-100" : "opacity-70 hover:opacity-100"]}>
             {t(locale, 'nav.home')}
           </a>
         </li>
 
-        <!-- Services -->
-        <li class="nav-dropdown" data-dropdown="services">
-          <a href={servicesPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, isActive(servicesPath) && `font-semibold ${activeBg}`]} aria-haspopup="true" aria-expanded="false">
+        <li>
+          <a href={servicesPath} class:list={["nav-link no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, isServicesActive ? "opacity-100" : "opacity-70 hover:opacity-100"]}>
             {t(locale, 'nav.services')}
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron transition-transform duration-300" aria-hidden="true">
-              <path d="m6 9 6 6 6-6"/>
-            </svg>
           </a>
         </li>
 
-        <!-- Apps -->
-        <li class="nav-dropdown" data-dropdown="apps">
-          <a href={appsPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, isActive(appsPath) && `font-semibold ${activeBg}`]} aria-haspopup="true" aria-expanded="false">
+        <li>
+          <a href={appsPath} class:list={["nav-link no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, isAppsActive ? "opacity-100" : "opacity-70 hover:opacity-100"]}>
             {t(locale, 'nav.apps')}
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron transition-transform duration-300" aria-hidden="true">
-              <path d="m6 9 6 6 6-6"/>
-            </svg>
-          </a>
-        </li>
-
-        <!-- Language switcher -->
-        <li class="ml-2">
-          <a href={switchUrl} class:list={["no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, switchBorder]}>
-            {switchLabel}
           </a>
         </li>
       </ul>
 
-      <!-- Mobile hamburger -->
-      <button class:list={["hamburger md:hidden flex flex-col cursor-pointer p-2 bg-transparent border-none rounded-lg transition-colors duration-150", hoverBg]} aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
-        <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
-        <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
-      </button>
-    </div>
+      <!-- Right side — language switcher + mobile hamburger -->
+      <div class="flex items-center justify-end gap-2">
+        <a href={switchUrl} class:list={["hidden md:inline-block no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-200 border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 opacity-70 hover:opacity-100", textColor, switchBorder]}>
+          {switchLabel}
+        </a>
 
-    <!-- Apple-style full-width flyout panels -->
-    <div class="flyout-panel" data-panel="services" role="menu">
-      <div class="flyout-content max-w-[1200px] mx-auto px-6 py-6">
-        <div class="flex flex-wrap gap-x-10 gap-y-2">
-          {subServices.map((sub, i) => (
-            <a href={sub.href} class="flyout-link" role="menuitem" style={`transition-delay: ${i * 0.04}s`}>
-              {sub.label}
-            </a>
-          ))}
-        </div>
+        <button class:list={["hamburger md:hidden flex flex-col cursor-pointer p-2 bg-transparent border-none rounded-lg transition-colors duration-150", hoverBg]} aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
+          <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
+          <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
+        </button>
       </div>
     </div>
 
-    <div class="flyout-panel" data-panel="apps" role="menu">
-      <div class="flyout-content max-w-[1200px] mx-auto px-6 py-6">
-        <div class="flex flex-wrap gap-x-10 gap-y-2">
-          {subApps.map((sub, i) => (
-            <a href={sub.href} class="flyout-link" role="menuitem" style={`transition-delay: ${i * 0.04}s`}>
+    <!-- Sub-navigation bar — slides down when on Services or Apps page -->
+    <div class:list={["subbar hidden md:block overflow-hidden transition-all duration-500 ease-out", hasSubbar ? "subbar-open" : "subbar-closed"]}>
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="flex items-center justify-center gap-8 py-2.5">
+          {isServicesActive && subServices.map(sub => (
+            <a href={sub.href} class="subbar-link text-sm no-underline transition-all duration-200">
+              {sub.label}
+            </a>
+          ))}
+          {isAppsActive && subApps.map(sub => (
+            <a href={sub.href} class="subbar-link text-sm no-underline transition-all duration-200">
               {sub.label}
             </a>
           ))}
@@ -150,7 +140,6 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
       <div class="px-4 py-4 space-y-1">
         <a href={`${prefix}/` || '/'} class="block py-3 px-4 text-neutral-800 no-underline font-medium rounded-lg hover:bg-neutral-100 transition-colors">{t(locale, 'nav.home')}</a>
 
-        <!-- Services group -->
         <div class="mobile-group">
           <a href={servicesPath} class="block py-3 px-4 text-neutral-800 no-underline font-semibold rounded-lg hover:bg-neutral-100 transition-colors">{t(locale, 'nav.services')}</a>
           <div class="pl-4 space-y-0.5">
@@ -162,7 +151,6 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
           </div>
         </div>
 
-        <!-- Apps group -->
         <div class="mobile-group">
           <a href={appsPath} class="block py-3 px-4 text-neutral-800 no-underline font-semibold rounded-lg hover:bg-neutral-100 transition-colors">{t(locale, 'nav.apps')}</a>
           <div class="pl-4 space-y-0.5">
@@ -182,71 +170,59 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
       </div>
     </div>
   </nav>
-
-  <!-- Curtain overlay (Apple-style) -->
-  <div class="nav-curtain hidden fixed inset-0 z-40 bg-black/40 transition-opacity duration-300 opacity-0"></div>
 </header>
 
 <style>
-  /* Flyout panel — Apple-style full-width dropdown */
-  .flyout-panel {
+  /* Sub-navigation bar */
+  .subbar {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .subbar-closed {
     max-height: 0;
-    overflow: hidden;
     opacity: 0;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: none;
-    transition:
-      max-height 0.48s cubic-bezier(0.52, 0.16, 0.24, 1),
-      opacity 0.32s cubic-bezier(0.52, 0.16, 0.24, 1);
   }
 
-  .flyout-panel.open {
-    max-height: 200px;
+  .subbar-open {
+    max-height: 60px;
     opacity: 1;
   }
 
-  /* Flyout links — staggered fade-in */
-  .flyout-link {
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #f5f5f7;
-    text-decoration: none;
-    padding: 0.5rem 0;
-    opacity: 0;
-    transform: translateY(-8px);
-    transition:
-      opacity 0.4s cubic-bezier(0.52, 0.16, 0.24, 1),
-      transform 0.4s cubic-bezier(0.52, 0.16, 0.24, 1),
-      color 0.2s ease;
+  .subbar-link {
+    color: rgba(0, 0, 0, 0.55);
+    font-weight: 400;
+    position: relative;
+    padding: 0.25rem 0;
   }
 
-  .flyout-panel.open .flyout-link {
-    opacity: 1;
-    transform: translateY(0);
+  .subbar-link:hover,
+  .subbar-link:focus-visible {
+    color: rgba(0, 0, 0, 0.9);
   }
 
-  .flyout-link:hover,
-  .flyout-link:focus-visible {
-    color: #fff;
-  }
-
-  .flyout-link:focus-visible {
-    outline: 2px solid #fff;
+  .subbar-link:focus-visible {
+    outline: 2px solid #3b82f6;
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* Chevron rotation when panel is open */
-  .nav-dropdown.active .chevron {
-    transform: rotate(180deg);
+  /* Scrolled state — subbar inherits navbar background */
+  .navbar-scrolled .subbar {
+    border-top-color: rgba(0, 0, 0, 0.08);
   }
 
-  /* Curtain */
-  .nav-curtain.visible {
-    opacity: 1;
+  /* Dark theme subbar */
+  [data-theme="dark"] .subbar-link {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  [data-theme="dark"] .subbar-link:hover,
+  [data-theme="dark"] .subbar-link:focus-visible {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  [data-theme="dark"] .subbar {
+    border-top-color: rgba(255, 255, 255, 0.1);
   }
 
   /* Mobile hamburger animation */
@@ -264,87 +240,6 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
 </style>
 
 <script>
-  // === Desktop flyout (Apple-style) ===
-  const dropdownTriggers = document.querySelectorAll('.nav-dropdown');
-  const flyoutPanels = document.querySelectorAll('.flyout-panel');
-  const curtain = document.querySelector('.nav-curtain');
-  let activePanel: string | null = null;
-  let hoverTimeout: ReturnType<typeof setTimeout> | null = null;
-  let leaveTimeout: ReturnType<typeof setTimeout> | null = null;
-
-  function openPanel(panelName: string) {
-    if (leaveTimeout) { clearTimeout(leaveTimeout); leaveTimeout = null; }
-    if (activePanel === panelName) return;
-
-    // Close previous
-    flyoutPanels.forEach(p => p.classList.remove('open'));
-    dropdownTriggers.forEach(t => t.classList.remove('active'));
-
-    // Open new
-    const panel = document.querySelector(`[data-panel="${panelName}"]`);
-    const trigger = document.querySelector(`[data-dropdown="${panelName}"]`);
-    if (panel && trigger) {
-      panel.classList.add('open');
-      trigger.classList.add('active');
-      trigger.querySelector('.nav-dropdown-trigger')?.setAttribute('aria-expanded', 'true');
-    }
-
-    // Show curtain
-    curtain?.classList.remove('hidden');
-    requestAnimationFrame(() => curtain?.classList.add('visible'));
-
-    activePanel = panelName;
-  }
-
-  function closeAllPanels() {
-    flyoutPanels.forEach(p => p.classList.remove('open'));
-    dropdownTriggers.forEach(t => {
-      t.classList.remove('active');
-      t.querySelector('.nav-dropdown-trigger')?.setAttribute('aria-expanded', 'false');
-    });
-    curtain?.classList.remove('visible');
-    setTimeout(() => curtain?.classList.add('hidden'), 300);
-    activePanel = null;
-  }
-
-  // Hover on trigger → open panel
-  dropdownTriggers.forEach(trigger => {
-    const panelName = (trigger as HTMLElement).dataset.dropdown;
-    if (!panelName) return;
-
-    trigger.addEventListener('mouseenter', () => {
-      if (hoverTimeout) clearTimeout(hoverTimeout);
-      hoverTimeout = setTimeout(() => openPanel(panelName), activePanel ? 0 : 150);
-    });
-
-    trigger.addEventListener('mouseleave', () => {
-      if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
-      leaveTimeout = setTimeout(() => closeAllPanels(), 200);
-    });
-  });
-
-  // Hover on panel → keep it open
-  flyoutPanels.forEach(panel => {
-    panel.addEventListener('mouseenter', () => {
-      if (leaveTimeout) { clearTimeout(leaveTimeout); leaveTimeout = null; }
-      if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
-    });
-
-    panel.addEventListener('mouseleave', () => {
-      leaveTimeout = setTimeout(() => closeAllPanels(), 200);
-    });
-  });
-
-  // Click on curtain → close
-  curtain?.addEventListener('click', () => closeAllPanels());
-
-  // Close on flyout link click
-  flyoutPanels.forEach(panel => {
-    panel.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => closeAllPanels());
-    });
-  });
-
   // === Mobile menu toggle ===
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
@@ -379,7 +274,7 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
     });
   });
 
-  // === Scroll effect: white bg + shadow ===
+  // === Scroll effect: white bg + shadow + dark text ===
   window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar') as HTMLElement;
     if (!navbar) return;
@@ -388,6 +283,7 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
       navbar.style.background = 'rgba(255, 255, 255, 0.95)';
       navbar.style.backdropFilter = 'blur(20px)';
       navbar.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+      navbar.classList.add('navbar-scrolled');
       navbar.querySelectorAll('.nav-container > .logo a, .nav-menu > li > a, .bar').forEach(el => {
         el.classList.remove('text-white');
         el.classList.add('text-neutral-800');
@@ -400,10 +296,15 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
         el.classList.remove('border-white/30');
         el.classList.add('border-neutral-300');
       });
+      // Subbar links — dark on scroll
+      navbar.querySelectorAll('.subbar-link').forEach(el => {
+        (el as HTMLElement).style.color = '';
+      });
     } else {
       navbar.style.background = '';
       navbar.style.backdropFilter = '';
       navbar.style.boxShadow = '';
+      navbar.classList.remove('navbar-scrolled');
       const isDarkTheme = navbar.dataset.theme === 'dark';
       if (isDarkTheme) {
         navbar.querySelectorAll('.nav-container > .logo a, .nav-menu > li > a, .bar').forEach(el => {
@@ -421,4 +322,68 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
       }
     }
   });
+
+  // === Highlight active section on scroll ===
+  const subbarLinks = document.querySelectorAll('.subbar-link');
+  if (subbarLinks.length > 0) {
+    const sections = Array.from(subbarLinks).map(link => {
+      const href = link.getAttribute('href') || '';
+      const hash = href.includes('#') ? href.split('#')[1] : null;
+      return hash ? { link, section: document.getElementById(hash) } : null;
+    }).filter(Boolean) as Array<{ link: Element; section: HTMLElement }>;
+
+    function updateActiveSection() {
+      const scrollPos = window.scrollY + 150;
+      let currentSection: Element | null = null;
+
+      for (const { link, section } of sections) {
+        if (section.offsetTop <= scrollPos) {
+          currentSection = link;
+        }
+      }
+
+      subbarLinks.forEach(link => link.classList.remove('subbar-active'));
+      if (currentSection) {
+        currentSection.classList.add('subbar-active');
+      } else if (subbarLinks.length > 0) {
+        // If no section is scrolled to yet, activate the first one
+        subbarLinks[0].classList.add('subbar-active');
+      }
+    }
+
+    window.addEventListener('scroll', updateActiveSection);
+    // Run once on page load
+    updateActiveSection();
+  }
 </script>
+
+<style>
+  .subbar-link {
+    position: relative;
+  }
+
+  .subbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #3b82f6;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+  }
+
+  .subbar-active {
+    color: rgba(0, 0, 0, 0.9) !important;
+    font-weight: 600;
+  }
+
+  .subbar-active::after {
+    transform: scaleX(1);
+  }
+
+  [data-theme="dark"] .subbar-active {
+    color: rgba(255, 255, 255, 1) !important;
+  }
+</style>
