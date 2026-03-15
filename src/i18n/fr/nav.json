@@ -11,6 +11,8 @@
     "contact": "Contact"
   },
   "subApps": {
+    "problem": "Le constat",
+    "method": "Ma méthode",
     "services": "Prestations",
     "portfolio": "Réalisations",
     "background": "Parcours",

@@ -4,7 +4,9 @@ import frNav from './fr/nav.json';
 import frHomeHero from './fr/homeHero.json';
 import frServicesHero from './fr/servicesHero.json';
 import frProbleme from './fr/probleme.json';
+import frProblemeApps from './fr/problemeApps.json';
 import frMethode from './fr/methode.json';
+import frMethodeApps from './fr/methodeApps.json';
 import frFormules from './fr/formules.json';
 import frParcoursServices from './fr/parcoursServices.json';
 import frParcoursApps from './fr/parcoursApps.json';
@@ -22,7 +24,9 @@ import enNav from './en/nav.json';
 import enHomeHero from './en/homeHero.json';
 import enServicesHero from './en/servicesHero.json';
 import enProbleme from './en/probleme.json';
+import enProblemeApps from './en/problemeApps.json';
 import enMethode from './en/methode.json';
+import enMethodeApps from './en/methodeApps.json';
 import enFormules from './en/formules.json';
 import enParcoursServices from './en/parcoursServices.json';
 import enParcoursApps from './en/parcoursApps.json';
@@ -41,7 +45,9 @@ const translations: Record<string, Record<string, unknown>> = {
     homeHero: frHomeHero,
     servicesHero: frServicesHero,
     probleme: frProbleme,
+    problemeApps: frProblemeApps,
     methode: frMethode,
+    methodeApps: frMethodeApps,
     formules: frFormules,
     parcoursServices: frParcoursServices,
     parcoursApps: frParcoursApps,
@@ -59,7 +65,9 @@ const translations: Record<string, Record<string, unknown>> = {
     homeHero: enHomeHero,
     servicesHero: enServicesHero,
     probleme: enProbleme,
+    problemeApps: enProblemeApps,
     methode: enMethode,
+    methodeApps: enMethodeApps,
     formules: enFormules,
     parcoursServices: enParcoursServices,
     parcoursApps: enParcoursApps,

@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import AppsHero from '../components/AppsHero.astro';
+import Probleme from '../components/Probleme.astro';
+import Methode from '../components/Methode.astro';
 import AppsServices from '../components/AppsServices.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Parcours from '../components/Parcours.astro';
@@ -16,6 +18,8 @@ const locale: Locale = 'fr';
   <Header locale={locale} />
   <main>
     <AppsHero locale={locale} />
+    <Probleme locale={locale} variant="apps" />
+    <Methode locale={locale} variant="apps" />
     <AppsServices locale={locale} />
     <Portfolio locale={locale} />
     <Parcours locale={locale} variant="apps" dark={true} />

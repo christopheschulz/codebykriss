@@ -1,0 +1,22 @@
+{
+  "badge": "The reality",
+  "title": "You have an app idea. But where to start?",
+  "description": "Having an idea is great. Knowing how to turn it into an app published on the stores is another thing.",
+  "cards": [
+    {
+      "title": "Development is complex",
+      "description": "iOS, Android, macOS — each platform has its own rules, tools, and constraints. Hard to navigate.",
+      "features": ["Multiple technologies to master", "Store requirements to meet", "Design and UX to think through", "Costs hard to estimate"]
+    },
+    {
+      "title": "Agencies are expensive",
+      "description": "Agencies charge tens of thousands. For a freelancer or small business, it's often out of budget.",
+      "features": ["Five-figure quotes", "Extended timelines", "Multiple contacts", "Loss of control over the project"]
+    },
+    {
+      "title": "No-code has its limits",
+      "description": "No-code tools allow prototyping, but for a performant native app published on stores, you need real code.",
+      "features": ["Limited performance", "Restricted customization", "Platform dependency", "No native store publication"]
+    }
+  ]
+}

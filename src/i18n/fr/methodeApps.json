@@ -1,0 +1,19 @@
+{
+  "badge": "Ma méthode",
+  "title": "De votre idée à l'App Store. En 3 étapes.",
+  "description": "Pas de jargon, pas de surprise. Un process clair du premier échange à la publication.",
+  "steps": [
+    {
+      "title": "On en parle",
+      "description": "Vous me décrivez votre idée, vos utilisateurs, vos objectifs. Je vous donne un retour honnête et une estimation."
+    },
+    {
+      "title": "Je développe",
+      "description": "Design, développement, tests — je construis votre app en vous tenant informé à chaque étape. Vous validez avant de continuer."
+    },
+    {
+      "title": "On publie",
+      "description": "Je gère la publication sur les stores. Vous recevez votre app prête à l'emploi, avec 3 mois de garantie corrective."
+    }
+  ]
+}

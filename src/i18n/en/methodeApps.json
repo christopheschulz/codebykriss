@@ -1,0 +1,19 @@
+{
+  "badge": "My method",
+  "title": "From your idea to the App Store. In 3 steps.",
+  "description": "No jargon, no surprises. A clear process from first call to publication.",
+  "steps": [
+    {
+      "title": "Let's talk",
+      "description": "Describe your idea, your users, your goals. I give you honest feedback and an estimate."
+    },
+    {
+      "title": "I develop",
+      "description": "Design, development, testing — I build your app keeping you informed at every step. You validate before moving on."
+    },
+    {
+      "title": "We publish",
+      "description": "I handle store publication. You receive your app ready to use, with 3 months of corrective warranty."
+    }
+  ]
+}
