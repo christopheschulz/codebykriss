@@ -8,7 +8,7 @@ const stats = tObj<Array<{number: string; label: string}>>(locale, 'appsHero.sta
 ---
 
 <section id="accueil" class="min-h-[85vh] flex items-center justify-center bg-white text-neutral-900 relative overflow-hidden">
-  <div class="absolute inset-0 bg-[url('/images/hero-apps.jpg')] bg-center bg-cover opacity-[0.12] z-0"></div>
+  <div class="absolute inset-0 bg-[url('/images/hero-apps.webp')] bg-center bg-cover opacity-[0.12] z-0"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-100/50 via-transparent to-transparent z-0"></div>
 
   <div class="relative z-10 text-center max-w-[900px] w-full px-6 py-24">
@@ -25,7 +25,7 @@ const stats = tObj<Array<{number: string; label: string}>>(locale, 'appsHero.sta
       <span class="bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">{t(locale, 'appsHero.titleHighlight')}</span>
     </h1>
 
-    <p class="text-lg md:text-xl leading-relaxed mb-10 text-neutral-500 max-w-[650px] mx-auto">
+    <p class="text-lg md:text-xl leading-relaxed mb-10 text-neutral-600 max-w-[650px] mx-auto">
       {t(locale, 'appsHero.description')}
     </p>
 
@@ -33,7 +33,7 @@ const stats = tObj<Array<{number: string; label: string}>>(locale, 'appsHero.sta
       {stats.map(stat => (
         <div class="text-center p-4 bg-neutral-50 border border-neutral-200 rounded-2xl">
           <span class="block text-base md:text-lg font-bold text-neutral-900 mb-1">{stat.number}</span>
-          <span class="text-sm text-neutral-500">{stat.label}</span>
+          <span class="text-sm text-neutral-600">{stat.label}</span>
         </div>
       ))}
     </div>

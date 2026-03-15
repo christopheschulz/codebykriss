@@ -24,6 +24,19 @@ const enPath = currentPath.startsWith('/en') ? currentPath : `/en${currentPath}`
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={`https://codebykriss.fr${currentPath}`} />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={`https://codebykriss.fr${currentPath}`} />
+  <meta property="og:site_name" content="Code By Kriss" />
+  <meta property="og:locale" content={locale === 'fr' ? 'fr_FR' : 'en_US'} />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <!-- Hreflang -->
   <link rel="alternate" hreflang="fr" href={`https://codebykriss.fr${frPath}`} />
   <link rel="alternate" hreflang="en" href={`https://codebykriss.fr${enPath}`} />
   <link rel="alternate" hreflang="x-default" href={`https://codebykriss.fr${frPath}`} />
@@ -32,6 +45,9 @@ const enPath = currentPath.startsWith('/en') ? currentPath : `/en${currentPath}`
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-medium">
+    {locale === 'fr' ? 'Aller au contenu principal' : 'Skip to main content'}
+  </a>
   <slot />
 </body>
 </html>

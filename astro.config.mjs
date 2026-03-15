@@ -1,10 +1,11 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://codebykriss.fr',
   output: 'static',
-  integrations: [tailwind()],
+  integrations: [tailwind(), sitemap()],
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],

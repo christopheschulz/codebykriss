@@ -30,7 +30,7 @@ const badgeClasses = dark ? badgeClassesDark : badgeClassesLight;
 ---
 
 <div class:list={["contact-card rounded-2xl p-5 text-center border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl", dark ? "bg-neutral-800 border-neutral-700 hover:border-primary-500/30" : "bg-neutral-50 border-neutral-200 hover:border-primary-300"]}>
-  <div class:list={["card-icon inline-flex items-center justify-center w-12 h-12 rounded-xl mb-3", dark ? "bg-primary-500/20 border border-primary-400/30 text-primary-400" : "bg-primary-100 text-primary-600"]}>
+  <div class:list={["card-icon inline-flex items-center justify-center w-12 h-12 rounded-xl mb-3", dark ? "bg-primary-500/20 border border-primary-400/30 text-primary-400" : "bg-primary-100 text-primary-600"]} aria-hidden="true">
     <Fragment set:html={icon} />
   </div>
   <h4 class:list={["text-base font-semibold mb-2", dark ? "text-white" : "text-neutral-900"]}>{title}</h4>

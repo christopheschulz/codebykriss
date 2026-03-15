@@ -79,23 +79,23 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
       <ul class="nav-menu hidden md:flex items-center gap-1 list-none">
         <!-- Accueil -->
         <li>
-          <a href={`${prefix}/` || '/'} class:list={["no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150", textColor, hoverBg, isActive(`${prefix}/` || '/') && `font-semibold ${activeBg}`]}>
+          <a href={`${prefix}/` || '/'} class:list={["no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, isActive(`${prefix}/` || '/') && `font-semibold ${activeBg}`]}>
             {t(locale, 'nav.home')}
           </a>
         </li>
 
         <!-- Services avec dropdown -->
         <li class="nav-dropdown relative">
-          <a href={servicesPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1", textColor, hoverBg, isActive(servicesPath) && `font-semibold ${activeBg}`]}>
+          <a href={servicesPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, isActive(servicesPath) && `font-semibold ${activeBg}`]} aria-haspopup="true" aria-expanded="false">
             {t(locale, 'nav.services')}
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-200">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-200" aria-hidden="true">
               <path d="m6 9 6 6 6-6"/>
             </svg>
           </a>
-          <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1">
+          <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1" role="menu">
             <div class="bg-white rounded-xl shadow-xl border border-neutral-200 py-2 min-w-[200px]">
               {subServices.map(sub => (
-                <a href={sub.href} class="block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-primary-50 hover:text-primary-700 transition-colors duration-150">
+                <a href={sub.href} class="block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-primary-50 hover:text-primary-700 focus-visible:bg-primary-50 focus-visible:text-primary-700 focus-visible:outline-none transition-colors duration-150" role="menuitem">
                   {sub.label}
                 </a>
               ))}
@@ -105,16 +105,16 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
 
         <!-- Apps avec dropdown -->
         <li class="nav-dropdown relative">
-          <a href={appsPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1", textColor, hoverBg, isActive(appsPath) && `font-semibold ${activeBg}`]}>
+          <a href={appsPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, isActive(appsPath) && `font-semibold ${activeBg}`]} aria-haspopup="true" aria-expanded="false">
             {t(locale, 'nav.apps')}
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-200">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-200" aria-hidden="true">
               <path d="m6 9 6 6 6-6"/>
             </svg>
           </a>
-          <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1">
+          <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1" role="menu">
             <div class="bg-white rounded-xl shadow-xl border border-neutral-200 py-2 min-w-[200px]">
               {subApps.map(sub => (
-                <a href={sub.href} class="block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-purple-50 hover:text-purple-700 transition-colors duration-150">
+                <a href={sub.href} class="block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-purple-50 hover:text-purple-700 focus-visible:bg-purple-50 focus-visible:text-purple-700 focus-visible:outline-none transition-colors duration-150" role="menuitem">
                   {sub.label}
                 </a>
               ))}
@@ -124,14 +124,14 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
 
         <!-- Language switcher -->
         <li class="ml-2">
-          <a href={switchUrl} class:list={["no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 border", textColor, hoverBg, switchBorder]}>
+          <a href={switchUrl} class:list={["no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, switchBorder]}>
             {switchLabel}
           </a>
         </li>
       </ul>
 
       <!-- Mobile hamburger -->
-      <button class:list={["hamburger md:hidden flex flex-col cursor-pointer p-2 bg-transparent border-none rounded-lg transition-colors duration-150", hoverBg]} aria-label="Menu">
+      <button class:list={["hamburger md:hidden flex flex-col cursor-pointer p-2 bg-transparent border-none rounded-lg transition-colors duration-150", hoverBg]} aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
         <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
         <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
         <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
@@ -139,7 +139,7 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
     </div>
 
     <!-- Mobile menu -->
-    <div class="mobile-menu hidden md:hidden bg-white border-t border-neutral-100 shadow-xl">
+    <div id="mobile-menu" class="mobile-menu hidden md:hidden bg-white border-t border-neutral-100 shadow-xl">
       <div class="px-4 py-4 space-y-1">
         <a href={`${prefix}/` || '/'} class="block py-3 px-4 text-neutral-800 no-underline font-medium rounded-lg hover:bg-neutral-100 transition-colors">{t(locale, 'nav.home')}</a>
 
@@ -178,14 +178,16 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
 </header>
 
 <style>
-  /* Dropdown hover */
-  .nav-dropdown:hover .dropdown-menu {
+  /* Dropdown hover & focus */
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
 
-  .nav-dropdown:hover .nav-dropdown-trigger svg {
+  .nav-dropdown:hover .nav-dropdown-trigger svg,
+  .nav-dropdown:focus-within .nav-dropdown-trigger svg {
     transform: rotate(180deg);
   }
 
@@ -209,8 +211,9 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
   const mobileMenu = document.querySelector('.mobile-menu');
 
   hamburger?.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
+    const isOpen = hamburger.classList.toggle('active');
     mobileMenu?.classList.toggle('hidden');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
   });
 
   // Close mobile menu on link click
@@ -218,6 +221,7 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
     link.addEventListener('click', () => {
       hamburger?.classList.remove('active');
       mobileMenu?.classList.add('hidden');
+      hamburger?.setAttribute('aria-expanded', 'false');
     });
   });
 
