@@ -1,0 +1,31 @@
+{
+  "badge": "Services",
+  "title": "Ce que je développe pour vous",
+  "description": "Applications mobiles, applications macOS, solutions sur mesure — tout est pensé pour vos utilisateurs et livré clé en main.",
+  "cards": [
+    {
+      "title": "Application Mobile",
+      "description": "Une app iOS et Android avec une seule base de code. React Native pour des performances natives et un développement efficace.",
+      "features": ["iOS & Android simultanément", "Interface native et fluide", "Publication sur les stores", "Mises à jour et maintenance"],
+      "badge": "Populaire",
+      "priceLabel": "Sur devis",
+      "ctaLabel": "Demander un devis"
+    },
+    {
+      "title": "Application macOS",
+      "description": "Une app native pour Mac, optimisée pour l'écosystème Apple. Swift et SwiftUI pour une intégration parfaite.",
+      "features": ["Application native macOS", "Publication Mac App Store", "Interface SwiftUI moderne", "Support et évolution"],
+      "badge": "macOS",
+      "priceLabel": "Sur devis",
+      "ctaLabel": "Demander un devis"
+    },
+    {
+      "title": "Sur mesure",
+      "description": "Un besoin spécifique ? Je m'adapte à votre projet. Conseil, conception, développement et déploiement.",
+      "features": ["Analyse de votre besoin", "Conception UX/UI", "Développement sur mesure", "Accompagnement post-livraison"],
+      "badge": "Flexible",
+      "priceLabel": "Sur devis",
+      "ctaLabel": "En savoir plus"
+    }
+  ]
+}

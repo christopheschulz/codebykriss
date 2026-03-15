@@ -1,0 +1,19 @@
+{
+  "badge": "My method",
+  "title": "Simple. Concrete. Tailored to you.",
+  "description": "No technical jargon, no training required. I start from your daily routine to build solutions that just work.",
+  "steps": [
+    {
+      "title": "I start from your daily routine",
+      "description": "Tell me what takes up your time. What frustrates you, what you'd like to automate. That's the only question that matters."
+    },
+    {
+      "title": "I build your solution",
+      "description": "Tailored to your business, your tools, the way you work. Not something generic — something built for you."
+    },
+    {
+      "title": "I set it up and it works",
+      "description": "You don't have to learn anything. I set everything up, show you in 5 minutes, and if it breaks, I'm here."
+    }
+  ]
+}

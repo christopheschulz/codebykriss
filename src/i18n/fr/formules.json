@@ -1,0 +1,31 @@
+{
+  "badge": "Formules",
+  "title": "Une solution pour chaque besoin",
+  "description": "Que vous vouliez simplement comprendre ce qui est possible ou avoir un bras droit numérique au quotidien, il y a une formule pour vous.",
+  "cards": [
+    {
+      "title": "Diagnostic",
+      "description": "Vous me racontez votre journée, je vous montre ce que l'on peut optimiser. Sans engagement, sans jargon.",
+      "features": ["Analyse de votre quotidien", "Identification des tâches automatisables", "Recommandations concrètes", "Échange de 30 minutes"],
+      "badge": "Gratuit",
+      "priceLabel": "Gratuit",
+      "ctaLabel": "Prendre rendez-vous"
+    },
+    {
+      "title": "Intervention",
+      "description": "Vous avez un besoin précis. Je construis et livre la solution clé en main. Une automatisation, un outil, une intégration.",
+      "features": ["Solution sur mesure", "Livraison clé en main", "Formation rapide incluse", "Support après livraison"],
+      "badge": "Recommandé",
+      "priceLabel": "Sur devis",
+      "ctaLabel": "Demander un devis"
+    },
+    {
+      "title": "Abonnement",
+      "description": "Vous voulez un bras droit numérique disponible chaque mois pour vos nouveaux besoins. Je deviens votre service informatique externalisé.",
+      "features": ["Accompagnement mensuel", "Nouveaux besoins pris en charge", "Support prioritaire", "Évolution continue de vos outils"],
+      "badge": "Mensuel",
+      "priceLabel": "Sur devis",
+      "ctaLabel": "En savoir plus"
+    }
+  ]
+}

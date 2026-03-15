@@ -1,0 +1,32 @@
+{
+  "badge": "Background",
+  "title": "30 years in the field. Same instinct, new tool.",
+  "description": "Diagnose, fix, improve — that's what I've always done. Before with machines. Today with code and AI.",
+  "storyTitle": "My story",
+  "storyP1": "I spent 7 years in industrial maintenance — at SERAL, France Cérame, Faïenceries de Sarreguemines. Then 23 years at Michelin: production, maintenance, process optimization, quality. Finding what's broken, fixing it, improving it — that's been my instinct forever.",
+  "storyP2": "In my last year at Michelin, I discovered development and AI through Udemy Business. TOSA Python advanced certification, mentored by a senior developer. I realized my field instincts applied perfectly to digital: diagnose, build, deliver something that works.",
+  "whatIDo": "What I do",
+  "aiTools": "My AI tools",
+  "aiNote": "ChatGPT is a tool. I'm the one who adapts it to your context.",
+  "competences": ["Automation", "Custom tools", "AI integration"],
+  "technologies": ["Python", "React Native", "Django", "TypeScript"],
+  "aiToolsList": ["Claude & Claude Code", "ChatGPT"],
+  "benefits": [
+    {
+      "title": "Nothing to learn",
+      "description": "I handle everything. You keep doing your job, I manage the digital side."
+    },
+    {
+      "title": "AI frees up your time",
+      "description": "AI replaces the tasks you don't like doing. It frees you, it doesn't replace you."
+    },
+    {
+      "title": "Accessible and transparent",
+      "description": "Free consultation. An automation can start at a few hundred euros. No surprises."
+    },
+    {
+      "title": "Always available",
+      "description": "If it breaks, I fix it. Got a problem? We talk, we solve it. Like a real maintenance service."
+    }
+  ]
+}

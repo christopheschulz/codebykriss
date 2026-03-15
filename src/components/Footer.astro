@@ -1,14 +1,24 @@
 ---
+import { t, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
 const currentYear = new Date().getFullYear();
+
+const legalLink = locale === 'fr' ? '/mentions-legales/' : '/en/legal-notice/';
+const privacyLink = locale === 'fr' ? '/politique-confidentialite/' : '/en/privacy-policy/';
 ---
 
 <footer class="bg-neutral-900 text-neutral-300 text-center py-8 px-4">
   <div class="max-w-[1200px] mx-auto">
-    <p>&copy; {currentYear} Code By Kriss. Tous droits réservés.</p>
-    <p class="text-neutral-500 text-sm mt-1">Votre homme de service numérique</p>
+    <p>&copy; {currentYear} Code By Kriss. {t(locale, 'footer.rights')}</p>
+    <p class="text-neutral-500 text-sm mt-1">{t(locale, 'footer.tagline')}</p>
     <div class="mt-4 flex justify-center gap-6 flex-wrap">
-      <a href="/mentions-legales/" class="text-neutral-400 no-underline text-sm transition-colors duration-150 hover:text-primary-400 underline-offset-2 hover:underline">Mentions légales</a>
-      <a href="/politique-confidentialite/" class="text-neutral-400 no-underline text-sm transition-colors duration-150 hover:text-primary-400 underline-offset-2 hover:underline">Politique de confidentialité</a>
+      <a href={legalLink} class="text-neutral-400 no-underline text-sm transition-colors duration-150 hover:text-primary-400 underline-offset-2 hover:underline">{t(locale, 'footer.legal')}</a>
+      <a href={privacyLink} class="text-neutral-400 no-underline text-sm transition-colors duration-150 hover:text-primary-400 underline-offset-2 hover:underline">{t(locale, 'footer.privacy')}</a>
     </div>
   </div>
 </footer>

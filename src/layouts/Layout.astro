@@ -1,19 +1,32 @@
 ---
+import { t, type Locale } from '../i18n/utils';
+
 interface Props {
   title: string;
   description?: string;
+  locale?: Locale;
 }
 
-const { title, description = "Votre homme de service numérique. J'aide les TPE et PME à gagner du temps grâce au numérique et à l'IA. Diagnostic gratuit." } = Astro.props;
+const { title, locale = 'fr' } = Astro.props;
+const description = Astro.props.description || t(locale, 'meta.description');
+const lang = locale;
+
+// Compute alternate URLs for hreflang
+const currentPath = Astro.url.pathname;
+const frPath = currentPath.startsWith('/en') ? currentPath.replace(/^\/en/, '') || '/' : currentPath;
+const enPath = currentPath.startsWith('/en') ? currentPath : `/en${currentPath}`;
 ---
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="alternate" hreflang="fr" href={`https://codebykriss.fr${frPath}`} />
+  <link rel="alternate" hreflang="en" href={`https://codebykriss.fr${enPath}`} />
+  <link rel="alternate" hreflang="x-default" href={`https://codebykriss.fr${frPath}`} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />

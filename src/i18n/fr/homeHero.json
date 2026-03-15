@@ -1,0 +1,21 @@
+{
+  "badge": "Code By Kriss",
+  "title": "Du numérique qui tourne.",
+  "titleHighlight": "Des apps qui marchent.",
+  "description": "Homme de service numérique pour les TPE/PME et développeur d'applications mobiles & macOS. Je construis des solutions concrètes, adaptées à votre besoin.",
+  "serviceCard": {
+    "title": "Homme de service numérique",
+    "description": "Automatisation, outils sur mesure, intégration IA — je m'occupe du numérique pour que vous puissiez vous concentrer sur votre métier.",
+    "cta": "Découvrir"
+  },
+  "appsCard": {
+    "title": "Développement d'Apps",
+    "description": "Applications mobiles iOS/Android et applications macOS. Du sur-mesure, publié sur les stores, clé en main.",
+    "cta": "Découvrir"
+  },
+  "about": {
+    "title": "30 ans de terrain, un nouvel outil",
+    "description": "Ancien technicien de maintenance industrielle (Michelin, 23 ans), je mets mes réflexes de diagnostic et de résolution de problèmes au service du numérique. Certification TOSA Python, développeur React Native & Swift."
+  },
+  "scroll": "Découvrir"
+}

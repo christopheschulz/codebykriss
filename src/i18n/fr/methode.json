@@ -1,0 +1,19 @@
+{
+  "badge": "Ma méthode",
+  "title": "Simple. Concret. Adapté à vous.",
+  "description": "Pas de jargon technique, pas de formation à suivre. Je pars de votre quotidien pour construire des solutions qui tournent.",
+  "steps": [
+    {
+      "title": "Je pars de votre quotidien",
+      "description": "Vous me racontez ce qui vous prend du temps. Ce qui vous agace, ce que vous aimeriez automatiser. C'est la seule question qui compte."
+    },
+    {
+      "title": "Je construis votre solution",
+      "description": "Adaptée à votre métier, vos outils, votre façon de travailler. Pas un truc générique — quelque chose de fait pour vous."
+    },
+    {
+      "title": "J'installe et ça tourne",
+      "description": "Vous n'avez rien à apprendre. Je mets en place, je vous montre en 5 minutes, et si ça casse, je suis là."
+    }
+  ]
+}

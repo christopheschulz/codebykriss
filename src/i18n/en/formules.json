@@ -1,0 +1,31 @@
+{
+  "badge": "Plans",
+  "title": "A solution for every need",
+  "description": "Whether you just want to understand what's possible or have a digital right-hand man every day, there's a plan for you.",
+  "cards": [
+    {
+      "title": "Consultation",
+      "description": "Tell me about your day, I'll show you what can be optimized. No commitment, no jargon.",
+      "features": ["Analysis of your daily routine", "Identify automatable tasks", "Concrete recommendations", "30-minute session"],
+      "badge": "Free",
+      "priceLabel": "Free",
+      "ctaLabel": "Book a call"
+    },
+    {
+      "title": "One-time project",
+      "description": "You have a specific need. I build and deliver the turnkey solution. An automation, a tool, an integration.",
+      "features": ["Custom solution", "Turnkey delivery", "Quick training included", "Post-delivery support"],
+      "badge": "Recommended",
+      "priceLabel": "Custom quote",
+      "ctaLabel": "Get a quote"
+    },
+    {
+      "title": "Subscription",
+      "description": "You want a digital right-hand man available every month for your new needs. I become your outsourced IT department.",
+      "features": ["Monthly support", "New needs handled", "Priority support", "Continuous tool evolution"],
+      "badge": "Monthly",
+      "priceLabel": "Custom quote",
+      "ctaLabel": "Learn more"
+    }
+  ]
+}

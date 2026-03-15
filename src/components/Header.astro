@@ -1,35 +1,82 @@
 ---
+import { t, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const prefix = locale === 'fr' ? '' : '/en';
 const navLinks = [
-  { href: '#accueil', label: 'Accueil' },
-  { href: '#methode', label: 'Comment ça marche' },
-  { href: '#formules', label: 'Formules' },
-  { href: '#contact', label: 'Contact' },
+  { href: `${prefix}/` || '/', label: t(locale, 'nav.home') },
+  { href: `${prefix}/services/`, label: t(locale, 'nav.services') },
+  { href: `${prefix}/apps/`, label: t(locale, 'nav.apps') },
+  { href: '#contact', label: t(locale, 'nav.contact') },
 ];
+
+function isActive(href: string): boolean {
+  if (href.startsWith('#')) return false;
+  if (href === '/' || href === '/en/') return currentPath === href;
+  return currentPath.startsWith(href);
+}
+
+const switchLabel = locale === 'fr' ? 'EN' : 'FR';
+
+// Mapping for pages with different slugs between locales
+const legalPathMap: Record<string, string> = {
+  '/mentions-legales/': '/en/legal-notice/',
+  '/politique-confidentialite/': '/en/privacy-policy/',
+  '/en/legal-notice/': '/mentions-legales/',
+  '/en/privacy-policy/': '/politique-confidentialite/',
+};
+
+function getSwitchUrl(): string {
+  // Check if current path has a special mapping
+  if (legalPathMap[currentPath]) return legalPathMap[currentPath];
+
+  if (locale === 'fr') {
+    if (currentPath === '/') return '/en/';
+    return `/en${currentPath}`;
+  } else {
+    if (currentPath === '/en/' || currentPath === '/en') return '/';
+    return currentPath.replace(/^\/en/, '');
+  }
+}
+
+const switchUrl = getSwitchUrl();
 ---
 
 <header>
   <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-primary-600 transition-all duration-300">
     <div class="nav-container flex items-center justify-between py-4 px-6 max-w-[1200px] mx-auto">
       <div class="logo">
-        <h1 class="text-[1.75rem] font-bold text-white tracking-tight">Code By Kriss</h1>
+        <a href={locale === 'fr' ? '/' : '/en/'} class="text-[1.75rem] font-bold text-white tracking-tight no-underline">Code By Kriss</a>
       </div>
       <ul class="nav-menu hidden md:flex items-center gap-6 list-none">
-        {navLinks.map((link, index) => (
+        {navLinks.map(link => (
           <li>
             <a
               href={link.href}
               class:list={[
                 "text-white no-underline font-medium text-base py-2 px-3 rounded-lg transition-all duration-150",
                 "hover:bg-white/10",
-                index === 0 && "active font-semibold bg-white/15"
+                isActive(link.href) && "font-semibold bg-white/15"
               ]}
             >
               {link.label}
             </a>
           </li>
         ))}
+        <li>
+          <a href={switchUrl} class="text-white no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 hover:bg-white/10 border border-white/30">
+            {switchLabel}
+          </a>
+        </li>
       </ul>
-      <button class="hamburger md:hidden flex flex-col cursor-pointer p-2 bg-transparent border-none rounded-lg transition-colors duration-150 hover:bg-white/10" aria-label="Menu">
+      <button class="hamburger md:hidden flex flex-col cursor-pointer p-2 bg-transparent border-none rounded-lg transition-colors duration-150 hover:bg-white/10" aria-label={locale === 'fr' ? 'Menu' : 'Menu'}>
         <span class="bar w-5 h-0.5 bg-white my-[2px] transition-all duration-300 rounded-full"></span>
         <span class="bar w-5 h-0.5 bg-white my-[2px] transition-all duration-300 rounded-full"></span>
         <span class="bar w-5 h-0.5 bg-white my-[2px] transition-all duration-300 rounded-full"></span>
@@ -100,11 +147,11 @@ const navLinks = [
     navMenu?.classList.remove('active');
   }));
 
-  // Smooth scrolling for navigation links
+  // Smooth scrolling for anchor links only
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      const href = this.getAttribute('href');
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
       if (href) {
         const target = document.querySelector(href);
         if (target) {
@@ -131,39 +178,5 @@ const navLinks = [
         navbar.style.backdropFilter = '';
       }
     }
-  });
-
-  // Section navigation observer for active nav links
-  const sectionObserver = new IntersectionObserver((entries) => {
-    let mostVisibleEntry: IntersectionObserverEntry | null = null;
-    let maxIntersectionRatio = 0;
-
-    entries.forEach(entry => {
-      if (entry.isIntersecting && entry.intersectionRatio > maxIntersectionRatio) {
-        maxIntersectionRatio = entry.intersectionRatio;
-        mostVisibleEntry = entry;
-      }
-    });
-
-    if (mostVisibleEntry) {
-      const navLinks = document.querySelectorAll('.nav-menu a');
-      navLinks.forEach(link => link.classList.remove('active', 'font-semibold', 'bg-white/15'));
-
-      const activeLink = document.querySelector(`.nav-menu a[href="#${(mostVisibleEntry as IntersectionObserverEntry).target.id}"]`);
-      if (activeLink) {
-        activeLink.classList.add('active', 'font-semibold', 'bg-white/15');
-      }
-    }
-  }, {
-    threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
-    rootMargin: '-80px 0px -20% 0px'
-  });
-
-  // Observe sections for navigation
-  document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('main section');
-    sections.forEach(section => {
-      sectionObserver.observe(section);
-    });
   });
 </script>

@@ -1,0 +1,14 @@
+{
+  "badge": "App Development",
+  "title": "I develop your",
+  "titleHighlight": "mobile & macOS apps",
+  "description": "From concept to store publication. Custom apps built with React Native and Swift, designed to last and built for your users.",
+  "stats": [
+    { "number": "iOS & Android", "label": "React Native" },
+    { "number": "macOS", "label": "Swift & SwiftUI" },
+    { "number": "Turnkey", "label": "Store publication" }
+  ],
+  "ctaContact": "Let's discuss your project",
+  "ctaPortfolio": "See my work",
+  "ctaRdv": "Book a call"
+}

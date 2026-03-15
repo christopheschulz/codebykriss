@@ -1,0 +1,37 @@
+{
+  "title": "Let's talk about what takes up your time",
+  "subtitle": "The consultation is free. Tell me about your daily routine, I'll show you what we can improve.",
+  "formTitle": "Send me a message",
+  "formSubtitle": "Describe what takes up your time daily. I'll get back to you within 24 hours.",
+  "calendly": "Or book a 30-minute slot directly",
+  "serviceLabel": "Which service interests you?",
+  "serviceOptions": [
+    { "value": "", "label": "Choose a service" },
+    { "value": "service-numerique", "label": "Digital handyman (automation, AI, tools)" },
+    { "value": "app-mobile", "label": "Mobile app development" },
+    { "value": "app-macos", "label": "macOS app development" },
+    { "value": "autre", "label": "Other / I'm not sure yet" }
+  ],
+  "nameLabel": "Full name",
+  "emailLabel": "Email address",
+  "phoneLabel": "Phone",
+  "messageLabel": "What takes up your time?",
+  "messagePlaceholder": "Tell me about your typical day, repetitive tasks, what you'd like to automate... (minimum 20 characters)",
+  "charCounter": "characters minimum",
+  "submitBtn": "Send my message",
+  "sending": "Sending...",
+  "securityNote": "Your data is secure and will never be shared",
+  "successMsg": "Thank you! I'll get back to you within 24 hours.",
+  "errorMsg": "Error sending message. Please try again or contact me directly by email.",
+  "validationRequired": "The field \"{field}\" is required",
+  "validationEmail": "Please enter a valid email address (e.g. name@domain.com)",
+  "validationPhone": "Please enter a valid phone number",
+  "validationMessage": "Please describe your need with at least 20 characters ({count}/20)",
+  "cards": [
+    { "title": "Quick response", "description": "Within 24 hours", "badge": "Guaranteed" },
+    { "title": "Free consultation", "description": "Let's talk, no commitment", "badge": "Free" },
+    { "title": "AI tailored to you", "description": "Not a generic tool, your solution", "badge": "Custom" },
+    { "title": "Support", "description": "Personalized follow-up", "badge": "Included" },
+    { "title": "It works. Period.", "description": "If it breaks, I fix it. Guaranteed.", "badge": "Reliability" }
+  ]
+}

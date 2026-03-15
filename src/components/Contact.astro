@@ -1,59 +1,33 @@
 ---
 import ContactCard from './ContactCard.astro';
+import { t, tObj, type Locale } from '../i18n/utils';
 
-const contactCards = [
-  {
-    title: 'Réponse rapide',
-    description: 'Sous 24h maximum',
-    badge: 'Garantie',
-    badgeType: 'default' as const,
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="10"/>
-      <polyline points="12,6 12,12 16,14"/>
-    </svg>`
-  },
-  {
-    title: 'Diagnostic gratuit',
-    description: 'On en parle, sans engagement',
-    badge: 'Offert',
-    badgeType: 'success' as const,
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="11" cy="11" r="8"/>
-      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>`
-  },
-  {
-    title: 'IA adaptée à vous',
-    description: 'Pas un outil générique, votre solution',
-    badge: 'Sur mesure',
-    badgeType: 'premium' as const,
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-    </svg>`
-  },
-  {
-    title: 'Accompagnement',
-    description: 'Suivi personnalisé',
-    badge: 'Inclus',
-    badgeType: 'info' as const,
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-      <circle cx="9" cy="7" r="4"/>
-      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-    </svg>`
-  },
-  {
-    title: 'Ça tourne, point.',
-    description: 'Si ça casse, je répare. Garanti.',
-    badge: 'Fiabilité',
-    badgeType: 'quality' as const,
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
-      <path d="m9 12 2 2 4-4"/>
-    </svg>`
-  }
+interface Props {
+  defaultService?: string;
+  locale?: Locale;
+}
+
+const { defaultService = '', locale = 'fr' } = Astro.props;
+
+const serviceOptions = tObj<Array<{value: string; label: string}>>(locale, 'contact.serviceOptions');
+
+const cardsData = tObj<Array<{title: string; description: string; badge: string}>>(locale, 'contact.cards');
+
+const badgeTypes: Array<'default' | 'success' | 'premium' | 'info' | 'quality'> = ['default', 'success', 'premium', 'info', 'quality'];
+
+const icons = [
+  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>`,
+  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>`
 ];
+
+const contactCards = cardsData.map((card, i) => ({
+  ...card,
+  badgeType: badgeTypes[i],
+  icon: icons[i],
+}));
 ---
 
 <section id="contact" class="contact py-24 bg-gradient-to-br from-primary-600 to-primary-800 text-white relative">
@@ -61,9 +35,9 @@ const contactCards = [
 
   <div class="container relative z-10">
     <div class="contact-hero text-center mb-16">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">Parlons de ce qui vous prend du temps</h2>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">{t(locale, 'contact.title')}</h2>
       <p class="contact-subtitle text-lg md:text-xl opacity-90 max-w-[600px] mx-auto">
-        Le diagnostic est gratuit. Racontez-moi votre quotidien, je vous montre ce qu'on peut améliorer.
+        {t(locale, 'contact.subtitle')}
       </p>
     </div>
 
@@ -77,9 +51,9 @@ const contactCards = [
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
             </div>
-            <h3 class="text-2xl md:text-3xl font-bold text-neutral-900 mb-2">Envoyez-moi un message</h3>
+            <h3 class="text-2xl md:text-3xl font-bold text-neutral-900 mb-2">{t(locale, 'contact.formTitle')}</h3>
             <p class="text-neutral-600 leading-relaxed">
-              Décrivez ce qui vous prend du temps au quotidien. Je vous recontacte sous 24h.
+              {t(locale, 'contact.formSubtitle')}
             </p>
             <a href="https://calendly.com/christophe-schulz/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-4 px-5 py-3 bg-primary-50 text-primary-700 font-semibold text-sm rounded-xl hover:bg-primary-100 transition-colors duration-200">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -88,39 +62,58 @@ const contactCards = [
                 <line x1="8" y1="2" x2="8" y2="6"/>
                 <line x1="3" y1="10" x2="21" y2="10"/>
               </svg>
-              Ou réservez directement un créneau de 30 min
+              {t(locale, 'contact.calendly')}
             </a>
           </div>
 
-          <form id="contact-form" class="professional-form flex flex-col gap-5">
+          <form
+            id="contact-form"
+            class="professional-form flex flex-col gap-5"
+            data-msg-required={t(locale, 'contact.validationRequired')}
+            data-msg-email={t(locale, 'contact.validationEmail')}
+            data-msg-phone={t(locale, 'contact.validationPhone')}
+            data-msg-message={t(locale, 'contact.validationMessage')}
+            data-msg-success={t(locale, 'contact.successMsg')}
+            data-msg-error={t(locale, 'contact.errorMsg')}
+            data-msg-sending={t(locale, 'contact.sending')}
+          >
             <div class="form-group">
-              <label for="name">Nom complet <span class="text-error">*</span></label>
+              <label for="service">{t(locale, 'contact.serviceLabel')} <span class="text-error">*</span></label>
+              <select id="service" name="service" required>
+                {serviceOptions.map(option => (
+                  <option value={option.value} selected={option.value === defaultService}>{option.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="name">{t(locale, 'contact.nameLabel')} <span class="text-error">*</span></label>
               <input type="text" id="name" name="name" required minlength="2" />
             </div>
 
             <div class="form-group">
-              <label for="email">Adresse email <span class="text-error">*</span></label>
+              <label for="email">{t(locale, 'contact.emailLabel')} <span class="text-error">*</span></label>
               <input type="email" id="email" name="email" required />
             </div>
 
             <div class="form-group">
-              <label for="phone">Téléphone</label>
+              <label for="phone">{t(locale, 'contact.phoneLabel')}</label>
               <input type="tel" id="phone" name="phone" />
             </div>
 
             <div class="form-group">
-              <label for="message">Qu'est-ce qui vous prend du temps ? <span class="text-error">*</span></label>
+              <label for="message">{t(locale, 'contact.messageLabel')} <span class="text-error">*</span></label>
               <textarea
                 id="message"
                 name="message"
                 rows="4"
-                placeholder="Racontez-moi votre journée type, les tâches répétitives, ce que vous aimeriez automatiser... (minimum 20 caractères)"
+                placeholder={t(locale, 'contact.messagePlaceholder')}
                 required
                 minlength="20"
               ></textarea>
               <div class="form-feedback flex justify-between items-start mt-2 min-h-[20px]">
                 <span class="char-counter text-xs text-neutral-500 transition-colors duration-150">
-                  <span id="message-count">0</span>/20 caractères minimum
+                  <span id="message-count">0</span>/20 {t(locale, 'contact.charCounter')}
                 </span>
               </div>
             </div>
@@ -132,7 +125,7 @@ const contactCards = [
                     <path d="m22 2-7 20-4-9-9-4Z"/>
                     <path d="M22 2 11 13"/>
                   </svg>
-                  Envoyer mon message
+                  {t(locale, 'contact.submitBtn')}
                 </span>
               </button>
               <div class="form-note flex items-center justify-center gap-2 mt-4 p-3 bg-success/10 rounded-xl text-success text-sm text-center">
@@ -140,7 +133,7 @@ const contactCards = [
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
                   <path d="m9 12 2 2 4-4"/>
                 </svg>
-                Vos données sont sécurisées et ne seront jamais partagées
+                {t(locale, 'contact.securityNote')}
               </div>
             </div>
           </form>
@@ -170,10 +163,20 @@ const contactCards = [
   const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
 
   if (contactForm) {
+    // Get translated messages from data attributes
+    const msgs = {
+      required: contactForm.dataset.msgRequired || 'This field is required',
+      email: contactForm.dataset.msgEmail || 'Please enter a valid email',
+      phone: contactForm.dataset.msgPhone || 'Please enter a valid phone number',
+      message: contactForm.dataset.msgMessage || 'Please enter at least 20 characters',
+      success: contactForm.dataset.msgSuccess || 'Thank you!',
+      error: contactForm.dataset.msgError || 'Error sending message.',
+      sending: contactForm.dataset.msgSending || 'Sending...',
+    };
+
     const messageField = document.getElementById('message') as HTMLTextAreaElement | null;
     const messageCounter = document.getElementById('message-count');
 
-    // Character counter
     function updateCharacterCounter() {
       if (messageField && messageCounter) {
         const currentLength = messageField.value.length;
@@ -198,7 +201,6 @@ const contactCards = [
       updateCharacterCounter();
     }
 
-    // Validation functions
     function validateEmail(email: string): boolean {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
@@ -210,7 +212,7 @@ const contactCards = [
       return phoneRegex.test(phone.replace(/\s/g, ''));
     }
 
-    function validateField(field: HTMLInputElement | HTMLTextAreaElement): { isValid: boolean; errorMessage: string } {
+    function validateField(field: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement): { isValid: boolean; errorMessage: string } {
       const formGroup = field.closest('.form-group');
       const value = field.value.trim();
       let isValid = true;
@@ -225,17 +227,17 @@ const contactCards = [
       if (field.required && !value) {
         isValid = false;
         const label = formGroup?.querySelector('label');
-        const labelText = label ? label.textContent?.replace(' *', '').replace('*', '').trim() : 'Ce champ';
-        errorMessage = `Le champ "${labelText}" est obligatoire`;
+        const labelText = label ? label.textContent?.replace(' *', '').replace('*', '').trim() : '';
+        errorMessage = msgs.required.replace('{field}', labelText || '');
       } else if (field.type === 'email' && value && !validateEmail(value)) {
         isValid = false;
-        errorMessage = 'Veuillez saisir une adresse email valide (ex: nom@domaine.fr)';
+        errorMessage = msgs.email;
       } else if (field.type === 'tel' && value && !validatePhone(value)) {
         isValid = false;
-        errorMessage = 'Veuillez saisir un numéro de téléphone français valide';
+        errorMessage = msgs.phone;
       } else if (field.tagName === 'TEXTAREA' && field.name === 'message' && value && value.length < 20) {
         isValid = false;
-        errorMessage = `Veuillez décrire votre besoin avec au moins 20 caractères (${value.length}/20)`;
+        errorMessage = msgs.message.replace('{count}', String(value.length));
       }
 
       if (formGroup && (value || field.required)) {
@@ -251,15 +253,13 @@ const contactCards = [
       return { isValid, errorMessage };
     }
 
-    // Real-time validation
-    const formFields = contactForm.querySelectorAll('input, textarea');
+    const formFields = contactForm.querySelectorAll('input, textarea, select');
     formFields.forEach(field => {
-      field.addEventListener('input', () => validateField(field as HTMLInputElement));
-      field.addEventListener('change', () => validateField(field as HTMLInputElement));
-      field.addEventListener('blur', () => validateField(field as HTMLInputElement));
+      field.addEventListener('input', () => validateField(field as HTMLInputElement | HTMLSelectElement));
+      field.addEventListener('change', () => validateField(field as HTMLInputElement | HTMLSelectElement));
+      field.addEventListener('blur', () => validateField(field as HTMLInputElement | HTMLSelectElement));
     });
 
-    // Form submission
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -267,7 +267,7 @@ const contactCards = [
       const errorMessages: string[] = [];
 
       formFields.forEach(field => {
-        const validation = validateField(field as HTMLInputElement);
+        const validation = validateField(field as HTMLInputElement | HTMLSelectElement);
         if (!validation.isValid) {
           isFormValid = false;
           if (validation.errorMessage) {
@@ -280,7 +280,7 @@ const contactCards = [
         const firstError = contactForm.querySelector('.form-group.error');
         if (firstError) {
           firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          const input = firstError.querySelector('input, textarea') as HTMLElement;
+          const input = firstError.querySelector('input, textarea, select') as HTMLElement;
           if (input) input.focus();
         }
         return;
@@ -296,13 +296,13 @@ const contactCards = [
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="animate-spin">
             <path d="M21 12a9 9 0 11-6.219-8.56"/>
           </svg>
-          Envoi en cours...
+          ${msgs.sending}
         `;
       }
 
       try {
         await emailjs.sendForm('service_i5fh0wc', 'template_rlp6fxk', contactForm);
-        showFormMessage('success', 'Merci ! Je vous recontacte sous 24h.');
+        showFormMessage('success', msgs.success);
         contactForm.reset();
         formFields.forEach(field => {
           field.closest('.form-group')?.classList.remove('error', 'success');
@@ -310,7 +310,7 @@ const contactCards = [
         updateCharacterCounter();
       } catch (error) {
         console.error('EmailJS error:', error);
-        showFormMessage('error', "Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement par email.");
+        showFormMessage('error', msgs.error);
       } finally {
         submitBtn.disabled = false;
         if (btnContent) btnContent.innerHTML = originalContent;

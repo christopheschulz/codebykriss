@@ -1,0 +1,66 @@
+---
+import { t, tObj, type Locale } from '../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = 'fr' } = Astro.props;
+
+const stats = tObj<Array<{number: string; label: string}>>(locale, 'appsHero.stats');
+---
+
+<section id="accueil" class="py-24 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white relative overflow-hidden">
+  <div class="hero-bg absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3')] bg-center bg-cover opacity-10 z-0"></div>
+
+  <div class="relative z-10 text-center max-w-[900px] w-full px-4 mx-auto pt-16">
+    <div class="inline-flex items-center gap-2 py-2 px-4 bg-white/15 border border-white/20 rounded-full text-sm font-medium mb-6 backdrop-blur-lg">
+      <span>{t(locale, 'appsHero.badge')}</span>
+    </div>
+
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight">
+      {t(locale, 'appsHero.title')}
+      <span class="gradient-text">{t(locale, 'appsHero.titleHighlight')}</span>
+    </h1>
+
+    <p class="text-lg md:text-xl leading-relaxed mb-8 opacity-90 max-w-[700px] mx-auto">
+      {t(locale, 'appsHero.description')}
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mb-8 max-w-[600px] mx-auto">
+      {stats.map(stat => (
+        <div class="text-center p-3 md:p-0 bg-white/10 md:bg-transparent rounded-lg md:rounded-none backdrop-blur-lg md:backdrop-blur-none border border-white/20 md:border-none">
+          <span class="block text-base md:text-lg font-bold mb-1">{stat.number}</span>
+          <span class="text-sm opacity-80">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-3 md:gap-4 justify-center items-center">
+      <a href="#contact" class="btn btn-primary w-full md:w-auto max-w-xs justify-center">
+        <span>{t(locale, 'appsHero.ctaContact')}</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </a>
+      <a href="#portfolio" class="btn btn-secondary w-full md:w-auto max-w-xs justify-center">
+        <span>{t(locale, 'appsHero.ctaPortfolio')}</span>
+      </a>
+      <a href="https://calendly.com/christophe-schulz/30min" target="_blank" rel="noopener noreferrer" class="btn btn-secondary w-full md:w-auto max-w-xs justify-center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <span>{t(locale, 'appsHero.ctaRdv')}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>

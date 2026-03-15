@@ -1,0 +1,21 @@
+{
+  "badge": "Code By Kriss",
+  "title": "Digital solutions that work.",
+  "titleHighlight": "Apps that deliver.",
+  "description": "Digital handyman for small businesses and mobile & macOS app developer. I build concrete solutions tailored to your needs.",
+  "serviceCard": {
+    "title": "Digital Handyman",
+    "description": "Automation, custom tools, AI integration — I handle the digital side so you can focus on your business.",
+    "cta": "Learn more"
+  },
+  "appsCard": {
+    "title": "App Development",
+    "description": "Mobile apps for iOS/Android and macOS apps. Custom-built, published on the stores, turnkey.",
+    "cta": "Learn more"
+  },
+  "about": {
+    "title": "30 years in the field, a new tool",
+    "description": "Former industrial maintenance technician (Michelin, 23 years), I apply my diagnostic and problem-solving skills to the digital world. TOSA Python certified, React Native & Swift developer."
+  },
+  "scroll": "Discover"
+}

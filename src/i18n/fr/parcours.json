@@ -1,0 +1,32 @@
+{
+  "badge": "Parcours",
+  "title": "30 ans de terrain. Le même réflexe, un nouvel outil.",
+  "description": "Diagnostiquer, réparer, améliorer — c'est ce que j'ai toujours fait. Avant avec des machines. Aujourd'hui avec du code et de l'IA.",
+  "storyTitle": "Mon histoire",
+  "storyP1": "J'ai passé 7 ans en maintenance industrielle — chez SERAL, France Cérame, les Faïenceries de Sarreguemines. Puis 23 ans chez Michelin : production, maintenance, optimisation des process, qualité. Trouver ce qui coince, réparer, améliorer — c'est mon réflexe depuis toujours.",
+  "storyP2": "Ma dernière année chez Michelin, j'ai découvert le développement et l'IA via Udemy Business. Certification TOSA Python niveau avancé, mentorat par un développeur senior. J'ai compris que mes réflexes d'homme de terrain s'appliquaient parfaitement au numérique : on diagnostique, on construit, on livre quelque chose qui tourne.",
+  "whatIDo": "Ce que je fais",
+  "aiTools": "Mes outils IA",
+  "aiNote": "ChatGPT c'est un outil. Moi je suis celui qui l'adapte à votre contexte.",
+  "competences": ["Automatisation", "Outils sur mesure", "Intégration IA"],
+  "technologies": ["Python", "React Native", "Django", "TypeScript"],
+  "aiToolsList": ["Claude & Claude Code", "ChatGPT"],
+  "benefits": [
+    {
+      "title": "Rien à apprendre",
+      "description": "Je m'occupe de tout. Vous continuez votre métier, je gère le numérique."
+    },
+    {
+      "title": "L'IA vous libère du temps",
+      "description": "L'IA remplace les tâches que vous n'aimez pas faire. Elle vous libère, elle ne vous remplace pas."
+    },
+    {
+      "title": "Accessible et transparent",
+      "description": "Diagnostic gratuit. Une automatisation peut démarrer à quelques centaines d'euros. Pas de surprise."
+    },
+    {
+      "title": "Toujours disponible",
+      "description": "Si ça casse, je répare. Un problème ? On en parle, on règle. Comme un vrai service de maintenance."
+    }
+  ]
+}

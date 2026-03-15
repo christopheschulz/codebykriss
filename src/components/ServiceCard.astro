@@ -11,7 +11,7 @@ interface Props {
   ctaLabel?: string;
 }
 
-const { title, description, features, icon, featured = false, badge, showFooter = true, priceLabel = 'Sur devis', ctaLabel = 'En savoir plus' } = Astro.props;
+const { title, description, features, icon, featured = false, badge, showFooter = true, priceLabel = '', ctaLabel = '' } = Astro.props;
 ---
 
 <div class:list={[

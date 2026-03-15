@@ -1,0 +1,22 @@
+{
+  "badge": "Le constat",
+  "title": "Tout le monde parle d'IA. Mais concrètement ?",
+  "description": "Vous avez essayé. Les résultats sont aléatoires. Vous n'avez pas le temps de creuser. L'IA reste un gadget au lieu de vous faire gagner du temps.",
+  "cards": [
+    {
+      "title": "Vous avez essayé, sans méthode",
+      "description": "ChatGPT, c'est un outil. Sans méthode adaptée à votre contexte, les résultats restent génériques et inutilisables.",
+      "features": ["Résultats aléatoires et génériques", "Utilisé comme un moteur de recherche", "Pas le temps de creuser", "L'IA reste un gadget"]
+    },
+    {
+      "title": "Pas de service informatique",
+      "description": "Vous êtes une TPE ou PME. Vous n'avez pas de DSI, pas de développeur. Mais vous voulez profiter du numérique.",
+      "features": ["Personne pour configurer vos outils", "Les tâches répétitives s'accumulent", "Le numérique avance sans vous", "Vous manquez de temps, pas d'ambition"]
+    },
+    {
+      "title": "Personne ne vous montre comment",
+      "description": "Tout le monde dit que l'IA va tout changer. Mais personne ne vous montre comment l'appliquer à VOTRE contexte.",
+      "features": ["Des formations génériques qui ne servent pas", "Des outils que personne n'utilise", "Un fossé entre la promesse et la réalité", "Il manque quelqu'un pour faire le pont"]
+    }
+  ]
+}

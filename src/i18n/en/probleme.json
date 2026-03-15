@@ -1,0 +1,22 @@
+{
+  "badge": "The reality",
+  "title": "Everyone talks about AI. But in practice?",
+  "description": "You've tried. The results are inconsistent. You don't have time to dig deeper. AI remains a gimmick instead of saving you time.",
+  "cards": [
+    {
+      "title": "You've tried, without a method",
+      "description": "ChatGPT is a tool. Without a method tailored to your context, the results remain generic and unusable.",
+      "features": ["Random and generic results", "Used like a search engine", "No time to dig deeper", "AI remains a gimmick"]
+    },
+    {
+      "title": "No IT department",
+      "description": "You're a small business. You don't have a CTO or a developer. But you want to benefit from digital tools.",
+      "features": ["No one to set up your tools", "Repetitive tasks pile up", "Digital moves on without you", "You lack time, not ambition"]
+    },
+    {
+      "title": "No one shows you how",
+      "description": "Everyone says AI will change everything. But no one shows you how to apply it to YOUR context.",
+      "features": ["Generic training that doesn't help", "Tools that nobody uses", "A gap between promise and reality", "Someone needs to bridge the gap"]
+    }
+  ]
+}

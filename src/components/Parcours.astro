@@ -1,88 +1,62 @@
 ---
 import BenefitCard from './BenefitCard.astro';
+import { t, tObj, tArray, type Locale } from '../i18n/utils';
 
-const competences = [
-  { name: 'Automatisation', primary: true },
-  { name: 'Outils sur mesure', primary: true },
-  { name: 'Intégration IA', primary: true },
+interface Props { locale?: Locale; }
+const { locale = 'fr' } = Astro.props;
+
+const competences = tArray(locale, 'parcours.competences');
+const technologies = tArray(locale, 'parcours.technologies');
+const aiToolsList = tArray(locale, 'parcours.aiToolsList');
+const benefitsData = tObj<Array<{title: string; description: string}>>(locale, 'parcours.benefits');
+
+const icons = [
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+  </svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="10"/>
+    <polyline points="12,6 12,12 16,14"/>
+  </svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <line x1="12" y1="1" x2="12" y2="23"/>
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+  </svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+    <path d="m9 12 2 2 4-4"/>
+  </svg>`
 ];
 
-const technologies = [
-  { name: 'Python' },
-  { name: 'React Native' },
-  { name: 'Django' },
-  { name: 'TypeScript' },
-];
-
-const aiTools = [
-  'Claude & Claude Code',
-  'ChatGPT',
-];
-
-const benefits = [
-  {
-    title: 'Rien à apprendre',
-    description: "Je m'occupe de tout. Vous continuez votre métier, je gère le numérique.",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-    </svg>`
-  },
-  {
-    title: "L'IA vous libère du temps",
-    description: "L'IA remplace les tâches que vous n'aimez pas faire. Elle vous libère, elle ne vous remplace pas.",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="10"/>
-      <polyline points="12,6 12,12 16,14"/>
-    </svg>`
-  },
-  {
-    title: 'Accessible et transparent',
-    description: "Diagnostic gratuit. Une automatisation peut démarrer à quelques centaines d'euros. Pas de surprise.",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <line x1="12" y1="1" x2="12" y2="23"/>
-      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-    </svg>`
-  },
-  {
-    title: 'Toujours disponible',
-    description: "Si ça casse, je répare. Un problème ? On en parle, on règle. Comme un vrai service de maintenance.",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
-      <path d="m9 12 2 2 4-4"/>
-    </svg>`
-  }
-];
+const benefits = benefitsData.map((b, i) => ({
+  ...b,
+  icon: icons[i],
+}));
 ---
 
 <section id="parcours" class="parcours py-24 bg-white">
   <div class="container">
     <div class="section-header">
       <div class="section-badge">
-        <span>Parcours</span>
+        <span>{t(locale, 'parcours.badge')}</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-neutral-900 mb-4 leading-tight">
-        30 ans de terrain. Le même réflexe, un nouvel outil.
+        {t(locale, 'parcours.title')}
       </h2>
       <p class="section-description">
-        Diagnostiquer, réparer, améliorer — c'est ce que j'ai toujours fait.
-        Avant avec des machines. Aujourd'hui avec du code et de l'IA.
+        {t(locale, 'parcours.description')}
       </p>
     </div>
 
     <div class="parcours-content grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 lg:gap-16 items-start">
       <div class="parcours-main flex flex-col gap-8">
         <div class="parcours-story">
-          <h3 class="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">Mon histoire</h3>
+          <h3 class="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">{t(locale, 'parcours.storyTitle')}</h3>
           <p class="text-lg leading-relaxed text-neutral-600 mb-4">
-            J'ai passé 7 ans en maintenance industrielle — chez SERAL, France Cérame, les Faïenceries
-            de Sarreguemines. Puis 23 ans chez Michelin : production, maintenance, optimisation des process,
-            qualité. Trouver ce qui coince, réparer, améliorer — c'est mon réflexe depuis toujours.
+            {t(locale, 'parcours.storyP1')}
           </p>
           <p class="text-lg leading-relaxed text-neutral-600">
-            Ma dernière année chez Michelin, j'ai découvert le développement et l'IA via Udemy Business.
-            Certification TOSA Python niveau avancé, mentorat par un développeur senior. J'ai compris que
-            mes réflexes d'homme de terrain s'appliquaient parfaitement au numérique : on diagnostique,
-            on construit, on livre quelque chose qui tourne.
+            {t(locale, 'parcours.storyP2')}
           </p>
         </div>
 
@@ -93,17 +67,17 @@ const benefits = [
                 <polyline points="16 18 22 12 16 6"/>
                 <polyline points="8 6 2 12 8 18"/>
               </svg>
-              Ce que je fais
+              {t(locale, 'parcours.whatIDo')}
             </h4>
             <div class="tech-items flex flex-wrap gap-2 justify-center lg:justify-start">
               {competences.map(comp => (
                 <span class="tech-item inline-flex items-center gap-2 py-2 px-4 bg-primary-600 text-white rounded-full text-sm font-medium transition-all duration-150">
-                  {comp.name}
+                  {comp}
                 </span>
               ))}
               {technologies.map(tech => (
                 <span class="tech-item inline-flex items-center gap-2 py-2 px-4 bg-neutral-100 text-neutral-700 rounded-full text-sm font-medium transition-all duration-150">
-                  {tech.name}
+                  {tech}
                 </span>
               ))}
             </div>
@@ -114,10 +88,10 @@ const benefits = [
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary-600">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
-              Mes outils IA
+              {t(locale, 'parcours.aiTools')}
             </h4>
             <div class="tech-items flex flex-wrap gap-2 justify-center lg:justify-start">
-              {aiTools.map(tool => (
+              {aiToolsList.map(tool => (
                 <span class="tech-item ai-item inline-flex items-center gap-2 py-2 px-4 bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-full text-sm font-medium">
                   <span class="ai-sparkle text-[0.8em]">✨</span>
                   {tool}
@@ -125,7 +99,7 @@ const benefits = [
               ))}
             </div>
             <p class="text-neutral-500 text-sm mt-3 italic">
-              ChatGPT c'est un outil. Moi je suis celui qui l'adapte à votre contexte.
+              {t(locale, 'parcours.aiNote')}
             </p>
           </div>
         </div>

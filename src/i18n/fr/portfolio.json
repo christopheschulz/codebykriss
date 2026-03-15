@@ -1,0 +1,20 @@
+{
+  "badge": "Portfolio",
+  "title": "Des apps livrées, en production",
+  "description": "Des applications publiées sur les stores, utilisées au quotidien. La preuve par l'exemple.",
+  "apps": [
+    {
+      "title": "Frame Picker - Vidéo en Photo",
+      "description": "Extrayez la photo parfaite de n'importe quelle vidéo. Parcourez image par image, choisissez le moment exact, exportez en haute qualité. Disponible sur le Mac App Store.",
+      "platform": "macOS",
+      "tags": ["macOS", "Mac App Store", "Swift", "SwiftUI"]
+    },
+    {
+      "title": "Verset Vie",
+      "description": "Application mobile de versets bibliques quotidiens. Une expérience spirituelle personnalisée, accessible partout, conçue pour accompagner votre quotidien.",
+      "platform": "Mobile",
+      "tags": ["iOS", "Android", "React Native", "Mobile"]
+    }
+  ],
+  "websiteBtn": "Site web"
+}

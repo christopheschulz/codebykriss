@@ -1,0 +1,31 @@
+{
+  "badge": "Services",
+  "title": "What I build for you",
+  "description": "Mobile apps, macOS apps, custom solutions — everything is designed for your users and delivered turnkey.",
+  "cards": [
+    {
+      "title": "Mobile App",
+      "description": "An iOS and Android app with a single codebase. React Native for native performance and efficient development.",
+      "features": ["iOS & Android simultaneously", "Native and smooth interface", "Store publication", "Updates and maintenance"],
+      "badge": "Popular",
+      "priceLabel": "Custom quote",
+      "ctaLabel": "Get a quote"
+    },
+    {
+      "title": "macOS App",
+      "description": "A native Mac app, optimized for the Apple ecosystem. Swift and SwiftUI for perfect integration.",
+      "features": ["Native macOS app", "Mac App Store publication", "Modern SwiftUI interface", "Support and evolution"],
+      "badge": "macOS",
+      "priceLabel": "Custom quote",
+      "ctaLabel": "Get a quote"
+    },
+    {
+      "title": "Custom",
+      "description": "A specific need? I adapt to your project. Consulting, design, development and deployment.",
+      "features": ["Needs analysis", "UX/UI design", "Custom development", "Post-delivery support"],
+      "badge": "Flexible",
+      "priceLabel": "Custom quote",
+      "ctaLabel": "Learn more"
+    }
+  ]
+}

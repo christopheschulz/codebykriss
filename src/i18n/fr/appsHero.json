@@ -1,0 +1,14 @@
+{
+  "badge": "Développement d'Applications",
+  "title": "Je développe vos applications",
+  "titleHighlight": "mobiles & macOS",
+  "description": "Du concept à la publication sur les stores. Applications sur mesure en React Native et Swift, conçues pour durer et pensées pour vos utilisateurs.",
+  "stats": [
+    { "number": "iOS & Android", "label": "React Native" },
+    { "number": "macOS", "label": "Swift & SwiftUI" },
+    { "number": "Clé en main", "label": "Publication stores" }
+  ],
+  "ctaContact": "Discutons de votre projet",
+  "ctaPortfolio": "Voir mes réalisations",
+  "ctaRdv": "Prendre rendez-vous"
+}

@@ -1,24 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Probleme from '../components/Probleme.astro';
-import Methode from '../components/Methode.astro';
-import Formules from '../components/Formules.astro';
-import Parcours from '../components/Parcours.astro';
+import HomeHero from '../components/HomeHero.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import { t, type Locale } from '../i18n/utils';
+
+const locale: Locale = 'fr';
 ---
 
-<Layout title="Code By Kriss — Votre homme de service numérique">
-  <Header />
+<Layout title={t(locale, 'meta.titleHome')} locale={locale}>
+  <Header locale={locale} />
   <main>
-    <Hero />
-    <Probleme />
-    <Methode />
-    <Formules />
-    <Parcours />
-    <Contact />
+    <HomeHero locale={locale} />
+    <Contact locale={locale} />
   </main>
-  <Footer />
+  <Footer locale={locale} />
 </Layout>
