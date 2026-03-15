@@ -7,7 +7,7 @@
   "storyP2": "Aujourd'hui je mets ces réflexes au service du numérique. Certification TOSA Python niveau avancé, mentorat par un développeur senior. Je construis des automatisations, des outils sur mesure et des intégrations IA — du diagnostic à la livraison, clé en main.",
   "whatIDo": "Ce que je fais",
   "aiTools": "Mes outils IA",
-  "aiNote": "ChatGPT c'est un outil. Moi je suis celui qui l'adapte à votre contexte.",
+  "aiNote": "L'IA c'est un outil. Moi je suis celui qui l'adapte à votre contexte.",
   "competences": ["Automatisation", "Outils sur mesure", "Intégration IA"],
   "technologies": ["Python", "Django", "TypeScript"],
   "aiToolsList": ["Claude & Claude Code", "ChatGPT"],
