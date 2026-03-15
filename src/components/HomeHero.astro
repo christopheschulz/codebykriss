@@ -33,55 +33,47 @@ const appsLink = locale === 'fr' ? '/apps/' : '/en/apps/';
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
       <!-- Carte Homme de service -->
-      <a href={serviceLink} class="choice-card group relative block rounded-3xl p-8 md:p-10 no-underline text-white overflow-hidden transition-all duration-500 hover:-translate-y-1">
-        <div class="absolute inset-0 bg-neutral-900 border border-neutral-800 rounded-3xl transition-all duration-500 group-hover:bg-neutral-800 group-hover:border-primary-500/40 group-hover:shadow-[0_0_60px_-15px_rgba(59,130,246,0.3)]"></div>
+      <a href={serviceLink} class="choice-card group block rounded-3xl p-8 md:p-10 no-underline text-white overflow-hidden bg-gradient-to-br from-primary-500 via-primary-600 to-primary-800 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(59,130,246,0.4)] hover:from-primary-600 hover:via-primary-700 hover:to-primary-900">
+        <div class="flex items-center justify-center w-14 h-14 bg-white/20 rounded-2xl mb-6 transition-all duration-500 group-hover:bg-white/30 group-hover:scale-110" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
 
-        <div class="relative z-10">
-          <div class="flex items-center justify-center w-14 h-14 bg-primary-500/20 border border-primary-400/30 rounded-2xl mb-6 transition-all duration-500 group-hover:bg-primary-500/30 group-hover:scale-110">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-primary-400">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-          </div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3 tracking-tight">{t(locale, 'homeHero.serviceCard.title')}</h2>
+        <p class="text-white/80 leading-relaxed mb-8 text-base">
+          {t(locale, 'homeHero.serviceCard.description')}
+        </p>
 
-          <h2 class="text-2xl md:text-3xl font-bold mb-3 tracking-tight">{t(locale, 'homeHero.serviceCard.title')}</h2>
-          <p class="text-neutral-400 leading-relaxed mb-8 text-base">
-            {t(locale, 'homeHero.serviceCard.description')}
-          </p>
-
-          <div class="flex items-center gap-3 text-primary-400 font-semibold transition-all duration-300 group-hover:gap-4">
-            <span class="text-base">{t(locale, 'homeHero.serviceCard.cta')}</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-500 group-hover:translate-x-2">
-              <path d="M5 12h14"/>
-              <path d="m12 5 7 7-7 7"/>
-            </svg>
-          </div>
+        <div class="flex items-center gap-3 text-white font-semibold transition-all duration-300 group-hover:gap-4">
+          <span class="text-base">{t(locale, 'homeHero.serviceCard.cta')}</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-500 group-hover:translate-x-2" aria-hidden="true">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
         </div>
       </a>
 
-      <!-- Carte Développement d'Apps -->
-      <a href={appsLink} class="choice-card group relative block rounded-3xl p-8 md:p-10 no-underline text-white overflow-hidden transition-all duration-500 hover:-translate-y-1">
-        <div class="absolute inset-0 bg-neutral-900 border border-neutral-800 rounded-3xl transition-all duration-500 group-hover:bg-neutral-800 group-hover:border-purple-500/40 group-hover:shadow-[0_0_60px_-15px_rgba(139,92,246,0.3)]"></div>
+      <!-- Carte Applications -->
+      <a href={appsLink} class="choice-card group block rounded-3xl p-8 md:p-10 no-underline text-white overflow-hidden bg-gradient-to-br from-purple-500 via-purple-600 to-purple-800 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(139,92,246,0.4)] hover:from-purple-600 hover:via-purple-700 hover:to-purple-900">
+        <div class="flex items-center justify-center w-14 h-14 bg-white/20 rounded-2xl mb-6 transition-all duration-500 group-hover:bg-white/30 group-hover:scale-110" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+        </div>
 
-        <div class="relative z-10">
-          <div class="flex items-center justify-center w-14 h-14 bg-purple-500/20 border border-purple-400/30 rounded-2xl mb-6 transition-all duration-500 group-hover:bg-purple-500/30 group-hover:scale-110">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-400">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-              <line x1="12" y1="18" x2="12.01" y2="18"/>
-            </svg>
-          </div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3 tracking-tight">{t(locale, 'homeHero.appsCard.title')}</h2>
+        <p class="text-white/80 leading-relaxed mb-8 text-base">
+          {t(locale, 'homeHero.appsCard.description')}
+        </p>
 
-          <h2 class="text-2xl md:text-3xl font-bold mb-3 tracking-tight">{t(locale, 'homeHero.appsCard.title')}</h2>
-          <p class="text-neutral-400 leading-relaxed mb-8 text-base">
-            {t(locale, 'homeHero.appsCard.description')}
-          </p>
-
-          <div class="flex items-center gap-3 text-purple-400 font-semibold transition-all duration-300 group-hover:gap-4">
-            <span class="text-base">{t(locale, 'homeHero.appsCard.cta')}</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-500 group-hover:translate-x-2">
-              <path d="M5 12h14"/>
-              <path d="m12 5 7 7-7 7"/>
-            </svg>
-          </div>
+        <div class="flex items-center gap-3 text-white font-semibold transition-all duration-300 group-hover:gap-4">
+          <span class="text-base">{t(locale, 'homeHero.appsCard.cta')}</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-500 group-hover:translate-x-2" aria-hidden="true">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
         </div>
       </a>
     </div>
