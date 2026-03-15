@@ -1,22 +1,22 @@
 {
-  "badge": "Le constat",
-  "title": "Vous avez une idée d'app. Mais par où commencer ?",
-  "description": "Avoir une idée, c'est bien. Savoir la transformer en une app publiée sur les stores, c'est autre chose.",
+  "badge": "L'opportunité",
+  "title": "Le mobile est partout. Votre app aussi devrait l'être.",
+  "description": "Le marché des apps explose. C'est le moment idéal pour transformer votre idée en une app publiée sur les stores.",
   "cards": [
     {
-      "title": "Le développement, c'est complexe",
-      "description": "iOS, Android, macOS — chaque plateforme a ses règles, ses outils, ses contraintes. Difficile de s'y retrouver.",
-      "features": ["Technologies multiples à maîtriser", "Exigences des stores à respecter", "Design et ergonomie à penser", "Coûts difficiles à estimer"]
+      "title": "Le marché mobile explose",
+      "description": "En 2025, plus de 70 % du trafic web est mobile. Les utilisateurs passent en moyenne 4h par jour sur leurs apps.",
+      "features": ["70 % du trafic est mobile", "4h/jour sur les apps en moyenne", "Marché des apps en croissance continue", "Les utilisateurs préfèrent les apps aux sites"]
     },
     {
-      "title": "Les agences, c'est cher",
-      "description": "Les agences facturent des dizaines de milliers d'euros. Pour un indépendant ou une TPE, c'est souvent hors budget.",
-      "features": ["Devis à 5 chiffres", "Délais rallongés", "Interlocuteurs multiples", "Perte de contrôle sur le projet"]
+      "title": "Vos clients sont déjà sur mobile",
+      "description": "Une app crée un lien direct avec vos utilisateurs : notifications push, accès hors-ligne, présence permanente sur leur écran.",
+      "features": ["Notifications push ciblées", "Accès instantané en 1 tap", "Fonctionnement hors-ligne", "Engagement 3x supérieur à un site web"]
     },
     {
-      "title": "Les no-code ont leurs limites",
-      "description": "Les outils no-code permettent de prototyper, mais pour une app native performante publiée sur les stores, il faut du vrai code.",
-      "features": ["Performances limitées", "Personnalisation restreinte", "Dépendance à la plateforme", "Pas de publication stores native"]
+      "title": "L'IA change la donne",
+      "description": "Grâce à l'IA, développer une app native coûte moins cher et va plus vite qu'avant. La qualité reste au rendez-vous.",
+      "features": ["Développement accéléré par l'IA", "Coûts réduits vs agences traditionnelles", "Code natif de qualité professionnelle", "Un seul interlocuteur, zéro complexité"]
     }
   ]
 }

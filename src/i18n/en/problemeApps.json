@@ -1,22 +1,22 @@
 {
-  "badge": "The reality",
-  "title": "You have an app idea. But where to start?",
-  "description": "Having an idea is great. Knowing how to turn it into an app published on the stores is another thing.",
+  "badge": "The opportunity",
+  "title": "Mobile is everywhere. Your app should be too.",
+  "description": "The app market is booming. Now is the perfect time to turn your idea into an app published on the stores.",
   "cards": [
     {
-      "title": "Development is complex",
-      "description": "iOS, Android, macOS — each platform has its own rules, tools, and constraints. Hard to navigate.",
-      "features": ["Multiple technologies to master", "Store requirements to meet", "Design and UX to think through", "Costs hard to estimate"]
+      "title": "The mobile market is booming",
+      "description": "In 2025, over 70% of web traffic is mobile. Users spend an average of 4 hours a day on their apps.",
+      "features": ["70% of traffic is mobile", "4h/day on apps on average", "App market growing continuously", "Users prefer apps over websites"]
     },
     {
-      "title": "Agencies are expensive",
-      "description": "Agencies charge tens of thousands. For a freelancer or small business, it's often out of budget.",
-      "features": ["Five-figure quotes", "Extended timelines", "Multiple contacts", "Loss of control over the project"]
+      "title": "Your customers are already on mobile",
+      "description": "An app creates a direct link with your users: push notifications, offline access, permanent presence on their screen.",
+      "features": ["Targeted push notifications", "Instant access in 1 tap", "Offline functionality", "3x more engagement than a website"]
     },
     {
-      "title": "No-code has its limits",
-      "description": "No-code tools allow prototyping, but for a performant native app published on stores, you need real code.",
-      "features": ["Limited performance", "Restricted customization", "Platform dependency", "No native store publication"]
+      "title": "AI changes the game",
+      "description": "Thanks to AI, developing a native app costs less and goes faster than before. Quality remains top-notch.",
+      "features": ["AI-accelerated development", "Lower costs vs traditional agencies", "Professional-quality native code", "One contact, zero complexity"]
     }
   ]
 }
