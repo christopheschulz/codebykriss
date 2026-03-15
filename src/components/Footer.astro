@@ -7,28 +7,102 @@ interface Props {
 
 const { locale = 'fr' } = Astro.props;
 const currentYear = new Date().getFullYear();
+const prefix = locale === 'fr' ? '' : '/en';
+
+const homePath = `${prefix}/` || '/';
+const servicesPath = `${prefix}/services/`;
+const appsPath = `${prefix}/apps/`;
 
 const legalLink = locale === 'fr' ? '/mentions-legales/' : '/en/legal-notice/';
 const privacyLink = locale === 'fr' ? '/politique-confidentialite/' : '/en/privacy-policy/';
+
+const subServices = [
+  { href: `${servicesPath}#accueil`, label: t(locale, 'nav.subServices.hero') },
+  { href: `${servicesPath}#probleme`, label: t(locale, 'nav.subServices.problem') },
+  { href: `${servicesPath}#methode`, label: t(locale, 'nav.subServices.method') },
+  { href: `${servicesPath}#formules`, label: t(locale, 'nav.subServices.plans') },
+  { href: `${servicesPath}#parcours`, label: t(locale, 'nav.subServices.background') },
+  { href: `${servicesPath}#contact`, label: t(locale, 'nav.subServices.contact') },
+];
+
+const subApps = [
+  { href: `${appsPath}#accueil`, label: t(locale, 'nav.subApps.hero') },
+  { href: `${appsPath}#probleme`, label: t(locale, 'nav.subApps.problem') },
+  { href: `${appsPath}#methode`, label: t(locale, 'nav.subApps.method') },
+  { href: `${appsPath}#services-apps`, label: t(locale, 'nav.subApps.services') },
+  { href: `${appsPath}#portfolio`, label: t(locale, 'nav.subApps.portfolio') },
+  { href: `${appsPath}#parcours`, label: t(locale, 'nav.subApps.background') },
+  { href: `${appsPath}#contact`, label: t(locale, 'nav.subApps.contact') },
+];
 ---
 
-<footer class="bg-neutral-900 text-neutral-300 text-center py-8 px-4">
+<footer class="bg-neutral-900 text-neutral-300 pt-16 pb-8 px-6">
   <div class="max-w-[1200px] mx-auto">
-    <p>&copy; {currentYear} Code By Kriss. {t(locale, 'footer.rights')}</p>
-    <p class="text-neutral-500 text-sm mt-1">{t(locale, 'footer.tagline')}</p>
-    <div class="mt-4 flex justify-center gap-6 flex-wrap">
-      <a href={legalLink} class="text-neutral-400 no-underline text-sm transition-colors duration-150 hover:text-primary-400 underline-offset-2 hover:underline">{t(locale, 'footer.legal')}</a>
-      <a href={privacyLink} class="text-neutral-400 no-underline text-sm transition-colors duration-150 hover:text-primary-400 underline-offset-2 hover:underline">{t(locale, 'footer.privacy')}</a>
+    <!-- Navigation columns -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+      <!-- Accueil -->
+      <div>
+        <a href={homePath} class="text-white font-semibold text-sm no-underline hover:text-primary-400 transition-colors">
+          {t(locale, 'nav.home')}
+        </a>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <a href={servicesPath} class="text-white font-semibold text-sm no-underline hover:text-primary-400 transition-colors">
+          {t(locale, 'nav.services')}
+        </a>
+        <ul class="list-none mt-3 space-y-2">
+          {subServices.map(sub => (
+            <li>
+              <a href={sub.href} class="text-neutral-400 text-sm no-underline hover:text-white transition-colors">
+                {sub.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Apps -->
+      <div>
+        <a href={appsPath} class="text-white font-semibold text-sm no-underline hover:text-primary-400 transition-colors">
+          {t(locale, 'nav.apps')}
+        </a>
+        <ul class="list-none mt-3 space-y-2">
+          {subApps.map(sub => (
+            <li>
+              <a href={sub.href} class="text-neutral-400 text-sm no-underline hover:text-white transition-colors">
+                {sub.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Légal -->
+      <div>
+        <span class="text-white font-semibold text-sm">
+          {locale === 'fr' ? 'Légal' : 'Legal'}
+        </span>
+        <ul class="list-none mt-3 space-y-2">
+          <li>
+            <a href={legalLink} class="text-neutral-400 text-sm no-underline hover:text-white transition-colors">
+              {t(locale, 'footer.legal')}
+            </a>
+          </li>
+          <li>
+            <a href={privacyLink} class="text-neutral-400 text-sm no-underline hover:text-white transition-colors">
+              {t(locale, 'footer.privacy')}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-neutral-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+      <p class="text-neutral-500 text-sm">&copy; {currentYear} Code By Kriss. {t(locale, 'footer.rights')}</p>
+      <p class="text-neutral-500 text-sm">{t(locale, 'footer.tagline')}</p>
     </div>
   </div>
 </footer>
-
-<style>
-  @media (max-width: 768px) {
-    .footer-links {
-      flex-direction: column;
-      gap: 0.75rem;
-      align-items: center;
-    }
-  }
-</style>

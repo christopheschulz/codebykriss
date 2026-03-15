@@ -76,28 +76,28 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
 <header>
   <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300" data-theme={theme}>
     <!-- Main nav bar -->
-    <div class="nav-container grid grid-cols-[auto_1fr_auto] items-center py-4 px-6 max-w-[1200px] mx-auto">
+    <div class="nav-container relative flex items-center justify-between py-4 px-6 max-w-[1200px] mx-auto">
       <!-- Logo — left -->
       <div class="logo">
         <a href={locale === 'fr' ? '/' : '/en/'} class:list={["text-[1.75rem] font-bold tracking-tight no-underline", textColor]}>Code By Kriss</a>
       </div>
 
-      <!-- Desktop nav — centered -->
-      <ul class="nav-menu hidden md:flex items-center justify-center gap-1 list-none">
+      <!-- Desktop nav — absolutely centered in the full bar -->
+      <ul class="nav-menu hidden md:flex items-center gap-1 list-none absolute left-1/2 -translate-x-1/2">
         <li>
-          <a href={`${prefix}/` || '/'} class:list={["nav-link no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, isActive(`${prefix}/` || '/') ? "opacity-100" : "opacity-70 hover:opacity-100"]}>
+          <a href={`${prefix}/` || '/'} class:list={["main-nav-link no-underline text-sm py-2 px-3 rounded-lg transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, isActive(`${prefix}/` || '/') ? "font-semibold opacity-100 active-nav" : "font-medium opacity-60 hover:opacity-100"]}>
             {t(locale, 'nav.home')}
           </a>
         </li>
 
         <li>
-          <a href={servicesPath} class:list={["nav-link no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, isServicesActive ? "opacity-100" : "opacity-70 hover:opacity-100"]}>
+          <a href={servicesPath} class:list={["main-nav-link no-underline text-sm py-2 px-3 rounded-lg transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, isServicesActive ? "font-semibold opacity-100 active-nav" : "font-medium opacity-60 hover:opacity-100"]}>
             {t(locale, 'nav.services')}
           </a>
         </li>
 
         <li>
-          <a href={appsPath} class:list={["nav-link no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, isAppsActive ? "opacity-100" : "opacity-70 hover:opacity-100"]}>
+          <a href={appsPath} class:list={["main-nav-link no-underline text-sm py-2 px-3 rounded-lg transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, isAppsActive ? "font-semibold opacity-100 active-nav" : "font-medium opacity-60 hover:opacity-100"]}>
             {t(locale, 'nav.apps')}
           </a>
         </li>
@@ -117,8 +117,8 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
       </div>
     </div>
 
-    <!-- Sub-navigation bar — slides down when on Services or Apps page -->
-    <div class:list={["subbar hidden md:block overflow-hidden transition-all duration-500 ease-out", hasSubbar ? "subbar-open" : "subbar-closed"]}>
+    <!-- Sub-navigation bar — always visible as separator, with links on Services/Apps -->
+    <div class:list={["subbar hidden md:block overflow-hidden transition-all duration-500 ease-out", hasSubbar ? "subbar-open" : "subbar-empty"]}>
       <div class="max-w-[1200px] mx-auto px-6">
         <div class="flex items-center justify-center gap-8 py-2.5">
           {isServicesActive && subServices.map(sub => (
@@ -183,6 +183,11 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
     opacity: 0;
   }
 
+  .subbar-empty {
+    max-height: 4px;
+    opacity: 1;
+  }
+
   .subbar-open {
     max-height: 60px;
     opacity: 1;
@@ -223,6 +228,22 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
 
   [data-theme="dark"] .subbar {
     border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Active main nav link */
+  .main-nav-link {
+    position: relative;
+  }
+
+  .active-nav::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0.75rem;
+    right: 0.75rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
   }
 
   /* Mobile hamburger animation */
