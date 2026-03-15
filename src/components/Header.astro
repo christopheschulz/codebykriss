@@ -84,42 +84,24 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
           </a>
         </li>
 
-        <!-- Services avec dropdown -->
-        <li class="nav-dropdown relative">
+        <!-- Services -->
+        <li class="nav-dropdown" data-dropdown="services">
           <a href={servicesPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, isActive(servicesPath) && `font-semibold ${activeBg}`]} aria-haspopup="true" aria-expanded="false">
             {t(locale, 'nav.services')}
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-200" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron transition-transform duration-300" aria-hidden="true">
               <path d="m6 9 6 6 6-6"/>
             </svg>
           </a>
-          <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1" role="menu">
-            <div class="bg-white rounded-xl shadow-xl border border-neutral-200 py-2 min-w-[200px]">
-              {subServices.map(sub => (
-                <a href={sub.href} class="dropdown-item block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-primary-50 hover:text-primary-700 hover:pl-5 focus-visible:bg-primary-50 focus-visible:text-primary-700 focus-visible:pl-5 focus-visible:outline-none transition-all duration-200" role="menuitem">
-                  {sub.label}
-                </a>
-              ))}
-            </div>
-          </div>
         </li>
 
-        <!-- Apps avec dropdown -->
-        <li class="nav-dropdown relative">
+        <!-- Apps -->
+        <li class="nav-dropdown" data-dropdown="apps">
           <a href={appsPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500", textColor, hoverBg, isActive(appsPath) && `font-semibold ${activeBg}`]} aria-haspopup="true" aria-expanded="false">
             {t(locale, 'nav.apps')}
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-200" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron transition-transform duration-300" aria-hidden="true">
               <path d="m6 9 6 6 6-6"/>
             </svg>
           </a>
-          <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1" role="menu">
-            <div class="bg-white rounded-xl shadow-xl border border-neutral-200 py-2 min-w-[200px]">
-              {subApps.map(sub => (
-                <a href={sub.href} class="dropdown-item block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-purple-50 hover:text-purple-700 hover:pl-5 focus-visible:bg-purple-50 focus-visible:text-purple-700 focus-visible:pl-5 focus-visible:outline-none transition-all duration-200" role="menuitem">
-                  {sub.label}
-                </a>
-              ))}
-            </div>
-          </div>
         </li>
 
         <!-- Language switcher -->
@@ -136,6 +118,31 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
         <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
         <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
       </button>
+    </div>
+
+    <!-- Apple-style full-width flyout panels -->
+    <div class="flyout-panel" data-panel="services" role="menu">
+      <div class="flyout-content max-w-[1200px] mx-auto px-6 py-6">
+        <div class="flex flex-wrap gap-x-10 gap-y-2">
+          {subServices.map((sub, i) => (
+            <a href={sub.href} class="flyout-link" role="menuitem" style={`transition-delay: ${i * 0.04}s`}>
+              {sub.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="flyout-panel" data-panel="apps" role="menu">
+      <div class="flyout-content max-w-[1200px] mx-auto px-6 py-6">
+        <div class="flex flex-wrap gap-x-10 gap-y-2">
+          {subApps.map((sub, i) => (
+            <a href={sub.href} class="flyout-link" role="menuitem" style={`transition-delay: ${i * 0.04}s`}>
+              {sub.label}
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
 
     <!-- Mobile menu -->
@@ -175,41 +182,71 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
       </div>
     </div>
   </nav>
+
+  <!-- Curtain overlay (Apple-style) -->
+  <div class="nav-curtain hidden fixed inset-0 z-40 bg-black/40 transition-opacity duration-300 opacity-0"></div>
 </header>
 
 <style>
-  /* Dropdown hover & focus */
-  .nav-dropdown:hover .dropdown-menu,
-  .nav-dropdown:focus-within .dropdown-menu {
+  /* Flyout panel — Apple-style full-width dropdown */
+  .flyout-panel {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transition:
+      max-height 0.48s cubic-bezier(0.52, 0.16, 0.24, 1),
+      opacity 0.32s cubic-bezier(0.52, 0.16, 0.24, 1);
+  }
+
+  .flyout-panel.open {
+    max-height: 200px;
     opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
   }
 
-  .dropdown-menu > div {
-    transform: scale(0.95);
-    transform-origin: top left;
-    transition: transform 0.2s ease;
+  /* Flyout links — staggered fade-in */
+  .flyout-link {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1d1d1f;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.4s cubic-bezier(0.52, 0.16, 0.24, 1),
+      transform 0.4s cubic-bezier(0.52, 0.16, 0.24, 1),
+      color 0.2s ease;
   }
 
-  .nav-dropdown:hover .dropdown-menu > div,
-  .nav-dropdown:focus-within .dropdown-menu > div {
-    transform: scale(1);
+  .flyout-panel.open .flyout-link {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  .nav-dropdown:hover .nav-dropdown-trigger svg,
-  .nav-dropdown:focus-within .nav-dropdown-trigger svg {
+  .flyout-link:hover,
+  .flyout-link:focus-visible {
+    color: #0066cc;
+  }
+
+  .flyout-link:focus-visible {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Chevron rotation when panel is open */
+  .nav-dropdown.active .chevron {
     transform: rotate(180deg);
   }
 
-  /* Dropdown item slide-in effect */
-  .dropdown-item {
-    transform-origin: left center;
-  }
-
-  .dropdown-item:hover,
-  .dropdown-item:focus-visible {
-    font-weight: 500;
+  /* Curtain */
+  .nav-curtain.visible {
+    opacity: 1;
   }
 
   /* Mobile hamburger animation */
@@ -227,7 +264,88 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
 </style>
 
 <script>
-  // Mobile menu toggle
+  // === Desktop flyout (Apple-style) ===
+  const dropdownTriggers = document.querySelectorAll('.nav-dropdown');
+  const flyoutPanels = document.querySelectorAll('.flyout-panel');
+  const curtain = document.querySelector('.nav-curtain');
+  let activePanel: string | null = null;
+  let hoverTimeout: ReturnType<typeof setTimeout> | null = null;
+  let leaveTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  function openPanel(panelName: string) {
+    if (leaveTimeout) { clearTimeout(leaveTimeout); leaveTimeout = null; }
+    if (activePanel === panelName) return;
+
+    // Close previous
+    flyoutPanels.forEach(p => p.classList.remove('open'));
+    dropdownTriggers.forEach(t => t.classList.remove('active'));
+
+    // Open new
+    const panel = document.querySelector(`[data-panel="${panelName}"]`);
+    const trigger = document.querySelector(`[data-dropdown="${panelName}"]`);
+    if (panel && trigger) {
+      panel.classList.add('open');
+      trigger.classList.add('active');
+      trigger.querySelector('.nav-dropdown-trigger')?.setAttribute('aria-expanded', 'true');
+    }
+
+    // Show curtain
+    curtain?.classList.remove('hidden');
+    requestAnimationFrame(() => curtain?.classList.add('visible'));
+
+    activePanel = panelName;
+  }
+
+  function closeAllPanels() {
+    flyoutPanels.forEach(p => p.classList.remove('open'));
+    dropdownTriggers.forEach(t => {
+      t.classList.remove('active');
+      t.querySelector('.nav-dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+    });
+    curtain?.classList.remove('visible');
+    setTimeout(() => curtain?.classList.add('hidden'), 300);
+    activePanel = null;
+  }
+
+  // Hover on trigger → open panel
+  dropdownTriggers.forEach(trigger => {
+    const panelName = (trigger as HTMLElement).dataset.dropdown;
+    if (!panelName) return;
+
+    trigger.addEventListener('mouseenter', () => {
+      if (hoverTimeout) clearTimeout(hoverTimeout);
+      hoverTimeout = setTimeout(() => openPanel(panelName), activePanel ? 0 : 150);
+    });
+
+    trigger.addEventListener('mouseleave', () => {
+      if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
+      leaveTimeout = setTimeout(() => closeAllPanels(), 200);
+    });
+  });
+
+  // Hover on panel → keep it open
+  flyoutPanels.forEach(panel => {
+    panel.addEventListener('mouseenter', () => {
+      if (leaveTimeout) { clearTimeout(leaveTimeout); leaveTimeout = null; }
+      if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
+    });
+
+    panel.addEventListener('mouseleave', () => {
+      leaveTimeout = setTimeout(() => closeAllPanels(), 200);
+    });
+  });
+
+  // Click on curtain → close
+  curtain?.addEventListener('click', () => closeAllPanels());
+
+  // Close on flyout link click
+  flyoutPanels.forEach(panel => {
+    panel.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => closeAllPanels());
+    });
+  });
+
+  // === Mobile menu toggle ===
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
 
@@ -237,7 +355,6 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
     hamburger.setAttribute('aria-expanded', String(isOpen));
   });
 
-  // Close mobile menu on link click
   mobileMenu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger?.classList.remove('active');
@@ -246,7 +363,7 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
     });
   });
 
-  // Smooth scroll for anchor links
+  // === Smooth scroll for anchor links ===
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -262,7 +379,7 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
     });
   });
 
-  // Scroll effect: white bg + shadow + dark text
+  // === Scroll effect: white bg + shadow ===
   window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar') as HTMLElement;
     if (!navbar) return;
