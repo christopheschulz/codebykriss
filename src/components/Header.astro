@@ -95,7 +95,7 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
           <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1" role="menu">
             <div class="bg-white rounded-xl shadow-xl border border-neutral-200 py-2 min-w-[200px]">
               {subServices.map(sub => (
-                <a href={sub.href} class="block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-primary-50 hover:text-primary-700 focus-visible:bg-primary-50 focus-visible:text-primary-700 focus-visible:outline-none transition-colors duration-150" role="menuitem">
+                <a href={sub.href} class="dropdown-item block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-primary-50 hover:text-primary-700 hover:pl-5 focus-visible:bg-primary-50 focus-visible:text-primary-700 focus-visible:pl-5 focus-visible:outline-none transition-all duration-200" role="menuitem">
                   {sub.label}
                 </a>
               ))}
@@ -114,7 +114,7 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
           <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1" role="menu">
             <div class="bg-white rounded-xl shadow-xl border border-neutral-200 py-2 min-w-[200px]">
               {subApps.map(sub => (
-                <a href={sub.href} class="block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-purple-50 hover:text-purple-700 focus-visible:bg-purple-50 focus-visible:text-purple-700 focus-visible:outline-none transition-colors duration-150" role="menuitem">
+                <a href={sub.href} class="dropdown-item block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-purple-50 hover:text-purple-700 hover:pl-5 focus-visible:bg-purple-50 focus-visible:text-purple-700 focus-visible:pl-5 focus-visible:outline-none transition-all duration-200" role="menuitem">
                   {sub.label}
                 </a>
               ))}
@@ -183,12 +183,33 @@ const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
   .nav-dropdown:focus-within .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+  }
+
+  .dropdown-menu > div {
+    transform: scale(0.95);
+    transform-origin: top left;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-dropdown:hover .dropdown-menu > div,
+  .nav-dropdown:focus-within .dropdown-menu > div {
+    transform: scale(1);
   }
 
   .nav-dropdown:hover .nav-dropdown-trigger svg,
   .nav-dropdown:focus-within .nav-dropdown-trigger svg {
     transform: rotate(180deg);
+  }
+
+  /* Dropdown item slide-in effect */
+  .dropdown-item {
+    transform-origin: left center;
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item:focus-visible {
+    font-weight: 500;
   }
 
   /* Mobile hamburger animation */
