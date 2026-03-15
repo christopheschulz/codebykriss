@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import HomeHero from '../../components/HomeHero.astro';
-import Contact from '../../components/Contact.astro';
 import Footer from '../../components/Footer.astro';
 import { t, type Locale } from '../../i18n/utils';
 
@@ -13,7 +12,6 @@ const locale: Locale = 'en';
   <Header locale={locale} />
   <main>
     <HomeHero locale={locale} />
-    <Contact locale={locale} />
   </main>
   <Footer locale={locale} />
 </Layout>

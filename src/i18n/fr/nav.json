@@ -2,5 +2,18 @@
   "home": "Accueil",
   "services": "Services",
   "apps": "Apps",
-  "contact": "Contact"
+  "contact": "Contact",
+  "subServices": {
+    "problem": "Le constat",
+    "method": "Ma méthode",
+    "plans": "Formules",
+    "background": "Parcours",
+    "contact": "Contact"
+  },
+  "subApps": {
+    "services": "Prestations",
+    "portfolio": "Réalisations",
+    "background": "Parcours",
+    "contact": "Contact"
+  }
 }

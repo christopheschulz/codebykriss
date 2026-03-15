@@ -3,29 +3,41 @@ import { t, type Locale } from '../i18n/utils';
 
 interface Props {
   locale?: Locale;
+  theme?: 'dark' | 'light';
 }
 
-const { locale = 'fr' } = Astro.props;
+const { locale = 'fr', theme = 'light' } = Astro.props;
 
 const currentPath = Astro.url.pathname;
-
 const prefix = locale === 'fr' ? '' : '/en';
-const navLinks = [
-  { href: `${prefix}/` || '/', label: t(locale, 'nav.home') },
-  { href: `${prefix}/services/`, label: t(locale, 'nav.services') },
-  { href: `${prefix}/apps/`, label: t(locale, 'nav.apps') },
-  { href: '#contact', label: t(locale, 'nav.contact') },
+
+const servicesPath = `${prefix}/services/`;
+const appsPath = `${prefix}/apps/`;
+
+const subServices = [
+  { href: `${servicesPath}#probleme`, label: t(locale, 'nav.subServices.problem') },
+  { href: `${servicesPath}#methode`, label: t(locale, 'nav.subServices.method') },
+  { href: `${servicesPath}#formules`, label: t(locale, 'nav.subServices.plans') },
+  { href: `${servicesPath}#parcours`, label: t(locale, 'nav.subServices.background') },
+  { href: `${servicesPath}#contact`, label: t(locale, 'nav.subServices.contact') },
+];
+
+const subApps = [
+  { href: `${appsPath}#services-apps`, label: t(locale, 'nav.subApps.services') },
+  { href: `${appsPath}#portfolio`, label: t(locale, 'nav.subApps.portfolio') },
+  { href: `${appsPath}#parcours`, label: t(locale, 'nav.subApps.background') },
+  { href: `${appsPath}#contact`, label: t(locale, 'nav.subApps.contact') },
 ];
 
 function isActive(href: string): boolean {
   if (href.startsWith('#')) return false;
-  if (href === '/' || href === '/en/') return currentPath === href;
-  return currentPath.startsWith(href);
+  const clean = href.split('#')[0];
+  if (clean === '/' || clean === '/en/') return currentPath === clean;
+  return currentPath.startsWith(clean);
 }
 
 const switchLabel = locale === 'fr' ? 'EN' : 'FR';
 
-// Mapping for pages with different slugs between locales
 const legalPathMap: Record<string, string> = {
   '/mentions-legales/': '/en/legal-notice/',
   '/politique-confidentialite/': '/en/privacy-policy/',
@@ -34,9 +46,7 @@ const legalPathMap: Record<string, string> = {
 };
 
 function getSwitchUrl(): string {
-  // Check if current path has a special mapping
   if (legalPathMap[currentPath]) return legalPathMap[currentPath];
-
   if (locale === 'fr') {
     if (currentPath === '/') return '/en/';
     return `/en${currentPath}`;
@@ -47,107 +57,169 @@ function getSwitchUrl(): string {
 }
 
 const switchUrl = getSwitchUrl();
+
+const isDark = theme === 'dark';
+const textColor = isDark ? 'text-white' : 'text-neutral-800';
+const hoverBg = isDark ? 'hover:bg-white/10' : 'hover:bg-neutral-100';
+const activeBg = isDark ? 'bg-white/15' : 'bg-neutral-100';
+const switchBorder = isDark ? 'border-white/30' : 'border-neutral-300';
+const barColor = isDark ? 'bg-white' : 'bg-neutral-800';
 ---
 
 <header>
-  <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-primary-600 transition-all duration-300">
+  <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300" data-theme={theme}>
     <div class="nav-container flex items-center justify-between py-4 px-6 max-w-[1200px] mx-auto">
       <div class="logo">
-        <a href={locale === 'fr' ? '/' : '/en/'} class="text-[1.75rem] font-bold text-white tracking-tight no-underline">Code By Kriss</a>
+        <a href={locale === 'fr' ? '/' : '/en/'} class:list={["text-[1.75rem] font-bold tracking-tight no-underline", textColor]}>Code By Kriss</a>
       </div>
-      <ul class="nav-menu hidden md:flex items-center gap-6 list-none">
-        {navLinks.map(link => (
-          <li>
-            <a
-              href={link.href}
-              class:list={[
-                "text-white no-underline font-medium text-base py-2 px-3 rounded-lg transition-all duration-150",
-                "hover:bg-white/10",
-                isActive(link.href) && "font-semibold bg-white/15"
-              ]}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
+
+      <!-- Desktop nav -->
+      <ul class="nav-menu hidden md:flex items-center gap-1 list-none">
+        <!-- Accueil -->
         <li>
-          <a href={switchUrl} class="text-white no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 hover:bg-white/10 border border-white/30">
+          <a href={`${prefix}/` || '/'} class:list={["no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150", textColor, hoverBg, isActive(`${prefix}/` || '/') && `font-semibold ${activeBg}`]}>
+            {t(locale, 'nav.home')}
+          </a>
+        </li>
+
+        <!-- Services avec dropdown -->
+        <li class="nav-dropdown relative">
+          <a href={servicesPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1", textColor, hoverBg, isActive(servicesPath) && `font-semibold ${activeBg}`]}>
+            {t(locale, 'nav.services')}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-200">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </a>
+          <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1">
+            <div class="bg-white rounded-xl shadow-xl border border-neutral-200 py-2 min-w-[200px]">
+              {subServices.map(sub => (
+                <a href={sub.href} class="block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-primary-50 hover:text-primary-700 transition-colors duration-150">
+                  {sub.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </li>
+
+        <!-- Apps avec dropdown -->
+        <li class="nav-dropdown relative">
+          <a href={appsPath} class:list={["nav-dropdown-trigger no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 inline-flex items-center gap-1", textColor, hoverBg, isActive(appsPath) && `font-semibold ${activeBg}`]}>
+            {t(locale, 'nav.apps')}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-200">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </a>
+          <div class="dropdown-menu absolute top-full left-0 pt-2 opacity-0 invisible transition-all duration-200 translate-y-1">
+            <div class="bg-white rounded-xl shadow-xl border border-neutral-200 py-2 min-w-[200px]">
+              {subApps.map(sub => (
+                <a href={sub.href} class="block px-4 py-2.5 text-sm text-neutral-700 no-underline hover:bg-purple-50 hover:text-purple-700 transition-colors duration-150">
+                  {sub.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </li>
+
+        <!-- Language switcher -->
+        <li class="ml-2">
+          <a href={switchUrl} class:list={["no-underline font-medium text-sm py-2 px-3 rounded-lg transition-all duration-150 border", textColor, hoverBg, switchBorder]}>
             {switchLabel}
           </a>
         </li>
       </ul>
-      <button class="hamburger md:hidden flex flex-col cursor-pointer p-2 bg-transparent border-none rounded-lg transition-colors duration-150 hover:bg-white/10" aria-label={locale === 'fr' ? 'Menu' : 'Menu'}>
-        <span class="bar w-5 h-0.5 bg-white my-[2px] transition-all duration-300 rounded-full"></span>
-        <span class="bar w-5 h-0.5 bg-white my-[2px] transition-all duration-300 rounded-full"></span>
-        <span class="bar w-5 h-0.5 bg-white my-[2px] transition-all duration-300 rounded-full"></span>
+
+      <!-- Mobile hamburger -->
+      <button class:list={["hamburger md:hidden flex flex-col cursor-pointer p-2 bg-transparent border-none rounded-lg transition-colors duration-150", hoverBg]} aria-label="Menu">
+        <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
+        <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
+        <span class:list={["bar w-5 h-0.5 my-[2px] transition-all duration-300 rounded-full", barColor]}></span>
       </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu hidden md:hidden bg-white border-t border-neutral-100 shadow-xl">
+      <div class="px-4 py-4 space-y-1">
+        <a href={`${prefix}/` || '/'} class="block py-3 px-4 text-neutral-800 no-underline font-medium rounded-lg hover:bg-neutral-100 transition-colors">{t(locale, 'nav.home')}</a>
+
+        <!-- Services group -->
+        <div class="mobile-group">
+          <a href={servicesPath} class="block py-3 px-4 text-neutral-800 no-underline font-semibold rounded-lg hover:bg-neutral-100 transition-colors">{t(locale, 'nav.services')}</a>
+          <div class="pl-4 space-y-0.5">
+            {subServices.map(sub => (
+              <a href={sub.href} class="block py-2 px-4 text-sm text-neutral-500 no-underline rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                {sub.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Apps group -->
+        <div class="mobile-group">
+          <a href={appsPath} class="block py-3 px-4 text-neutral-800 no-underline font-semibold rounded-lg hover:bg-neutral-100 transition-colors">{t(locale, 'nav.apps')}</a>
+          <div class="pl-4 space-y-0.5">
+            {subApps.map(sub => (
+              <a href={sub.href} class="block py-2 px-4 text-sm text-neutral-500 no-underline rounded-lg hover:bg-purple-50 hover:text-purple-700 transition-colors">
+                {sub.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-neutral-100">
+          <a href={switchUrl} class="block py-3 px-4 text-neutral-500 no-underline font-medium text-sm rounded-lg hover:bg-neutral-100 transition-colors text-center">
+            {switchLabel}
+          </a>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
 
 <style>
-  /* Mobile menu styles */
-  @media (max-width: 768px) {
-    .nav-menu {
-      position: fixed;
-      left: -100%;
-      top: 77px;
-      flex-direction: column;
-      background: theme('colors.primary.600');
-      width: 100%;
-      text-align: center;
-      transition: left 0.3s ease;
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-      padding: 2rem 1rem;
-      gap: 1rem;
-      z-index: 1000;
-      display: flex;
-    }
+  /* Dropdown hover */
+  .nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 
-    .nav-menu.active {
-      left: 0;
-    }
+  .nav-dropdown:hover .nav-dropdown-trigger svg {
+    transform: rotate(180deg);
+  }
 
-    .nav-menu a {
-      font-size: 1.1rem;
-      padding: 1rem 1.5rem;
-      display: block;
-      width: 100%;
-      max-width: 200px;
-      margin: 0 auto;
-    }
+  /* Mobile hamburger animation */
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
 
-    .hamburger.active .bar:nth-child(2) {
-      opacity: 0;
-    }
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
 
-    .hamburger.active .bar:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
-    }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 </style>
 
 <script>
   // Mobile menu toggle
   const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('.nav-menu');
+  const mobileMenu = document.querySelector('.mobile-menu');
 
   hamburger?.addEventListener('click', () => {
     hamburger.classList.toggle('active');
-    navMenu?.classList.toggle('active');
+    mobileMenu?.classList.toggle('hidden');
   });
 
-  // Close mobile menu when clicking on a link
-  document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
-    hamburger?.classList.remove('active');
-    navMenu?.classList.remove('active');
-  }));
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger?.classList.remove('active');
+      mobileMenu?.classList.add('hidden');
+    });
+  });
 
-  // Smooth scrolling for anchor links only
+  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -156,26 +228,52 @@ const switchUrl = getSwitchUrl();
         const target = document.querySelector(href);
         if (target) {
           hamburger?.classList.remove('active');
-          navMenu?.classList.remove('active');
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+          mobileMenu?.classList.add('hidden');
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
     });
   });
 
-  // Navbar scroll effect
+  // Scroll effect: white bg + shadow + dark text
   window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar') as HTMLElement;
-    if (navbar) {
-      if (window.scrollY > 50) {
-        navbar.style.background = 'linear-gradient(135deg, rgba(44, 62, 80, 0.98) 0%, rgba(52, 152, 219, 0.98) 100%)';
-        navbar.style.backdropFilter = 'blur(15px)';
-      } else {
-        navbar.style.background = '';
-        navbar.style.backdropFilter = '';
+    if (!navbar) return;
+
+    if (window.scrollY > 50) {
+      navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+      navbar.style.backdropFilter = 'blur(20px)';
+      navbar.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+      navbar.querySelectorAll('.nav-container > .logo a, .nav-menu > li > a, .bar').forEach(el => {
+        el.classList.remove('text-white');
+        el.classList.add('text-neutral-800');
+        if (el.classList.contains('bar')) {
+          el.classList.remove('bg-white');
+          el.classList.add('bg-neutral-800');
+        }
+      });
+      navbar.querySelectorAll('[class*="border-white"]').forEach(el => {
+        el.classList.remove('border-white/30');
+        el.classList.add('border-neutral-300');
+      });
+    } else {
+      navbar.style.background = '';
+      navbar.style.backdropFilter = '';
+      navbar.style.boxShadow = '';
+      const isDarkTheme = navbar.dataset.theme === 'dark';
+      if (isDarkTheme) {
+        navbar.querySelectorAll('.nav-container > .logo a, .nav-menu > li > a, .bar').forEach(el => {
+          el.classList.remove('text-neutral-800');
+          el.classList.add('text-white');
+          if (el.classList.contains('bar')) {
+            el.classList.remove('bg-neutral-800');
+            el.classList.add('bg-white');
+          }
+        });
+        navbar.querySelectorAll('[class*="border-neutral-300"]').forEach(el => {
+          el.classList.remove('border-neutral-300');
+          el.classList.add('border-white/30');
+        });
       }
     }
   });

@@ -5,27 +5,38 @@ interface Props {
   icon: string;
   badge: string;
   badgeType?: 'default' | 'success' | 'premium' | 'info' | 'quality';
+  dark?: boolean;
 }
 
-const { title, description, icon, badge, badgeType = 'default' } = Astro.props;
+const { title, description, icon, badge, badgeType = 'default', dark = true } = Astro.props;
 
-const badgeClasses: Record<string, string> = {
-  default: 'bg-primary-600',
-  success: 'bg-success',
-  premium: 'bg-purple-500',
-  info: 'bg-primary-600',
-  quality: 'bg-warning',
+const badgeClassesDark: Record<string, string> = {
+  default: 'bg-primary-500/20 text-primary-400 border border-primary-400/30',
+  success: 'bg-success/20 text-success border border-success/30',
+  premium: 'bg-purple-500/20 text-purple-400 border border-purple-400/30',
+  info: 'bg-primary-500/20 text-primary-400 border border-primary-400/30',
+  quality: 'bg-warning/20 text-warning border border-warning/30',
 };
+
+const badgeClassesLight: Record<string, string> = {
+  default: 'bg-primary-100 text-primary-700',
+  success: 'bg-green-100 text-green-700',
+  premium: 'bg-purple-100 text-purple-700',
+  info: 'bg-primary-100 text-primary-700',
+  quality: 'bg-amber-100 text-amber-700',
+};
+
+const badgeClasses = dark ? badgeClassesDark : badgeClassesLight;
 ---
 
-<div class="contact-card bg-white/95 rounded-2xl p-5 text-center backdrop-blur-lg shadow-lg border border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-  <div class="card-icon inline-flex items-center justify-center w-12 h-12 bg-primary-600 text-white rounded-xl mb-3">
+<div class:list={["contact-card rounded-2xl p-5 text-center border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl", dark ? "bg-neutral-800 border-neutral-700 hover:border-primary-500/30" : "bg-neutral-50 border-neutral-200 hover:border-primary-300"]}>
+  <div class:list={["card-icon inline-flex items-center justify-center w-12 h-12 rounded-xl mb-3", dark ? "bg-primary-500/20 border border-primary-400/30 text-primary-400" : "bg-primary-100 text-primary-600"]}>
     <Fragment set:html={icon} />
   </div>
-  <h4 class="text-base font-semibold text-neutral-900 mb-2">{title}</h4>
-  <p class="text-neutral-600 text-sm mb-3">{description}</p>
+  <h4 class:list={["text-base font-semibold mb-2", dark ? "text-white" : "text-neutral-900"]}>{title}</h4>
+  <p class:list={["text-sm mb-3", dark ? "text-neutral-400" : "text-neutral-500"]}>{description}</p>
   <span class:list={[
-    "contact-badge inline-block py-1 px-3 text-xs font-semibold uppercase tracking-wider rounded-full text-white",
+    "contact-badge inline-block py-1 px-3 text-xs font-semibold uppercase tracking-wider rounded-full",
     badgeClasses[badgeType]
   ]}>
     {badge}

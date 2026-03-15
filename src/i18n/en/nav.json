@@ -2,5 +2,18 @@
   "home": "Home",
   "services": "Services",
   "apps": "Apps",
-  "contact": "Contact"
+  "contact": "Contact",
+  "subServices": {
+    "problem": "The problem",
+    "method": "My method",
+    "plans": "Plans",
+    "background": "Background",
+    "contact": "Contact"
+  },
+  "subApps": {
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "background": "Background",
+    "contact": "Contact"
+  }
 }

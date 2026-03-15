@@ -15,8 +15,8 @@ interface Props {
 const { title, description, platform, appStoreUrl, googlePlayUrl, websiteUrl, tags, locale = 'fr' } = Astro.props;
 ---
 
-<div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-md transition-all duration-300 border border-neutral-200 flex flex-col h-full hover:-translate-y-2 hover:shadow-2xl hover:border-primary-200">
-  <div class="p-6 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
+<div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-md transition-all duration-300 border border-neutral-200 flex flex-col h-full hover:-translate-y-2 hover:shadow-2xl hover:border-purple-300">
+  <div class="p-6 bg-gradient-to-br from-purple-600 to-purple-700 text-white">
     <div class="flex items-center justify-between mb-4">
       <div class="flex items-center justify-center w-12 h-12 bg-white/20 rounded-xl backdrop-blur-lg">
         {platform.includes('macOS') ? (
@@ -44,7 +44,7 @@ const { title, description, platform, appStoreUrl, googlePlayUrl, websiteUrl, ta
 
     <div class="flex flex-wrap gap-2 mb-6">
       {tags.map(tag => (
-        <span class="inline-flex items-center py-1 px-3 bg-primary-50 text-primary-700 rounded-full text-xs font-medium">
+        <span class="inline-flex items-center py-1 px-3 bg-purple-50 text-purple-700 rounded-full text-xs font-medium">
           {tag}
         </span>
       ))}

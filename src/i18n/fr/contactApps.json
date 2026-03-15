@@ -1,0 +1,34 @@
+{
+  "title": "Discutons de votre projet d'application",
+  "subtitle": "Décrivez votre idée d'app, je vous recontacte avec une estimation et un plan d'action.",
+  "formTitle": "Parlez-moi de votre projet",
+  "formSubtitle": "Décrivez votre idée, vos utilisateurs cibles, les fonctionnalités souhaitées. Je vous recontacte sous 24h.",
+  "calendly": "Ou réservez directement un créneau de 30 min",
+  "serviceLabel": "Type d'application",
+  "serviceOptions": [
+    { "value": "", "label": "Choisissez un type" },
+    { "value": "app-mobile", "label": "Application mobile (iOS & Android)" },
+    { "value": "app-macos", "label": "Application macOS (Mac App Store)" }
+  ],
+  "nameLabel": "Nom complet",
+  "emailLabel": "Adresse email",
+  "phoneLabel": "Téléphone",
+  "messageLabel": "Décrivez votre projet d'application",
+  "messagePlaceholder": "Votre idée d'app, les fonctionnalités souhaitées, vos utilisateurs cibles... (minimum 20 caractères)",
+  "charCounter": "caractères minimum",
+  "submitBtn": "Envoyer mon projet",
+  "sending": "Envoi en cours...",
+  "securityNote": "Vos données sont sécurisées et ne seront jamais partagées",
+  "successMsg": "Merci ! Je vous recontacte sous 24h avec un premier retour.",
+  "errorMsg": "Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement par email.",
+  "validationRequired": "Le champ \"{field}\" est obligatoire",
+  "validationEmail": "Veuillez saisir une adresse email valide (ex: nom@domaine.fr)",
+  "validationPhone": "Veuillez saisir un numéro de téléphone français valide",
+  "validationMessage": "Veuillez décrire votre projet avec au moins 20 caractères ({count}/20)",
+  "cards": [
+    { "title": "Apps publiées", "description": "Déjà des apps sur les stores", "badge": "Portfolio" },
+    { "title": "Réponse sous 24h", "description": "Avec une première estimation", "badge": "Garantie" },
+    { "title": "Clé en main", "description": "Du design à la publication stores", "badge": "Complet" },
+    { "title": "3 mois de suivi", "description": "Garantie corrective incluse, évolutions sur devis", "badge": "Inclus" }
+  ]
+}

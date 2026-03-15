@@ -15,7 +15,7 @@
   },
   "about": {
     "title": "30 ans de terrain, un nouvel outil",
-    "description": "Ancien technicien de maintenance industrielle (Michelin, 23 ans), je mets mes réflexes de diagnostic et de résolution de problèmes au service du numérique. Certification TOSA Python, développeur React Native & Swift."
+    "description": "Ancien technicien de maintenance industrielle, je mets mes réflexes de diagnostic et de résolution de problèmes au service du numérique. Certification TOSA Python, développeur React Native & Swift."
   },
-  "scroll": "Découvrir"
+  "choosePrompt": "Choisissez votre besoin"
 }

@@ -1,0 +1,34 @@
+{
+  "title": "Let's discuss your app project",
+  "subtitle": "Describe your app idea, I'll get back to you with an estimate and action plan.",
+  "formTitle": "Tell me about your project",
+  "formSubtitle": "Describe your idea, target users, desired features. I'll get back to you within 24 hours.",
+  "calendly": "Or book a 30-minute slot directly",
+  "serviceLabel": "Type of application",
+  "serviceOptions": [
+    { "value": "", "label": "Choose a type" },
+    { "value": "app-mobile", "label": "Mobile app (iOS & Android)" },
+    { "value": "app-macos", "label": "macOS app (Mac App Store)" }
+  ],
+  "nameLabel": "Full name",
+  "emailLabel": "Email address",
+  "phoneLabel": "Phone",
+  "messageLabel": "Describe your app project",
+  "messagePlaceholder": "Your app idea, desired features, target users... (minimum 20 characters)",
+  "charCounter": "characters minimum",
+  "submitBtn": "Send my project",
+  "sending": "Sending...",
+  "securityNote": "Your data is secure and will never be shared",
+  "successMsg": "Thank you! I'll get back to you within 24 hours with initial feedback.",
+  "errorMsg": "Error sending message. Please try again or contact me directly by email.",
+  "validationRequired": "The field \"{field}\" is required",
+  "validationEmail": "Please enter a valid email address (e.g. name@domain.com)",
+  "validationPhone": "Please enter a valid phone number",
+  "validationMessage": "Please describe your project with at least 20 characters ({count}/20)",
+  "cards": [
+    { "title": "Published apps", "description": "Already apps on the stores", "badge": "Portfolio" },
+    { "title": "Response within 24h", "description": "With an initial estimate", "badge": "Guaranteed" },
+    { "title": "Turnkey", "description": "From design to store publication", "badge": "Complete" },
+    { "title": "3 months support", "description": "Corrective warranty included, new features on request", "badge": "Included" }
+  ]
+}

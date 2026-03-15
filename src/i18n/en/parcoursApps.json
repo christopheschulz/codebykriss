@@ -1,0 +1,32 @@
+{
+  "badge": "Background",
+  "title": "From the field to code. Same rigor, new craft.",
+  "description": "After 30 years in industry, I learned to develop applications. Today I publish them on the stores.",
+  "storyTitle": "My developer journey",
+  "storyP1": "I discovered development through Udemy Business. TOSA Python advanced certification, then mentored by a senior developer. I learned React Native, Swift and SwiftUI by building my own apps.",
+  "storyP2": "Frame Picker is published on the Mac App Store, Verset Vie on iOS and Android. These aren't exercises — they're apps used daily by real users. I build yours with the same rigor.",
+  "whatIDo": "My technologies",
+  "aiTools": "My AI tools",
+  "aiNote": "AI helps me code faster and better. But I'm the one who designs, develops and delivers.",
+  "competences": ["Mobile apps", "macOS apps", "Store publication"],
+  "technologies": ["React Native", "Swift", "SwiftUI", "TypeScript"],
+  "aiToolsList": ["Claude & Claude Code", "ChatGPT"],
+  "benefits": [
+    {
+      "title": "Published apps",
+      "description": "My apps are on the stores. Proof by example, not just promises."
+    },
+    {
+      "title": "Turnkey",
+      "description": "From design to publication, I handle everything. You get an app ready to use."
+    },
+    {
+      "title": "3 months support included",
+      "description": "An issue after delivery? I fix it, covered for 3 months. New features and updates available on request."
+    },
+    {
+      "title": "Quality code",
+      "description": "AI-assisted, tested, best practices. Clean code that lasts."
+    }
+  ]
+}

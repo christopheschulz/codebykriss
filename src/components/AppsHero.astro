@@ -7,44 +7,50 @@ const { locale = 'fr' } = Astro.props;
 const stats = tObj<Array<{number: string; label: string}>>(locale, 'appsHero.stats');
 ---
 
-<section id="accueil" class="py-24 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white relative overflow-hidden">
-  <div class="hero-bg absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3')] bg-center bg-cover opacity-10 z-0"></div>
+<section id="accueil" class="min-h-[85vh] flex items-center justify-center bg-white text-neutral-900 relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('/images/hero-apps.jpg')] bg-center bg-cover opacity-[0.12] z-0"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-100/50 via-transparent to-transparent z-0"></div>
 
-  <div class="relative z-10 text-center max-w-[900px] w-full px-4 mx-auto pt-16">
-    <div class="inline-flex items-center gap-2 py-2 px-4 bg-white/15 border border-white/20 rounded-full text-sm font-medium mb-6 backdrop-blur-lg">
+  <div class="relative z-10 text-center max-w-[900px] w-full px-6 py-24">
+    <div class="inline-flex items-center gap-2 py-2 px-5 bg-purple-100 border border-purple-200 rounded-full text-sm font-semibold mb-8 text-purple-700 tracking-wide">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+        <line x1="12" y1="18" x2="12.01" y2="18"/>
+      </svg>
       <span>{t(locale, 'appsHero.badge')}</span>
     </div>
 
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight">
-      {t(locale, 'appsHero.title')}
-      <span class="gradient-text">{t(locale, 'appsHero.titleHighlight')}</span>
+    <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+      {t(locale, 'appsHero.title')}<br/>
+      <span class="bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">{t(locale, 'appsHero.titleHighlight')}</span>
     </h1>
 
-    <p class="text-lg md:text-xl leading-relaxed mb-8 opacity-90 max-w-[700px] mx-auto">
+    <p class="text-lg md:text-xl leading-relaxed mb-10 text-neutral-500 max-w-[650px] mx-auto">
       {t(locale, 'appsHero.description')}
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mb-8 max-w-[600px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mb-10 max-w-[600px] mx-auto">
       {stats.map(stat => (
-        <div class="text-center p-3 md:p-0 bg-white/10 md:bg-transparent rounded-lg md:rounded-none backdrop-blur-lg md:backdrop-blur-none border border-white/20 md:border-none">
-          <span class="block text-base md:text-lg font-bold mb-1">{stat.number}</span>
-          <span class="text-sm opacity-80">{stat.label}</span>
+        <div class="text-center p-4 bg-neutral-50 border border-neutral-200 rounded-2xl">
+          <span class="block text-base md:text-lg font-bold text-neutral-900 mb-1">{stat.number}</span>
+          <span class="text-sm text-neutral-500">{stat.label}</span>
         </div>
       ))}
     </div>
 
-    <div class="flex flex-col md:flex-row gap-3 md:gap-4 justify-center items-center">
-      <a href="#contact" class="btn btn-primary w-full md:w-auto max-w-xs justify-center">
+    <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+      <a href="#contact" class="inline-flex items-center gap-2 py-4 px-8 bg-purple-600 text-white no-underline rounded-xl font-semibold text-base transition-all duration-300 hover:bg-purple-700 hover:-translate-y-0.5 hover:shadow-xl">
         <span>{t(locale, 'appsHero.ctaContact')}</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="m9 18 6-6-6-6"/>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14"/>
+          <path d="m12 5 7 7-7 7"/>
         </svg>
       </a>
-      <a href="#portfolio" class="btn btn-secondary w-full md:w-auto max-w-xs justify-center">
+      <a href="#portfolio" class="inline-flex items-center gap-2 py-4 px-8 bg-neutral-100 border border-neutral-200 text-neutral-700 no-underline rounded-xl font-semibold text-base transition-all duration-300 hover:bg-neutral-200">
         <span>{t(locale, 'appsHero.ctaPortfolio')}</span>
       </a>
-      <a href="https://calendly.com/christophe-schulz/30min" target="_blank" rel="noopener noreferrer" class="btn btn-secondary w-full md:w-auto max-w-xs justify-center">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <a href="https://calendly.com/christophe-schulz/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 py-4 px-8 bg-neutral-100 border border-neutral-200 text-neutral-700 no-underline rounded-xl font-semibold text-base transition-all duration-300 hover:bg-neutral-200">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
           <line x1="16" y1="2" x2="16" y2="6"/>
           <line x1="8" y1="2" x2="8" y2="6"/>
@@ -55,12 +61,3 @@ const stats = tObj<Array<{number: string; label: string}>>(locale, 'appsHero.sta
     </div>
   </div>
 </section>
-
-<style>
-  .gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-</style>

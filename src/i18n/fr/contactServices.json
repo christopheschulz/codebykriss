@@ -1,0 +1,33 @@
+{
+  "title": "Parlons de ce qui vous prend du temps",
+  "subtitle": "Le diagnostic est gratuit. Racontez-moi votre quotidien, je vous montre ce qu'on peut améliorer.",
+  "formTitle": "Demandez votre diagnostic gratuit",
+  "formSubtitle": "Décrivez ce qui vous prend du temps au quotidien. Je vous recontacte sous 24h avec des pistes concrètes.",
+  "calendly": "Ou réservez directement un créneau de 30 min",
+  "serviceLabel": "Quel service vous intéresse ?",
+  "serviceOptions": [
+    { "value": "", "label": "Choisissez un service" },
+    { "value": "service-numerique", "label": "Homme de service numérique (automatisation, IA, outils)" }
+  ],
+  "nameLabel": "Nom complet",
+  "emailLabel": "Adresse email",
+  "phoneLabel": "Téléphone",
+  "messageLabel": "Qu'est-ce qui vous prend du temps ?",
+  "messagePlaceholder": "Racontez-moi votre journée type, les tâches répétitives, ce que vous aimeriez automatiser... (minimum 20 caractères)",
+  "charCounter": "caractères minimum",
+  "submitBtn": "Demander mon diagnostic",
+  "sending": "Envoi en cours...",
+  "securityNote": "Vos données sont sécurisées et ne seront jamais partagées",
+  "successMsg": "Merci ! Je vous recontacte sous 24h.",
+  "errorMsg": "Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement par email.",
+  "validationRequired": "Le champ \"{field}\" est obligatoire",
+  "validationEmail": "Veuillez saisir une adresse email valide (ex: nom@domaine.fr)",
+  "validationPhone": "Veuillez saisir un numéro de téléphone français valide",
+  "validationMessage": "Veuillez décrire votre besoin avec au moins 20 caractères ({count}/20)",
+  "cards": [
+    { "title": "Diagnostic gratuit", "description": "On analyse votre quotidien, sans engagement", "badge": "Offert" },
+    { "title": "Réponse sous 24h", "description": "Je reviens vers vous rapidement", "badge": "Garantie" },
+    { "title": "IA adaptée à vous", "description": "Pas un outil générique, votre solution", "badge": "Sur mesure" },
+    { "title": "Ça tourne, point.", "description": "Si ça casse, je répare. Garanti.", "badge": "Fiabilité" }
+  ]
+}

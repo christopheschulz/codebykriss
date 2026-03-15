@@ -6,11 +6,14 @@ import frServicesHero from './fr/servicesHero.json';
 import frProbleme from './fr/probleme.json';
 import frMethode from './fr/methode.json';
 import frFormules from './fr/formules.json';
-import frParcours from './fr/parcours.json';
+import frParcoursServices from './fr/parcoursServices.json';
+import frParcoursApps from './fr/parcoursApps.json';
 import frAppsHero from './fr/appsHero.json';
 import frAppsServices from './fr/appsServices.json';
 import frPortfolio from './fr/portfolio.json';
 import frContact from './fr/contact.json';
+import frContactServices from './fr/contactServices.json';
+import frContactApps from './fr/contactApps.json';
 import frFooter from './fr/footer.json';
 
 // EN sections
@@ -21,11 +24,14 @@ import enServicesHero from './en/servicesHero.json';
 import enProbleme from './en/probleme.json';
 import enMethode from './en/methode.json';
 import enFormules from './en/formules.json';
-import enParcours from './en/parcours.json';
+import enParcoursServices from './en/parcoursServices.json';
+import enParcoursApps from './en/parcoursApps.json';
 import enAppsHero from './en/appsHero.json';
 import enAppsServices from './en/appsServices.json';
 import enPortfolio from './en/portfolio.json';
 import enContact from './en/contact.json';
+import enContactServices from './en/contactServices.json';
+import enContactApps from './en/contactApps.json';
 import enFooter from './en/footer.json';
 
 const translations: Record<string, Record<string, unknown>> = {
@@ -37,11 +43,14 @@ const translations: Record<string, Record<string, unknown>> = {
     probleme: frProbleme,
     methode: frMethode,
     formules: frFormules,
-    parcours: frParcours,
+    parcoursServices: frParcoursServices,
+    parcoursApps: frParcoursApps,
     appsHero: frAppsHero,
     appsServices: frAppsServices,
     portfolio: frPortfolio,
     contact: frContact,
+    contactServices: frContactServices,
+    contactApps: frContactApps,
     footer: frFooter,
   },
   en: {
@@ -52,11 +61,14 @@ const translations: Record<string, Record<string, unknown>> = {
     probleme: enProbleme,
     methode: enMethode,
     formules: enFormules,
-    parcours: enParcours,
+    parcoursServices: enParcoursServices,
+    parcoursApps: enParcoursApps,
     appsHero: enAppsHero,
     appsServices: enAppsServices,
     portfolio: enPortfolio,
     contact: enContact,
+    contactServices: enContactServices,
+    contactApps: enContactApps,
     footer: enFooter,
   },
 };

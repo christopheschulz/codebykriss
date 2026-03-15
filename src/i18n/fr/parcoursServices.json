@@ -3,13 +3,13 @@
   "title": "30 ans de terrain. Le même réflexe, un nouvel outil.",
   "description": "Diagnostiquer, réparer, améliorer — c'est ce que j'ai toujours fait. Avant avec des machines. Aujourd'hui avec du code et de l'IA.",
   "storyTitle": "Mon histoire",
-  "storyP1": "J'ai passé 7 ans en maintenance industrielle — chez SERAL, France Cérame, les Faïenceries de Sarreguemines. Puis 23 ans chez Michelin : production, maintenance, optimisation des process, qualité. Trouver ce qui coince, réparer, améliorer — c'est mon réflexe depuis toujours.",
-  "storyP2": "Ma dernière année chez Michelin, j'ai découvert le développement et l'IA via Udemy Business. Certification TOSA Python niveau avancé, mentorat par un développeur senior. J'ai compris que mes réflexes d'homme de terrain s'appliquaient parfaitement au numérique : on diagnostique, on construit, on livre quelque chose qui tourne.",
+  "storyP1": "30 ans à diagnostiquer, réparer et optimiser dans l'industrie. Maintenance, production, qualité — trouver ce qui coince et le résoudre, c'est mon réflexe depuis toujours.",
+  "storyP2": "Aujourd'hui je mets ces réflexes au service du numérique. Certification TOSA Python niveau avancé, mentorat par un développeur senior. Je construis des automatisations, des outils sur mesure et des intégrations IA — du diagnostic à la livraison, clé en main.",
   "whatIDo": "Ce que je fais",
   "aiTools": "Mes outils IA",
   "aiNote": "ChatGPT c'est un outil. Moi je suis celui qui l'adapte à votre contexte.",
   "competences": ["Automatisation", "Outils sur mesure", "Intégration IA"],
-  "technologies": ["Python", "React Native", "Django", "TypeScript"],
+  "technologies": ["Python", "Django", "TypeScript"],
   "aiToolsList": ["Claude & Claude Code", "ChatGPT"],
   "benefits": [
     {

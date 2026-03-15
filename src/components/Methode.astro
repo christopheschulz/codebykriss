@@ -22,20 +22,20 @@ const steps = stepsData.map((step, i) => ({
 <section id="methode" class="methode py-24 bg-white">
   <div class="container">
     <div class="section-header">
-      <div class="section-badge">
+      <div class="section-badge-light inline-block px-4 py-2 bg-primary-100 text-primary-700 text-sm font-semibold rounded-full mb-4 uppercase tracking-wider">
         <span>{t(locale, 'methode.badge')}</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-neutral-900 mb-4 leading-tight">
         {t(locale, 'methode.title')}
       </h2>
-      <p class="section-description">
+      <p class="text-xl text-neutral-600 max-w-xl mx-auto leading-relaxed">
         {t(locale, 'methode.description')}
       </p>
     </div>
 
     <div class="methode-grid grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12">
       {steps.map(step => (
-        <div class="methode-step bg-neutral-50 rounded-3xl p-8 border border-neutral-200 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary-200">
+        <div class="methode-step bg-neutral-50 rounded-3xl p-8 border border-neutral-200 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary-300">
           <div class="step-number inline-flex items-center justify-center w-16 h-16 bg-primary-600 text-white rounded-2xl mb-5 text-2xl font-bold">
             {step.number}
           </div>

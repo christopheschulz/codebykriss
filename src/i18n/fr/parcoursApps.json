@@ -1,0 +1,32 @@
+{
+  "badge": "Parcours",
+  "title": "Du terrain au code. La même rigueur, un nouveau métier.",
+  "description": "Après 30 ans dans l'industrie, j'ai appris à développer des applications. Aujourd'hui j'en publie sur les stores.",
+  "storyTitle": "Mon parcours développeur",
+  "storyP1": "J'ai découvert le développement via Udemy Business. Certification TOSA Python niveau avancé, puis mentorat par un développeur senior. J'ai appris React Native, Swift et SwiftUI en construisant mes propres apps.",
+  "storyP2": "Frame Picker est publié sur le Mac App Store, Verset Vie sur iOS et Android. Ce ne sont pas des exercices — ce sont des apps utilisées au quotidien par de vrais utilisateurs. Je construis la vôtre avec la même rigueur.",
+  "whatIDo": "Mes technologies",
+  "aiTools": "Mes outils IA",
+  "aiNote": "L'IA m'aide à coder plus vite et mieux. Mais c'est moi qui conçois, développe et livre.",
+  "competences": ["Apps mobiles", "Apps macOS", "Publication stores"],
+  "technologies": ["React Native", "Swift", "SwiftUI", "TypeScript"],
+  "aiToolsList": ["Claude & Claude Code", "ChatGPT"],
+  "benefits": [
+    {
+      "title": "Apps publiées",
+      "description": "Mes apps sont sur les stores. La preuve par l'exemple, pas juste des promesses."
+    },
+    {
+      "title": "Clé en main",
+      "description": "Du design à la publication, je gère tout. Vous récupérez une app prête à l'emploi."
+    },
+    {
+      "title": "3 mois de suivi inclus",
+      "description": "Un souci après livraison ? Je corrige, c'est inclus pendant 3 mois. Évolutions et nouvelles fonctionnalités sur devis."
+    },
+    {
+      "title": "Code de qualité",
+      "description": "IA assistée, tests, bonnes pratiques. Un code propre qui dure dans le temps."
+    }
+  ]
+}

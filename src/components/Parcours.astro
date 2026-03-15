@@ -2,30 +2,31 @@
 import BenefitCard from './BenefitCard.astro';
 import { t, tObj, tArray, type Locale } from '../i18n/utils';
 
-interface Props { locale?: Locale; }
-const { locale = 'fr' } = Astro.props;
+interface Props { locale?: Locale; variant?: 'services' | 'apps'; dark?: boolean; }
+const { locale = 'fr', variant = 'services', dark = false } = Astro.props;
 
-const competences = tArray(locale, 'parcours.competences');
-const technologies = tArray(locale, 'parcours.technologies');
-const aiToolsList = tArray(locale, 'parcours.aiToolsList');
-const benefitsData = tObj<Array<{title: string; description: string}>>(locale, 'parcours.benefits');
+const s = variant === 'apps' ? 'parcoursApps' : 'parcoursServices';
+
+const badge = t(locale, `${s}.badge`);
+const title = t(locale, `${s}.title`);
+const description = t(locale, `${s}.description`);
+const storyTitle = t(locale, `${s}.storyTitle`);
+const storyP1 = t(locale, `${s}.storyP1`);
+const storyP2 = t(locale, `${s}.storyP2`);
+const whatIDo = t(locale, `${s}.whatIDo`);
+const aiToolsLabel = t(locale, `${s}.aiTools`);
+const aiNote = t(locale, `${s}.aiNote`);
+
+const competences = tArray(locale, `${s}.competences`);
+const technologies = tArray(locale, `${s}.technologies`);
+const aiToolsList = tArray(locale, `${s}.aiToolsList`);
+const benefitsData = tObj<Array<{title: string; description: string}>>(locale, `${s}.benefits`);
 
 const icons = [
-  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-  </svg>`,
-  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <circle cx="12" cy="12" r="10"/>
-    <polyline points="12,6 12,12 16,14"/>
-  </svg>`,
-  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <line x1="12" y1="1" x2="12" y2="23"/>
-    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-  </svg>`,
-  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
-    <path d="m9 12 2 2 4-4"/>
-  </svg>`
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>`
 ];
 
 const benefits = benefitsData.map((b, i) => ({
@@ -34,49 +35,51 @@ const benefits = benefitsData.map((b, i) => ({
 }));
 ---
 
-<section id="parcours" class="parcours py-24 bg-white">
+<section id="parcours" class:list={["parcours py-24", dark ? "bg-neutral-900" : "bg-white"]}>
   <div class="container">
     <div class="section-header">
-      <div class="section-badge">
-        <span>{t(locale, 'parcours.badge')}</span>
-      </div>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-neutral-900 mb-4 leading-tight">
-        {t(locale, 'parcours.title')}
+      {dark ? (
+        <div class="section-badge"><span>{badge}</span></div>
+      ) : (
+        <div class="section-badge-light inline-block px-4 py-2 bg-primary-100 text-primary-700 text-sm font-semibold rounded-full mb-4 uppercase tracking-wider"><span>{badge}</span></div>
+      )}
+      <h2 class:list={["text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight", dark ? "text-white" : "text-neutral-900"]}>
+        {title}
       </h2>
-      <p class="section-description">
-        {t(locale, 'parcours.description')}
+      <p class:list={["text-xl max-w-xl mx-auto leading-relaxed", dark ? "text-neutral-400" : "text-neutral-600"]}>
+        {description}
       </p>
     </div>
 
     <div class="parcours-content grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 lg:gap-16 items-start">
       <div class="parcours-main flex flex-col gap-8">
         <div class="parcours-story">
-          <h3 class="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">{t(locale, 'parcours.storyTitle')}</h3>
-          <p class="text-lg leading-relaxed text-neutral-600 mb-4">
-            {t(locale, 'parcours.storyP1')}
+          <h3 class:list={["text-2xl md:text-3xl font-bold mb-4", dark ? "text-white" : "text-neutral-900"]}>{storyTitle}</h3>
+          <p class:list={["text-lg leading-relaxed mb-4", dark ? "text-neutral-400" : "text-neutral-600"]}>
+            {storyP1}
           </p>
-          <p class="text-lg leading-relaxed text-neutral-600">
-            {t(locale, 'parcours.storyP2')}
+          <p class:list={["text-lg leading-relaxed", dark ? "text-neutral-400" : "text-neutral-600"]}>
+            {storyP2}
           </p>
         </div>
 
         <div class="tech-stack flex flex-col gap-6">
           <div class="stack-section">
-            <h4 class="flex items-center gap-2 text-lg font-semibold text-neutral-800 mb-3">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary-600">
+            <h4 class:list={["flex items-center gap-2 text-lg font-semibold mb-3", dark ? "text-white" : "text-neutral-800"]}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class:list={[dark ? "text-primary-400" : "text-primary-600"]}>
                 <polyline points="16 18 22 12 16 6"/>
                 <polyline points="8 6 2 12 8 18"/>
               </svg>
-              {t(locale, 'parcours.whatIDo')}
+              {whatIDo}
             </h4>
             <div class="tech-items flex flex-wrap gap-2 justify-center lg:justify-start">
               {competences.map(comp => (
-                <span class="tech-item inline-flex items-center gap-2 py-2 px-4 bg-primary-600 text-white rounded-full text-sm font-medium transition-all duration-150">
+                <span class:list={["tech-item inline-flex items-center gap-2 py-2 px-4 rounded-full text-sm font-medium transition-all duration-150", dark ? "bg-primary-500/20 text-primary-400 border border-primary-400/30" : "bg-primary-600 text-white"]}>
                   {comp}
                 </span>
               ))}
               {technologies.map(tech => (
-                <span class="tech-item inline-flex items-center gap-2 py-2 px-4 bg-neutral-100 text-neutral-700 rounded-full text-sm font-medium transition-all duration-150">
+                <span class:list={["tech-item inline-flex items-center gap-2 py-2 px-4 rounded-full text-sm font-medium transition-all duration-150", dark ? "bg-neutral-800 text-neutral-300 border border-neutral-700" : "bg-neutral-100 text-neutral-700"]}>
                   {tech}
                 </span>
               ))}
@@ -84,22 +87,21 @@ const benefits = benefitsData.map((b, i) => ({
           </div>
 
           <div class="stack-section">
-            <h4 class="flex items-center gap-2 text-lg font-semibold text-neutral-800 mb-3">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary-600">
+            <h4 class:list={["flex items-center gap-2 text-lg font-semibold mb-3", dark ? "text-white" : "text-neutral-800"]}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class:list={[dark ? "text-primary-400" : "text-primary-600"]}>
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
-              {t(locale, 'parcours.aiTools')}
+              {aiToolsLabel}
             </h4>
             <div class="tech-items flex flex-wrap gap-2 justify-center lg:justify-start">
               {aiToolsList.map(tool => (
                 <span class="tech-item ai-item inline-flex items-center gap-2 py-2 px-4 bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-full text-sm font-medium">
-                  <span class="ai-sparkle text-[0.8em]">✨</span>
                   {tool}
                 </span>
               ))}
             </div>
             <p class="text-neutral-500 text-sm mt-3 italic">
-              {t(locale, 'parcours.aiNote')}
+              {aiNote}
             </p>
           </div>
         </div>
