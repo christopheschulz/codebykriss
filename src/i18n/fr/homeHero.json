@@ -2,7 +2,11 @@
   "badge": "Code By Kriss",
   "title": "Du numérique qui tourne.",
   "titleHighlight": "Des apps qui marchent.",
-  "description": "Homme de service numérique pour les TPE/PME et développeur d'applications mobiles & macOS. Je construis des solutions concrètes, adaptées à votre besoin.",
+  "descriptionLines": [
+    "Homme de service numérique pour les indépendants et TPE/PME.",
+    "Développeur d'applications mobiles & macOS.",
+    "Je construis des solutions concrètes, adaptées à votre besoin."
+  ],
   "serviceCard": {
     "title": "Homme de service numérique",
     "description": "Automatisation, outils sur mesure, intégration IA — je m'occupe du numérique pour que vous puissiez vous concentrer sur votre métier.",

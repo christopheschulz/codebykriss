@@ -1,5 +1,5 @@
 ---
-import { t, type Locale } from '../i18n/utils';
+import { t, tObj, type Locale } from '../i18n/utils';
 
 interface Props {
   locale?: Locale;
@@ -9,6 +9,7 @@ const { locale = 'fr' } = Astro.props;
 
 const serviceLink = locale === 'fr' ? '/services/' : '/en/services/';
 const appsLink = locale === 'fr' ? '/apps/' : '/en/apps/';
+const descriptionLines = tObj<string[]>(locale, 'homeHero.descriptionLines');
 ---
 
 <section id="accueil" class="min-h-screen flex flex-col items-center justify-center bg-white text-neutral-900 relative overflow-hidden">
@@ -23,7 +24,9 @@ const appsLink = locale === 'fr' ? '/apps/' : '/en/apps/';
         <span class="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">{t(locale, 'homeHero.titleHighlight')}</span>
       </h1>
       <p class="text-lg md:text-xl text-neutral-600 max-w-[600px] mx-auto leading-relaxed">
-        {t(locale, 'homeHero.description')}
+        {descriptionLines.map((line, i) => (
+          <>{i > 0 && <br/>}{line}</>
+        ))}
       </p>
     </div>
 
