@@ -1,19 +1,23 @@
 {
   "badge": "Ma méthode",
-  "title": "De votre idée à l'App Store. En 3 étapes.",
-  "description": "Un process transparent avec des livrables concrets à chaque étape. Vous savez exactement ce que vous obtenez.",
+  "title": "De votre idée à l'App Store. En 4 étapes.",
+  "description": "Un process clair avec des livrables concrets à chaque étape. Vous savez exactement ce que vous obtenez.",
   "steps": [
     {
-      "title": "Cadrage & maquettes",
-      "description": "On prend le temps qu'il faut pour bien comprendre votre projet : vos utilisateurs, vos objectifs, vos contraintes. Ensuite je vous livre un document de cadrage avec les fonctionnalités, les maquettes écran par écran, le planning et le devis détaillé."
+      "title": "Étude de votre projet",
+      "description": "Vous m'expliquez votre idée. J'évalue la faisabilité, les fonctionnalités clés et je vous donne une estimation de budget et de planning. Aucun engagement."
     },
     {
-      "title": "Développement & démos",
-      "description": "Chaque semaine, vous testez une version de votre app sur votre téléphone. Vous voyez l'avancement en temps réel et pouvez demander des ajustements avant la suite."
+      "title": "Design & maquettes",
+      "description": "Je crée les maquettes de chaque écran. Vous voyez et validez le rendu visuel de votre app avant la moindre ligne de code."
+    },
+    {
+      "title": "Développement",
+      "description": "Je code votre app. Chaque semaine, vous testez une nouvelle version sur votre téléphone et donnez vos retours. Le code vous appartient."
     },
     {
       "title": "Publication & suivi",
-      "description": "Je crée vos comptes développeur, prépare les fiches stores (captures, description, mots-clés) et soumets votre app. Après publication : 3 mois de corrections inclus."
+      "description": "Je publie votre app sur l'App Store et le Play Store. Après le lancement : 3 mois de corrections inclus et accompagnement si besoin."
     }
   ]
 }

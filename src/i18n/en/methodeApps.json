@@ -1,19 +1,23 @@
 {
   "badge": "My method",
-  "title": "From your idea to the App Store. In 3 steps.",
-  "description": "A transparent process with concrete deliverables at each step. You know exactly what you're getting.",
+  "title": "From your idea to the App Store. In 4 steps.",
+  "description": "A clear process with concrete deliverables at each step. You know exactly what you're getting.",
   "steps": [
     {
-      "title": "Scoping & mockups",
-      "description": "We take the time needed to fully understand your project: your users, goals, and constraints. Then I deliver a scoping document with features, screen-by-screen mockups, timeline and detailed quote."
+      "title": "Project assessment",
+      "description": "Tell me about your idea. I assess feasibility, key features and give you a budget and timeline estimate. No commitment."
     },
     {
-      "title": "Development & demos",
-      "description": "Every week, you test a new version of your app on your phone. You see real-time progress and can request adjustments before moving on."
+      "title": "Design & mockups",
+      "description": "I create mockups for every screen. You see and approve the visual look of your app before a single line of code is written."
+    },
+    {
+      "title": "Development",
+      "description": "I build your app. Every week, you test a new version on your phone and share feedback. The code is yours."
     },
     {
       "title": "Publication & support",
-      "description": "I create your developer accounts, prepare store listings (screenshots, description, keywords) and submit your app. After launch: 3 months of bug fixes included."
+      "description": "I publish your app on the App Store and Play Store. After launch: 3 months of bug fixes included and ongoing support if needed."
     }
   ]
 }
