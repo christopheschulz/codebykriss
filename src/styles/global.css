@@ -64,14 +64,20 @@
   }
 
   .form-group label {
-    @apply block mb-2 text-neutral-200 font-semibold text-sm;
+    @apply block mb-2 font-semibold text-sm;
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea {
-    @apply w-full p-4 border-2 border-neutral-600 rounded-xl text-base font-sans bg-neutral-700 text-white placeholder:text-neutral-400 transition-all duration-150 outline-none;
+    @apply w-full p-4 border-2 rounded-xl text-base font-sans placeholder:text-neutral-400 transition-all duration-150 outline-none;
   }
+
+  .form-dark label { @apply text-neutral-200; }
+  .form-dark input, .form-dark select, .form-dark textarea { @apply border-neutral-600 bg-neutral-700 text-white; }
+
+  .form-light label { @apply text-neutral-800; }
+  .form-light input, .form-light select, .form-light textarea { @apply border-neutral-200 bg-white text-neutral-900; }
 
   .form-group input:focus,
   .form-group select:focus,

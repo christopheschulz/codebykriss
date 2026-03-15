@@ -93,7 +93,7 @@ const contactCards = cardsData.map((card, i) => ({
 
           <form
             id="contact-form"
-            class="professional-form flex flex-col gap-5"
+            class:list={["professional-form flex flex-col gap-5", dark ? "form-dark" : "form-light"]}
             data-msg-required={validationRequired}
             data-msg-email={validationEmail}
             data-msg-phone={validationPhone}
