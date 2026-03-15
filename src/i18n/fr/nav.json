@@ -1,7 +1,7 @@
 {
   "home": "Accueil",
-  "services": "Services",
-  "apps": "Apps",
+  "services": "Homme de service",
+  "apps": "Applications",
   "contact": "Contact",
   "subServices": {
     "hero": "Présentation",
